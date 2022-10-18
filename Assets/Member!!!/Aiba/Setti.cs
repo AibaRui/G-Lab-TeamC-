@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Setti : MonoBehaviour
 {
+    [SerializeField] GameObject _cure;
+
     [SerializeField] GameObject _box;
     Vector2 displayCenter;
 
@@ -74,6 +76,8 @@ public class Setti : MonoBehaviour
         screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
 
 
+
         v = new Vector3(position.x, position.y, _player.transform.position.z);
+        _cure.transform.position = v;
     }
 }
