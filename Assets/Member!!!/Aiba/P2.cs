@@ -9,11 +9,15 @@ public class P2 : MonoBehaviour
 
     [SerializeField] GameObject[] _eria = new GameObject[1];
     int count = 0;
-    [SerializeField] GroundCheck _groundCheck;
+
+
+    [SerializeField] LayerMask _layerGround;
+    [SerializeField] float _groundCheckLine = 1.5f;
+    bool _isGround = false;
+
     Rigidbody2D _rb;
     void Start()
     {
-        _groundCheck = _groundCheck.GetComponent<GroundCheck>();
         _eria[count].SetActive(true);
         _rb = GetComponent<Rigidbody2D>();
     }
@@ -45,9 +49,23 @@ public class P2 : MonoBehaviour
             _eria[count].SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && _groundCheck.IsGround)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && GroundCheck())
         {
             _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
         }
+
+        Vector2 start = transform.position;
+        Vector2 end = transform.position + (-transform.up) * _groundCheckLine;
+        Debug.DrawLine(start, end);
     }
+
+    bool GroundCheck()
+    {
+        Vector2 start = transform.position;
+        Vector2 end = transform.position + (-transform.up) * _groundCheckLine;
+        _isGround = Physics2D.Linecast(start, end,_layerGround);
+        return _isGround;
+    }
+
+
 }

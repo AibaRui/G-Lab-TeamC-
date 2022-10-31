@@ -102,6 +102,10 @@ MonoBehaviour:
   _timeCount: 0
   _colorHot: {r: 0, g: 0.2379129, b: 1, a: 0.654902}
   _colorCool: {r: 0, g: 0.86769533, b: 1, a: 1}
+  _coolLayer: 7
+  _hotLayer: 6
+  _hotTagName: Hot
+  _coolTagName: Cool
   _brockState: 0
 --- !u!61 &7083751362259605625
 BoxCollider2D:

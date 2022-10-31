@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class P1 : MonoBehaviour
 {
-    [SerializeField] float _speed = 3;
-    [SerializeField] float _jumpPower = 5;
-    [SerializeField] GroundCheck _groundCheck;
+    [Header("移動速度")]
+    [Tooltip("移動速度")] [SerializeField] float _speed = 3;
 
-    [SerializeField] GameObject[] _eria = new GameObject[1];
+    [Header("ジャンプパワー")]
+    [Tooltip("ジャンプパワー")] [SerializeField] float _jumpPower = 5;
+
+    [Header("能力の形")]
+    [Tooltip("能力の形")] [SerializeField] GameObject[] _eria = new GameObject[1];
     int count = 0;
+
+    [SerializeField] LayerMask _layerGround;
+
+    [Header("設置判定の長さ")]
+    [Tooltip("設置判定の長さ")] [SerializeField] float _groundCheckLine = 1.5f;
+    bool _isGround = false;
+
+
+
 
     Rigidbody2D _rb;
     void Start()
     {
         _eria[count].SetActive(true);
-        _groundCheck = _groundCheck.GetComponent<GroundCheck>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -47,9 +58,27 @@ public class P1 : MonoBehaviour
             _eria[count].SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && _groundCheck.IsGround)
+        if (Input.GetKeyDown(KeyCode.W) && GroundCheck())
         {
             _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
         }
+
+
+
+        Vector2 start = transform.position;
+        Vector2 end = transform.position + (-transform.up) * _groundCheckLine;
+        Debug.DrawLine(start, end);
     }
+
+
+    bool GroundCheck()
+    {
+        Vector2 start = transform.position;
+        Vector2 end = transform.position + (-transform.up) * _groundCheckLine;
+        _isGround = Physics2D.Linecast(start, end,_layerGround);
+
+        return _isGround;
+    }
+
+
 }

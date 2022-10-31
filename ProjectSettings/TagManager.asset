@@ -4,9 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - P1
-  - P2
   - Ground
+  - Player1
+  - Player2
+  - Hot
+  - Cool
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - Water
   - UI
   - CanGo
-  - NoGo
+  - CannotGo
   - Player
   - GimickBlock
-  - 
+  - Aura
   - 
   - 
   - 
