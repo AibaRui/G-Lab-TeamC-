@@ -31,7 +31,6 @@ public class ParticleController : MonoBehaviour
 
     private BoxCollider2D p_boxColl_;
     private CircleCollider2D p_circleColl_;
-    private int current_mode_;
     private Vector3 boxArea_d_pos_;         // プレイヤー原点 to パーティクルBox中心までの距離ベクトル取得
     private Vector3[,] p_delta_pos_;        // プレイヤー原点からパーティクルiまでの距離を格納しておく
     private Vector3[,] p_target_pos_world_; // パーティクルの目標位置(ワールド座標) 
@@ -45,9 +44,6 @@ public class ParticleController : MonoBehaviour
         public ParticleMove pm_;
         public Vector3 position_;
         public Vector3 delta_position_;
-        float rotate_length_;
-        int rotate_dir_;
-        public Quaternion rot_;
     }
     private particle[,] particle_st_;
 
@@ -57,59 +53,46 @@ public class ParticleController : MonoBehaviour
         // ---- 初期化処理 ---- //
         p_boxColl_ = p_boxArea_.GetComponent<BoxCollider2D>();
         p_circleColl_ = p_circleArea_.GetComponent<CircleCollider2D>();
-        current_mode_ = (int) aura_mode_;       // オーラの初期状態をインスペクタから取得
-        current_aura_ = aura_mode_;             // オーラの現在の状態を格納
+        current_aura_ = aura_mode_;       // オーラの初期状態をインスペクタから取得
         // --- パーティクル生成 --- //
         particle_st_ = GenerateParticles();
-        // --- その他、モードチェンジ等に必要なパラメータを取得しておく --- //
-
-        
-
-
-
     }
 
     private void Update()
     {
-        // --- test --- //
+        // ---- 入力内容の反映 ---- //
+        // --- 使用例：モードチェンジを実行するのみで、本パーティクルシステムの運用可能 --- //
+        // --- あとは本パーティクルシステムのメンバ変数、パーティクルのメンバ変数を調整する事で、浮遊感＆追従性能を調節する --- //
         if (Input.GetKeyDown(KeyCode.Space))
         {
             current_aura_ += 1;
             if (current_aura_ == mode_.end) { current_aura_ = mode_.circle; }
+            ModeChange(ref current_aura_);
 
         };
-        if (ModeChange())
-        {
-            Debug.Log(current_aura_);
-        }
-
     }
 
     private void FixedUpdate()
     {
         // ---- 実行中の処理 ---- //
-
-
-        ParticleRandomUpdate_Box(ref particle_st_, ref current_aura_, Time.fixedDeltaTime);
-        // --- パーティクル位置のアップデート --- //
+        ParticleRandomUpdate_Box(ref particle_st_, ref current_aura_, Time.fixedDeltaTime);     // パーティクルをモードに応じてBOX内に浮遊させる
+        ParticleRandomUpdate_Circle(ref particle_st_, ref current_aura_, Time.fixedDeltaTime);  // パーティクルをモードに応じてCIRCLE内に浮遊させる
+        // --- パーティクル位置のアップデート：親（ParticleSystem)の位置に応じてパーティクル位置を更新し続ける --- //
         for (int r = 0; r < p_row_; r++)
         {
             for(int c = 0; c < p_col_; c++)
             {
-                
                 particle_st_[r, c].pm_.TargetPos = transform.position + particle_st_[r, c].delta_position_;
             }
         }
-        
-        
     }
 
     private particle[,] GenerateParticles()
     {
         // ---- パーティクルゲームオブジェクトを範囲内に生成 ---- //
         particle[,] p = new particle[p_row_, p_col_];
-        //mode_ temp_mode = md;               // 現在のモードを格納しておく
-        current_mode_ = (int)mode_.up_box;  // モードupで初期化処理を行います
+        mode_ temp_mode = current_aura_;                 // 現在のモードを格納しておく
+        current_aura_ = mode_.up_box;                    // モードupで初期化処理を行います
         Vector3 box_pos = transform.position - p_boxColl_.transform.position;   // プレイヤー原点からBoxコリジョンまでの距離ベクトル取得
         float box_width = p_boxColl_.size.x;
         float box_height = p_boxColl_.size.y;
@@ -140,26 +123,30 @@ public class ParticleController : MonoBehaviour
                 p[r, c].pm_ = obj.GetComponent<ParticleMove>();
                 p[r, c].position_ = new Vector3(pos_x, pos_y, transform.position.z);
                 p[r, c].delta_position_ = p[r, c].position_  - transform.position;
-                p[r, c].rot_ = Quaternion.AngleAxis(Mathf.Deg2Rad * 90, transform.forward);
                 p[r,c].pm_.TargetPos = p[r,c].position_;
             }
         }
+        // モードを元の状態に戻す
+        current_aura_ = temp_mode;
+
         return p;
     }
 
     private void ParticleRandomUpdate_Box(ref particle[,] p, ref mode_ m, float delta_time)
     {
         // ---- パーティクルをランダムに動かす: BoxCollider対象 ---- //
+        // --- 本関数に与えられたモード：Box以外ならばここで終了 --- //
+        if (m != mode_.front_box && m != mode_.up_box && m != mode_.back_box && m != mode_.down_box) { return; }
+        // --- ランダムタイムカウント --- //
         rand_time_counter_ += delta_time;
         if (rand_time_counter_ < rand_time_) { return; }
         rand_time_counter_ = 0;
-        if(m != mode_.front_box && m!= mode_.up_box && m!= mode_.back_box && m!= mode_.down_box) { return; }
         // --- パーティクルの目標位置更新 --- //
         float box_width = p_boxColl_.size.x;
         float box_height = p_boxColl_.size.y;
         float box_cell_width = box_width / p.GetLength(0);
         float box_cell_height = box_height / p.GetLength(1);
-        float x0 = p_boxColl_.transform.position.x - box_width / 2;       // boxコライダー左上の座標を基準にパーティクル生成
+        float x0 = p_boxColl_.transform.position.x - box_width / 2;       // boxコライダー左上の座標を基準にパーティクル位置変更
         float y0 = p_boxColl_.transform.position.y + box_height / 2;
         float deg = p_boxColl_.transform.localEulerAngles.z;
         for (int r = 0; r < p.GetLength(0); r++)
@@ -174,22 +161,58 @@ public class ParticleController : MonoBehaviour
                 pos_y += Random.Range(-box_cell_height / 2 * rand_coff_, box_cell_height / 2 * rand_coff_);
                 // 構造体に情報を格納していく
                 Vector3 delta_pos_to_box = new Vector3(pos_x, pos_y, transform.position.z) - p_boxColl_.transform.position;
+                // 回転を反映
                 Vector3 delta_pos = (p_boxColl_.transform.position - transform.position) +  Quaternion.Euler(0, 0, deg) * delta_pos_to_box;
                 p[r, c].delta_position_ = delta_pos; 
             }
         }
+    }
 
+    private void ParticleRandomUpdate_Circle(ref particle[,] p, ref mode_ m, float delta_time)
+    {
+        // ---- パーティクルをランダムに動かす: CircleCollider対象 ---- //
+        // --- 本関数に与えられたモード：Circle以外ならばここで終了 --- //
+        if (m != mode_.circle) { return; }
+        // --- ランダムタイムカウント --- //
+        rand_time_counter_ += delta_time;
+        if (rand_time_counter_ < rand_time_) { return; }
+        rand_time_counter_ = 0;
+        // --- パーティクルの目標位置更新 --- //
+        Vector3 particle_delta_pos_ = new Vector3(0, 0, 0);       // 一時格納変数
+        int i = 0;
+        float deg = 0;                                                  // パーティクルを配置する角度
+        float d_deg = 360 / p.GetLength(0) / p.GetLength(1);   // パーティクルを配置する刻み角度
+        for (int r = 0; r < p.GetLength(0); r++)
+        {
+            for(int c = 0; c < p.GetLength(1); c++)
+            {
+                // -- パーティクル円形内かつ、p_circle_void_Area_sizeより大きい位置にパーティクルをランダムに配置していく -- //
+                float cir_span = p_circleColl_.radius - p_cicle_voidArea_size_ / 2; 
+                particle_delta_pos_ = transform.right * (cir_span /2 + p_cicle_voidArea_size_/2);
+                // - 配置にランダム性を持たせる - //
+                particle_delta_pos_ += transform.right * Random.Range(-cir_span * rand_coff_, cir_span * rand_coff_);
+                // - 回転 - //
+                particle_delta_pos_ = Quaternion.Euler(0, 0, deg) *  particle_delta_pos_;
+
+                p[r, c].delta_position_ = particle_delta_pos_;
+                deg += d_deg;
+                i++;    // 1次元配列の参照先更新
+            }
+        }
+                                                                                            
     }
 
 
-    private bool ModeChange()
+    private bool ModeChange(ref mode_ m)
     {
+        current_aura_ = m;
         // ---- オーラのモードを変更する ---- //
         if (current_aura_ == pre_aura_) { return false; };    // モード変化が無ければ終了
         
         // --- オーラが円の場合 --- //
         if(current_aura_ == mode_.circle)
         {
+            // 現在の仕様：円オーラはプレイヤー位置に固定：CIRCLEコライダーの位置・姿勢変化：特に必要な処理無し
             return true;                                      // ここで処理終了
         }
         // --- オーラが四角形の場合 --- //
