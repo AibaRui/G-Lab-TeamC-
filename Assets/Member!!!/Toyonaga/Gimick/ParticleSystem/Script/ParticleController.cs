@@ -20,14 +20,15 @@ public class ParticleController : MonoBehaviour
     [SerializeField, Tooltip("パーティクルをばらつかせる時間間隔を設定(s)")]
     private float rand_time_ = 0.2f;
     private float rand_time_counter_ = 0;
-    private enum mode_
+    public enum mode_
     {
         circle, front_box, up_box, back_box, down_box, end
     }
     [SerializeField, Tooltip("本モードを指定する事で、オーラ形状に応じてパーティクルを移動させる")]
     private mode_ aura_mode_ = mode_.up_box;
-    private mode_ current_aura_;            // 現在のモード格納
+    private  mode_ current_aura_;            // 現在のモード格納
     private mode_ pre_aura_;                // 1フレーム前のモード格納
+    public mode_ change_aura_;              // 外部から参照可能なモードを用意
 
     private BoxCollider2D p_boxColl_;
     private CircleCollider2D p_circleColl_;
@@ -47,6 +48,24 @@ public class ParticleController : MonoBehaviour
     }
     private particle[,] particle_st_;
 
+    // ------------------------ //
+    // ---- 外部参照用関数 ---- //
+    public void SetAuraChange(mode_ m)
+    {
+        // --- オーラの状態を指定：パーティクルがその範囲に追従する --- //
+        change_aura_ = m;
+        if (change_aura_ >= mode_.end) { change_aura_ = mode_.circle; }
+        ModeChange(ref change_aura_);
+    }
+
+    public void SetAuraChangeRow()
+    {
+        // ---- 本関数を呼び出す度、オーラの状態を一送りする ---- //
+        change_aura_++;
+        if (change_aura_ >= mode_.end) { change_aura_ = mode_.circle; }
+        ModeChange(ref change_aura_);
+    }
+    // ------------------------- //
 
     private void Start()
     {
@@ -54,23 +73,11 @@ public class ParticleController : MonoBehaviour
         p_boxColl_ = p_boxArea_.GetComponent<BoxCollider2D>();
         p_circleColl_ = p_circleArea_.GetComponent<CircleCollider2D>();
         current_aura_ = aura_mode_;       // オーラの初期状態をインスペクタから取得
+        change_aura_ = aura_mode_;
         // --- パーティクル生成 --- //
         particle_st_ = GenerateParticles();
     }
 
-    private void Update()
-    {
-        // ---- 入力内容の反映 ---- //
-        // --- 使用例：モードチェンジを実行するのみで、本パーティクルシステムの運用可能 --- //
-        // --- あとは本パーティクルシステムのメンバ変数、パーティクルのメンバ変数を調整する事で、浮遊感＆追従性能を調節する --- //
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            current_aura_ += 1;
-            if (current_aura_ == mode_.end) { current_aura_ = mode_.circle; }
-            ModeChange(ref current_aura_);
-
-        };
-    }
 
     private void FixedUpdate()
     {

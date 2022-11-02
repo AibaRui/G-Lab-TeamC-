@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 684383492}
+  Pc: {fileID: 1416534680}
 --- !u!1 &926290272
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,6 +928,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1416534680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993994075652576316, guid: d029627e3da6e714ab50725fcb66e2bf, type: 3}
+  m_PrefabInstance: {fileID: 993994074860161694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dd11165785e7e4a9f32595d4b1a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1884483724
 GameObject:
   m_ObjectHideFlags: 0

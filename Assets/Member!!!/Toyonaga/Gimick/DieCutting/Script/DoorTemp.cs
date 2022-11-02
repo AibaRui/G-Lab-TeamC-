@@ -6,10 +6,13 @@ public class DoorTemp : MonoBehaviour
     private Vector3 moved;
     bool is_move_ = true;
 
+    // ---- DieCuttingの使用例 ---- //
     void Update()
     {
-        if (dc_.Is_complete)
+        // --- ギミックが解けているとき：下記関数でTrueが返る --- //
+        if (dc_.IsComplete())
         {
+            // -- あとはそれに応じて扉等のギミックを動かす -- //
             if(!is_move_) { return; }
             move();
         }

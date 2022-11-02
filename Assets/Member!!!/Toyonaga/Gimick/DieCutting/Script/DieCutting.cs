@@ -28,6 +28,13 @@ public class DieCutting : MonoBehaviour
     private int[,] boxes_state_ref_;        // 参照との一致状態比較用配列
     private int[,] boxes_state_;            // 本DieCuttingの現在の状態を格納(デフォルト：雪)    
 
+    public bool IsComplete()
+    {
+        // ---- 外部参照関数 ---- //
+        // ギミック成功済みであれば、Trueを返す
+        return Is_complete;
+    }
+
     void Start()
     {
         // ---- 参照オブジェクトの一致状態比較用の配列を取得する ---- //
