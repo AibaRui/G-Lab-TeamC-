@@ -47,7 +47,7 @@ public class P1 : MonoBehaviour
             _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             _eria[count].SetActive(false);
             count++;
