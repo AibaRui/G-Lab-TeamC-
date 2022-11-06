@@ -14,7 +14,7 @@ public class GameClearScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            //ステージ2へ移行
+            //クリア画面へ移行
             SceneManager.LoadScene("ClearScene");
         }
     }

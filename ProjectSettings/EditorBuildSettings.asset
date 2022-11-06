@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Aiba/Test.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Test/TestTitle.unity
+    guid: 066c885efad7c4a4db035613fbfbbad8
+  - enabled: 1
+    path: Assets/Test/TestMarge.unity
+    guid: c91f72cee5e14f74e81364664932abde
   m_configObjects: {}

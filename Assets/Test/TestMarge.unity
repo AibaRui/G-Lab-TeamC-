@@ -735,7 +735,7 @@ MonoBehaviour:
   - {fileID: 1136937304}
   _layerGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2176
   _groundCheckLine: 1.5
 --- !u!58 &459353828
 CircleCollider2D:
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   - {fileID: 1601486269}
   _layerGround:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2176
   _groundCheckLine: 1.5
 --- !u!58 &1215349988
 CircleCollider2D:
@@ -2662,7 +2662,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4811321, g: 0.19193187, b: 0.0199715, a: 1}
+  m_Color: {r: 1, g: 0.37288135, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
