@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D_: {fileID: 197753587802798782}
-  vel_max_: 10
+  vel_max_: 5
+  vel_rand_max_: 1
+  vel_rand_coff_: 0.5
   kp_: 10
   ki_: 1
   kd_: 1
