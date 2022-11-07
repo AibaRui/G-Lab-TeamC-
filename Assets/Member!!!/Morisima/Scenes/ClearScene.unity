@@ -344,15 +344,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 470312410}
-        m_TargetAssemblyTypeName: StageButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
         m_MethodName: Onclick
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: StageScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &470312408
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 470312405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8929be813d1da114099bed83b63ea7ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bf42fea287ffde46ba4048891c57253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &705874230
@@ -1139,15 +1139,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1974734117}
-        m_TargetAssemblyTypeName: TitleButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
         m_MethodName: Onclick
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TitleScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1974734115

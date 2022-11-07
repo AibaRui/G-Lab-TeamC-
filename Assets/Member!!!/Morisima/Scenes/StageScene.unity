@@ -1069,15 +1069,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1974734117}
-        m_TargetAssemblyTypeName: Stage1Button, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
         m_MethodName: Onclick
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PlayScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1974734115
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1974734112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f31cda13e5af81a43944bb9f23813e9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bf42fea287ffde46ba4048891c57253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2071901993
@@ -1216,15 +1216,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2071901998}
-        m_TargetAssemblyTypeName: Stage2Button, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
         m_MethodName: Onclick
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PlayScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2071901996
@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2071901993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 591ddb0d84e76b145a46eddb138ea9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bf42fea287ffde46ba4048891c57253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2087988744
@@ -1363,15 +1363,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2087988749}
-        m_TargetAssemblyTypeName: TitleButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
         m_MethodName: Onclick
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: TitleScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2087988747
