@@ -5,47 +5,19 @@ using DG.Tweening;
 
 class MovingObjectSwitch : MonoBehaviour
 {
-    [Header("動かしたいGameObjectを入れる")][Tooltip("動かしたい対象")]
-    [SerializeField] Transform _movingFloar = default;
-    [Header("GameObjectをどの地点まで移動させるか")][Tooltip("移動の終点")]
+    [SerializeField] GameObject _movingFloar = default;
     [SerializeField] Transform[] _point = default;
-    int count = 1;
-    bool isThermo = false;
-    [Header("どのくらいの時間をかけて移動させるか")]
-    [SerializeField] float _moveTime = 1.0f;
-    void Update()
-    {
-        if(isThermo)
-        {
-            _movingFloar.DORestart();
-            _movingFloar.DOMove(_point[count].position, _moveTime);
-            if(Vector2.Distance(_movingFloar.position, _point[count].position) <= 1.0f)
-            {
-                _movingFloar.DOKill();
-                count++;
-                Debug.Log($"{count}");
-                if (count >= _point.Length) count = 0;
-            }
-        }
-        else
-        {
-            _movingFloar.DOPause();
-        }
-    }
+    [SerializeField] float _moveSpeed = 1.0f;
+    Rigidbody2D _rbChild;
+    float _nowPoint = 0;
 
-    void OnTriggerStay2D(Collider2D collision)
+    void Start()
     {
-        if (_movingFloar != null)
+        _rbChild = GetComponentInChildren<Rigidbody2D>() ?? _movingFloar.AddComponent<Rigidbody2D>();
+
+        if(_point != null && _point.Length > 0)
         {
-            if (collision.gameObject.tag == "Hot")
-            {
-                isThermo = true;
-            }
-            else if (collision.gameObject.tag == "Cool")
-            {
-                isThermo = false;
-            }
+            _rbChild.transform.position = _point[0].position;
         }
-        else Debug.LogError("動かしたいGameObjectが見つかりません");
     }
 }

@@ -716,7 +716,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &336429319
 SpriteRenderer:
@@ -949,7 +949,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486320123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1033,7 +1033,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &490315469
 GameObject:
@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 490315471}
   - component: {fileID: 490315470}
   - component: {fileID: 490315472}
+  - component: {fileID: 490315473}
   m_Layer: 0
   m_Name: Moving Floar
   m_TagString: Untagged
@@ -1113,12 +1114,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490315469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.37, y: 3.29, z: -0.35552567}
-  m_LocalScale: {x: 2.3493, y: 1, z: 1}
+  m_LocalPosition: {x: 1.9872935, y: -0.95301414, z: -0.021940198}
+  m_LocalScale: {x: 1.7355938, y: 0.73877066, z: 0.73877066}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1160532670}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &490315472
 BoxCollider2D:
@@ -1146,6 +1147,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &490315473
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490315469}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &497070706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,11 +1805,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bcb231279771f4a97ed4a832ff09df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingFloar: {fileID: 490315471}
+  _movingFloar: {fileID: 490315469}
   _point:
   - {fileID: 486320126}
   - {fileID: 336429318}
-  _moveTime: 1
+  _moveSpeed: 1
 --- !u!58 &1160532668
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1867,7 +1889,8 @@ Transform:
   m_LocalPosition: {x: 14.68, y: 4.58, z: -0.32582742}
   m_LocalScale: {x: 1.3536, y: 1.3536, z: 1.3536}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 490315471}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
