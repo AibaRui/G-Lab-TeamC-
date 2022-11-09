@@ -11,11 +11,10 @@ class MovingObjectSwitch : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        _movingFloar.DOMove(_point[1].position, _moveSpeed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         if (collision.gameObject.tag == "Hot")
         {
             _movingFloar.DORestart();
-            _movingFloar.DOMove(_point[1].position, _moveSpeed)
-                .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         }
         else if (collision.gameObject.tag == "Cool")
         {
