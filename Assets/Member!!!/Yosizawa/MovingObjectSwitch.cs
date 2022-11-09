@@ -5,19 +5,21 @@ using DG.Tweening;
 
 class MovingObjectSwitch : MonoBehaviour
 {
-    [SerializeField] GameObject _movingFloar = default;
+    [SerializeField] Transform _movingFloar = default;
     [SerializeField] Transform[] _point = default;
     [SerializeField] float _moveSpeed = 1.0f;
-    Rigidbody2D _rbChild;
-    float _nowPoint = 0;
 
-    void Start()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        _rbChild = GetComponentInChildren<Rigidbody2D>() ?? _movingFloar.AddComponent<Rigidbody2D>();
-
-        if(_point != null && _point.Length > 0)
+        if (collision.gameObject.tag == "Hot")
         {
-            _rbChild.transform.position = _point[0].position;
+            _movingFloar.DORestart();
+            _movingFloar.DOMove(_point[1].position, _moveSpeed)
+                .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        }
+        else if (collision.gameObject.tag == "Cool")
+        {
+            _movingFloar.DOPause();
         }
     }
 }

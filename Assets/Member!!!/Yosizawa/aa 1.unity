@@ -1809,7 +1809,7 @@ MonoBehaviour:
   _point:
   - {fileID: 486320126}
   - {fileID: 336429318}
-  _moveSpeed: 1
+  _moveSpeed: 15
 --- !u!58 &1160532668
 CircleCollider2D:
   m_ObjectHideFlags: 0
