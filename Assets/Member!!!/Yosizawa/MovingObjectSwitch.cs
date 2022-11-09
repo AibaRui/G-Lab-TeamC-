@@ -5,19 +5,36 @@ using DG.Tweening;
 
 class MovingObjectSwitch : MonoBehaviour
 {
-    [SerializeField] Transform _movingFloar = default;
-    [SerializeField] Transform[] _point = default;
-    [SerializeField] float _moveSpeed = 1.0f;
+    [Header("動かしたいゲームオブジェクトを入れるところ")]
+    [SerializeField, Tooltip("動かしたいGameObject")] Transform _movingFloar = default;
+    [Header("ゲームオブジェクトの始点")]
+    [SerializeField] Transform _startPoint = default;
+    [Header("ゲームオブジェクトの終点")]
+    [SerializeField] Transform _endPoint = default;
+    [Header("どのくらいの時間をかけて移動させたいか")]
+    [SerializeField] float _moveTime = 1.0f;
+
+    void Start()
+    {
+        //_movingFloarの初期地点を_startPointに設定
+        _movingFloar.position = _startPoint.position;
+        //_movingFloarを_startPointと_endPointとの間で往復させる
+        _movingFloar.DOMove(_endPoint.position, _moveTime)
+                    .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+        //_movingFloarを一時停止させておく
+        _movingFloar.DOPause();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        _movingFloar.DOMove(_point[1].position, _moveSpeed).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         if (collision.gameObject.tag == "Hot")
         {
-            _movingFloar.DORestart();
+            //Hotのオーラが当たったら、再開する
+            _movingFloar.DOPlay();
         }
         else if (collision.gameObject.tag == "Cool")
         {
+            //Coolのオーラが当たったら、一時停止する
             _movingFloar.DOPause();
         }
     }
