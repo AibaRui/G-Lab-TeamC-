@@ -6,11 +6,22 @@ using UnityEngine.SceneManagement;
 public class TitleAudioManager : MonoBehaviour
 {
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        //ƒvƒŒƒC‰æ–ÊˆÈŠO‚É‘JˆÚ‚µ‚Ä‚àÄ¶‚·‚éˆ—
-        DontDestroyOnLoad(this);
+    private static bool AudioPlay = false;
 
+    public void Start()
+    {
+        Awake();
+    }
+
+    private void Awake()
+    {
+        AudioPlay = true;
+        DontDestroyOnLoad(this.gameObject);
+
+        if (AudioPlay == false)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
     }
 }
