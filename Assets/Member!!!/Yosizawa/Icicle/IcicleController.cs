@@ -9,6 +9,10 @@ public class IcicleController : MonoBehaviour
     [SerializeField] float _fallSpeed = 1.0f;
     [Header("GameObject消失時に再生するAnimetion")]
     [SerializeField] GameObject _onDestroyAnimation = default;
+    [SerializeField] bool _isGizmo = false;
+    [SerializeField] float _angle = 1.0f;
+    [SerializeField] Vector2 _checkArea;
+    RaycastHit2D _hit;
     Rigidbody2D _rb;
     void Start()
     {
@@ -18,16 +22,16 @@ public class IcicleController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
             _rb.gravityScale = _fallSpeed;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnDrawGizmos()
     {
-        if (_onDestroyAnimation == null) Debug.LogError("GameObject消失時のアニメーションがありません");
-        else Instantiate(_onDestroyAnimation);
-        Destroy(gameObject);
+        if (_isGizmo == false) return;
+
+        bool isHit = Physics2D.BoxCast(transform.position, _checkArea, _angle, Vector2.down);
     }
 }
