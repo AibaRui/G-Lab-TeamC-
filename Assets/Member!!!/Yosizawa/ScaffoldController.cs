@@ -9,19 +9,14 @@ public class ScaffoldController : MonoBehaviour
 {
     /// <summary>描画するSprite</summary>
     SpriteRenderer _mainSprite;
-    //[SerializeField] BoxCollider2D _col;
-    //[SerializeField] BoxCollider2D _judgeCol;
-    [SerializeField] float _interval = 1.0f;
-    float _time = 1.0f;
-    //bool _countFrag;
+    [SerializeField, Tooltip("回復するまでの時間")] float _interval = 1.0f;
+    [SerializeField] float _time = 0.0f;
     /// <summary>このゲームオブジェクトが踏まれた回数</summary>
     int _stateCount = 0;
 
     void Start()
     {
         _mainSprite = GetComponent<SpriteRenderer>();
-        //_col = GetComponent<BoxCollider2D>();
-        //_judgeCol = GetComponentInChildren<BoxCollider2D>();
     }
 
     void Update()
@@ -35,26 +30,7 @@ public class ScaffoldController : MonoBehaviour
                 _mainSprite.color = Color.blue;
                 break;
             case 2:
-                //int count = 0;
-                //Mathf.Clamp01(count);
-                //if(count == 0)
-                //{
-                //    count++;
-                    DOVirtual.DelayedCall(1.0f, () =>
-                    {
-                        //_col.isTrigger = true;
-                        //_judgeCol.enabled = false;
-                        gameObject.SetActive(false);
-                    }, false);
-                //}
-                //else if(count == 1)
-                //{
-                //    if (_countFrag == true)
-                //    {
-                //        count--;
-                //        _countFrag = false;
-                //    }
-                //}
+                DOVirtual.DelayedCall(1.0f, () => gameObject.SetActive(false), false);
                 break;
         }
     }
@@ -65,18 +41,22 @@ public class ScaffoldController : MonoBehaviour
         {
             if(_stateCount < 2) _stateCount++;
         }
-        else if(collision.gameObject.tag == "Cool")
+        Debug.Log(_stateCount);
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Cool")
         {
-            //_time += Time.deltaTime;
-            if (_stateCount > 0/* && _time >= _interval*/)
+            if (_stateCount > 0)
             {
-                //_col.isTrigger = false;
-                //_judgeCol.enabled = true;
-                ////_countFrag = true;
-                _stateCount--;
-                _time = 0;
+                _time += Time.deltaTime;
+                if(_time >= _interval)
+                {
+                    _stateCount--;
+                    _time = 0;
+                }
             }
         }
-        Debug.Log(_stateCount);
     }
 }
