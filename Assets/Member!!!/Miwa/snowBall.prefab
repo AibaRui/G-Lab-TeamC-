@@ -117,4 +117,4 @@ MonoBehaviour:
   Player1: Player1
   Player2: Player2_Sprite
   firePower: 0.05
-  _erased: 5
+  _erased: 3
