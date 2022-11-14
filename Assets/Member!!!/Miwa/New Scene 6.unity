@@ -372,7 +372,7 @@ MonoBehaviour:
   wPower: 0.5
   player1: Player1
   player2: Player2_Sprite
-  blowTime: 3
+  blowTime: 2
 --- !u!4 &1124772210
 Transform:
   m_ObjectHideFlags: 0
