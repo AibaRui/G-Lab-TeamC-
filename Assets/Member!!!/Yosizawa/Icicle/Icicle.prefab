@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 524028856986636287}
   - component: {fileID: 524028856986636284}
   - component: {fileID: 524028856986636285}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Icicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524028856986636283}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 3.69, y: 7.6, z: -10.058311}
+  m_LocalPosition: {x: 3.69, y: 7.6, z: 0}
   m_LocalScale: {x: 3.1655, y: 3.1655, z: 3.1655}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallSpeed: 6
   _magnification: 1
+  _minSize: 2
+  _maxSize: 6
   _onDestroyAnimation: {fileID: 0}
   _isGizmo: 1
   _direction: -0.5

@@ -8,15 +8,19 @@ public class IcicleController : MonoBehaviour
     [Header("落下速度")]
     [SerializeField] float _fallSpeed = 1.0f;
     [Header("オーラ接触時の拡大・縮小倍率")]
-    [SerializeField,Range(1f, 10f),Tooltip("")] float _magnification = 1.0f;
+    [SerializeField,Range(1f, 10f),Tooltip("ゲームオブジェクト の scale 変化倍率")] float _magnification = 1.0f;
+    [Header("このゲームオブジェクトの最小の大きさ")]
+    [SerializeField,Tooltip("ゲームオブジェクトの scale の最小")] float _minSize = 2.0f;
+    [Header("このゲームオブジェクトの最大の大きさ")]
+    [SerializeField, Tooltip("ゲームオブジェクトの scale の最大")] float _maxSize = 6.0f;
     [Header("GameObject消失時に再生するAnimetion")]
     [SerializeField] GameObject _onDestroyAnimation = default;
     [Header("Playerを検知する光線を 表示 or 非表示")]
     [SerializeField,Tooltip("Rayの表示・非表示の切り替え")] bool _isGizmo = false;
     [Header("Playerを検知する光線を飛ばす方向")]
     [SerializeField,Range(-5f, 5f),Tooltip("Rayを飛ばす方向")] float _direction = 1f;
-    [Header("Playerを検知する光線を飛ばす距離")]
-    [SerializeField,Range(0f, 15f),Tooltip("Rayの距離")] float _length = 1f;
+    /// <summary>Rayの距離</summary>
+    float _length = 50f;
     /// <summary>Rayを飛ばす向き</summary>
     Vector2 _dir = Vector2.zero;
     /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
@@ -57,8 +61,8 @@ public class IcicleController : MonoBehaviour
         var localScale = transform.localScale;
 
         //ゲームオブジェクトが極端に大きく(小さく)ならないようしておく
-        localScale.x = Mathf.Clamp(localScale.x, 3f, 6f);
-        localScale.y = Mathf.Clamp(localScale.y, 3f, 6f);
+        localScale.x = Mathf.Clamp(localScale.x, _minSize, _maxSize);
+        localScale.y = Mathf.Clamp(localScale.y, _minSize, _maxSize);
 
         //当たったオーラが「溶かす」ならゲームオブジェクトの大きさを減少
         if (collision.gameObject.tag is "Hot")
