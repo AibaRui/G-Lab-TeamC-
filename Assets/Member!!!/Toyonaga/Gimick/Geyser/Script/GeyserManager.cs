@@ -14,5 +14,6 @@ public class GeyserManager : MonoBehaviour
     public bool is_Pause_ = false;
     [SerializeField, Header("•X‚ÌŠâ‚ª—n‚¯‚½‚©‚Ç‚¤‚©")]
     public bool is_IceRock_melted_ = false;
+
     
 }
