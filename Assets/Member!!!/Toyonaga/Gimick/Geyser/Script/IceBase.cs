@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// ----- 噴水の足場の挙動だけを管理するクラス。 ------ //
+// 挙動：大きくなる / 小さくなる
+//       少し足場が揺れる
+//       ※ 足場が上がる / 下がるはFountain.csスクリプトから制御する
+
 public class IceBase : MonoBehaviour
 {
     [SerializeField, Header("GeyserManager登録")]
@@ -14,7 +19,7 @@ public class IceBase : MonoBehaviour
     private float init_size_ = 0.01f;
     private Vector3 max_size_ = new Vector3(0, 0, 0);
 
-    private void Start()
+    private void Awake()
     {
         // ----- 初期化：getterでパラメータ取得 ----- //
         small_vibration_time_ = fountain_.Small_vibration_time_;
