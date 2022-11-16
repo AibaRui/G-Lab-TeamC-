@@ -75,7 +75,7 @@ public class NomalGimmickBlocks : MonoBehaviour
         //‚Ç‚Á‚¿‚à“–‚½‚Á‚Ä‚¢‚È‚©‚Á‚½‚ç
         if (!hot && !cool)
         {
-            Debug.Log("no");
+            //Debug.Log("no");
             //ŽžŠÔ‚ªˆÈã‚¾‚Á‚½‚çAŒ³‚É–ß‚·
             if (_timeCount > 0)
             {
