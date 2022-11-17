@@ -19,7 +19,7 @@ public class IceBase : MonoBehaviour
     private float init_size_ = 0.01f;
     private Vector3 max_size_ = new Vector3(0, 0, 0);
 
-    private void Awake()
+    private void Start()
     {
         // ----- 初期化：getterでパラメータ取得 ----- //
         small_vibration_time_ = fountain_.Small_vibration_time_;

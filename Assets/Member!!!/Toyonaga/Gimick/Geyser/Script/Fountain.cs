@@ -10,17 +10,7 @@ using UnityEngine;
 
 public class Fountain : MonoBehaviour
 {
-    [SerializeField, Header("GeyserManager登録")]
-    private GeyserManager manager_;
-    [SerializeField, Header("噴水画像ゲームオブジェクト登録")]
-    private GameObject fountain_imgObj_;
-    [SerializeField, Header("氷の足場ゲームオブジェクト登録")]
-    private GameObject fountain_baseObj_;
-    [SerializeField, Header("噴水の高さ限界を示すゲームオブジェクト登録")]
-    private GameObject fountain_heightObj_;
-    private float height_max_;              // 噴水高さ限界
-    private float fountain_height_;         // 噴水の高さを決定
-    private float fountain_init_height = 1.0f;  // 噴水の初期高さを取得
+    
     public float Fountain_height_ { get { return fountain_height_; } }
     [SerializeField, Header("噴水がON/OFFする周期の秒数指定(s)")]
     private float fountain_time_ = 5f;
@@ -35,15 +25,26 @@ public class Fountain : MonoBehaviour
     [SerializeField, Header("氷塊が小刻みに揺れる角度(deg)")]
     private float small_vibration_mag_ = 5f;
     public float Small_vibration_mag_ { get { return small_vibration_mag_;} }
-    [SerializeField, Header("IceRockのサイズが変わる率指定")]
+    [SerializeField, Header("足場のサイズが変わる率(高いほどすぐ出現)指定")]
     private float transform_rate_ = 1.0f;
     public float TransformRate_ { get { return transform_rate_; } }
-    [SerializeField, Header("IceBaseの初期サイズ")]
+    [SerializeField, Header("足場の初期サイズ(見えないくらい小さくしておく)")]
     private float init_size_ = 0.01f;
     private float init_box_height = 0.25f;              // iceBox(足場）の初期位置を取得
     public float Init_size_ { get { return init_size_; } }
     public float InitSize_ { get { return init_size_; } }
     private Vector3 max_size_ = new Vector3(0, 0, 0);       // FountainIceBaseの初期サイズ
+    [SerializeField, Header("GeyserManager登録")]
+    private GeyserManager manager_;
+    [SerializeField, Header("噴水画像ゲームオブジェクト登録")]
+    private GameObject fountain_imgObj_;
+    [SerializeField, Header("氷の足場ゲームオブジェクト登録")]
+    private GameObject fountain_baseObj_;
+    [SerializeField, Header("噴水の高さ限界を示すゲームオブジェクト登録")]
+    private GameObject fountain_heightObj_;
+    private float height_max_;              // 噴水高さ限界
+    private float fountain_height_;         // 噴水の高さを決定
+    private float fountain_init_height = 1.0f;  // 噴水の初期高さを取得
 
     private void Awake()
     {
