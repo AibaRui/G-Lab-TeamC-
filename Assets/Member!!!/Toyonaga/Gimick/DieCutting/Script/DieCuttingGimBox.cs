@@ -48,19 +48,22 @@ public class DieCuttingGimBox : MonoBehaviour
         // ---- ボックスの状態(氷/水)を変更 ---- //
         // ---- 状態変更 ---- //
         is_other_enterd_ = true;
-        if (other.transform.CompareTag(fire_tag_name_))
+        if (other.transform.CompareTag(fire_tag_name_) && state_ == 0)
         {
             count_water_ += Time.deltaTime;
-            if(count_water_ >= box_change_time_)
+            if (count_water_ >= box_change_time_)
             {
+                count_water_ = 0;
                 is_state_changed_ = true;
                 state_ = 1;
             }
-        } else if (other.transform.CompareTag(ice_tag_name_))
+        }
+        if (other.transform.CompareTag(ice_tag_name_) && state_ == 1)
         {
             count_snow_ += Time.deltaTime;
             if(count_snow_ >= box_change_time_)
             {
+                count_snow_ = 0;
                 is_state_changed_ = true;
                 state_ = 0;
             }
