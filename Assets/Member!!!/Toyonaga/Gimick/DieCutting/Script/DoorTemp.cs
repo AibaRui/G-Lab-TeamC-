@@ -1,8 +1,11 @@
 using UnityEngine;
 public class DoorTemp : MonoBehaviour
 {
-    [SerializeField, Tooltip("DieCuttingを登録")]
-    DieCutting dc_;
+    // ---- DieCuttingクラスの使用方法 ---- //
+    [SerializeField, Tooltip("DieCuttingManagerを登録")]
+    DieCuttingManager dc_;
+
+    // - (本ギミックの変数) -
     private Vector3 moved;
     bool is_move_ = true;
 
@@ -10,7 +13,7 @@ public class DoorTemp : MonoBehaviour
     void Update()
     {
         // --- ギミックが解けているとき：下記関数でTrueが返る --- //
-        if (dc_.IsComplete())
+        if (dc_.is_complete_)
         {
             // -- あとはそれに応じて扉等のギミックを動かす -- //
             if(!is_move_) { return; }
