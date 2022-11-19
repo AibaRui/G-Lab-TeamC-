@@ -50,6 +50,8 @@ public class ParticleController : GimickBase
 
     private void FixedUpdate()
     {
+        // ---- ポーズ中は動作無し ---- //
+        if (is_Pause_) { return; }
         // ---- 実行中の処理 ---- //
         ChangeAura(ref aura_mode_, ref mode_num_);     // インスペクタ：mode_num_の変更に応じてオーラの状態変化
         if (aura_mode_ == mode_.circle) { ParticleRandomUpdate_Circle(ref p_st_, ref mode_num_, Time.deltaTime); }
