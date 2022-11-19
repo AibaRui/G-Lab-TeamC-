@@ -19,7 +19,7 @@ public class Test_Player_move : MonoBehaviour
 
         // --- ParticleSystem:以下の２パターンで使用 --- //
         if (Input.GetKeyDown(KeyCode.Space)){
-         
+            
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {

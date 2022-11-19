@@ -27,6 +27,8 @@ public class ParticleController : GimickBase
     private float rand_time_counter = 0;
     [SerializeField, Tooltip("パーティクルを配置しない円の大きさを指定する")]
     private float p_cicle_voidArea_size_ = 0.2f;
+    [SerializeField, Header("調整機能：パーティクルパラメータ調整後、「R」を押すと反映されるようになる\n「M」でオーラ変化")]
+    public bool is_Tune_ = false;
     private enum mode_              // 円 or 四角の
     {
         circle, box, end
@@ -48,8 +50,35 @@ public class ParticleController : GimickBase
         p_st_ = GenerateParticles(ref aura_mode_);
     }
 
+    private void Update()
+    {
+        // ---- 調整機能 ---- //
+        if (!is_Tune_) { return; }
+        // --- オーラの状態を変えたい時に使用 --- //
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            mode_num_++;
+            ChangeAura(ref aura_mode_, ref mode_num_);     // インスペクタ：mode_num_の変更に応じてオーラの状態変化
+        }
+        // --- パーティクルのパラメータ調整後、反映させたい時に使用 --- //
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            for (int r = 0; r < p_st_.GetLength(0); r++)
+            {
+                for (int c = 0; c < p_st_.GetLength(1); c++)
+                {
+                    Destroy(p_st_[r, c].particle_.gameObject);
+                }
+            }
+            p_st_ = GenerateParticles(ref aura_mode_);
+        }
+        
+
+    }
+
     private void FixedUpdate()
     {
+       
         // ---- ポーズ中は動作無し ---- //
         if (is_Pause_) { return; }
         // ---- 実行中の処理 ---- //
