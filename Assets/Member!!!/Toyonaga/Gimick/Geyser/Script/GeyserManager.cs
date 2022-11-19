@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GeyserManager : MonoBehaviour
+public class GeyserManager : GimickBase
 {
     [SerializeField, Header("‰ŠƒI[ƒ‰‚Ì–¼‘O‚ğ“o˜^")]
     private string fire_aura_;
@@ -14,5 +12,20 @@ public class GeyserManager : MonoBehaviour
     public bool is_Pause_ = false;
     [SerializeField, Header("•X‚ÌŠâ‚ª—n‚¯‚½‚©‚Ç‚¤‚©")]
     public bool is_IceRock_melted_ = false;
+
+    public override void GameOverPause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Pause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Resume()
+    {
+        is_Pause_ = false;
+    }
 
 }

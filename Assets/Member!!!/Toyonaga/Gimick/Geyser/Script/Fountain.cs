@@ -46,10 +46,6 @@ public class Fountain : MonoBehaviour
     private float fountain_height_;         // •¬…‚Ì‚‚³‚ğŒˆ’è
     private float fountain_init_height = 1.0f;  // •¬…‚Ì‰Šú‚‚³‚ğæ“¾
 
-    private void Awake()
-    {
-        
-    }
     private void Start()
     {
         // ----- ‰Šú’læ“¾ ----- //

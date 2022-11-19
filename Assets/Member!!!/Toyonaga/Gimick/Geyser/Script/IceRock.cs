@@ -32,6 +32,7 @@ public class IceRock : MonoBehaviour
         // ----- ƒ|[ƒY’†‚Í“®‚«‚ğ’â~ ----- //
         if (manager_.is_Pause_){ 
             rb_.constraints = RigidbodyConstraints2D.FreezeAll;
+
             return;
         } else {
             // ‰ğœ
