@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-class MovingObjectSwitch : MonoBehaviour
+class MovingObjectSwitch : GimickBase
 {
     [Header("動かしたいゲームオブジェクトを入れるところ")]
     [SerializeField, Tooltip("動かしたいGameObject")] Transform _movingObject = default;
@@ -13,6 +13,7 @@ class MovingObjectSwitch : MonoBehaviour
     [SerializeField] Transform _endPoint = default;
     [Header("どのくらいの時間をかけて移動させたいか")]
     [SerializeField] float _moveTime = 1.0f;
+    bool _isPause = false;
 
     void Start()
     {
@@ -23,19 +24,41 @@ class MovingObjectSwitch : MonoBehaviour
                     .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
         //_movingFloarを一時停止させておく
         _movingObject.DOPause();
+        _isPause = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hot")
+        if(_isPause)
         {
-            //Hotのオーラが当たったら、再開する
-            _movingObject.DOPlay();
+            if (collision.gameObject.tag == "Hot")
+            {
+                //Hotのオーラが当たったら、再開する
+                _movingObject.DOPlay();
+            }
+            else if (collision.gameObject.tag == "Cool")
+            {
+                //Coolのオーラが当たったら、一時停止する
+                _movingObject.DOPause();
+            }
         }
-        else if (collision.gameObject.tag == "Cool")
-        {
-            //Coolのオーラが当たったら、一時停止する
-            _movingObject.DOPause();
-        }
+    }
+
+    public override void GameOverPause()
+    {
+        _movingObject.DOPause();
+        _isPause = false;
+    }
+
+    public override void Pause()
+    {
+        _movingObject.DOPause();
+        _isPause = false;
+    }
+
+    public override void Resume()
+    {
+        _movingObject.DOPlay();
+        _isPause = true;
     }
 }
