@@ -5,7 +5,7 @@ using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
 
-public class ScaffoldController : MonoBehaviour
+public class ScaffoldController : GimickBase
 {
     [Header("元の状態に回復するまでの時間")]
     [SerializeField, Range(1f, 7f), Tooltip("元の状態に回復するまでの時間")] float _interval = 1.0f;
@@ -34,7 +34,7 @@ public class ScaffoldController : MonoBehaviour
         _filter.SetNormalAngle(240f, 300f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch (_stateCount)  //状態に応じて処理を切り替える
         {
@@ -67,9 +67,9 @@ public class ScaffoldController : MonoBehaviour
         Debug.Log(_stateCount);
     }
 
-    //「固める」オーラが当たったら、_stateCountを減少させる
     void OnTriggerStay2D(Collider2D collision)
     {
+        //「固める」オーラが当たったら、_stateCountを減少させる
         if (collision.gameObject.tag == "Cool" && _stateCount >= 1)
         {
             _time += Time.deltaTime;
@@ -80,5 +80,23 @@ public class ScaffoldController : MonoBehaviour
                 Debug.Log(_stateCount);
             }
         }
+    }
+
+    public override void GameOverPause()
+    {
+        _rb.Sleep();
+        _rb.simulated = false;
+    }
+
+    public override void Pause()
+    {
+        _rb.Sleep();
+        _rb.simulated = false;
+    }
+
+    public override void Resume()
+    {
+        _rb.simulated = true;
+        _rb.WakeUp();
     }
 }
