@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class IcicleController : MonoBehaviour
+public class IcicleController : GimickBase
 {
     [Header("落下速度")]
     [SerializeField] float _fallSpeed = 1.0f;
@@ -14,7 +14,7 @@ public class IcicleController : MonoBehaviour
     [Header("このゲームオブジェクトの最大の大きさ")]
     [SerializeField, Tooltip("ゲームオブジェクトの scale の最大")] float _maxSize = 6.0f;
     [Header("GameObject消失時に再生するAnimetion")]
-    [SerializeField] GameObject _onDestroyAnimation = default;
+    [SerializeField] Animator _onDestroyAnimation = default;
     [Header("Playerを検知する光線を 表示 or 非表示")]
     [SerializeField,Tooltip("Rayの表示・非表示の切り替え")] bool _isGizmo = false;
     [Header("Playerを検知する光線を飛ばす方向")]
@@ -26,12 +26,16 @@ public class IcicleController : MonoBehaviour
     /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
     RaycastHit2D _hit;
     Rigidbody2D _rb;
+    float _saveGravityScale;
+    float _saveAngularVelocity;
+    Vector2 _saveVelocity;
 
     void Start()
     {
         _magnification /= 100f;  //整数だと倍率が高すぎるので、あらかじめ低くしておく
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
+        Debug.LogWarning("AnimatorのTransitionにAnimationSpeedのパラメータを設定しましたか？");
     }
 
     void Update()
@@ -42,7 +46,6 @@ public class IcicleController : MonoBehaviour
         if(_hit.collider)  //RayがPlayerに当たった時の処理
         {
             _rb.gravityScale = _fallSpeed;
-            Debug.Log("Check In");
         }
     }
 
@@ -78,5 +81,35 @@ public class IcicleController : MonoBehaviour
             localScale.y += _magnification;
             transform.localScale = localScale;
         }
+    }
+
+    public override void GameOverPause()
+    {
+        _saveGravityScale = _rb.gravityScale;
+        _saveAngularVelocity = _rb.angularVelocity;
+        _saveVelocity = _rb.velocity;
+        _rb.Sleep();
+        _rb.simulated = false;
+        //_onDestroyAnimation.speed = 0;
+    }
+
+    public override void Pause()
+    {
+        _saveGravityScale = _rb.gravityScale;
+        _saveAngularVelocity = _rb.angularVelocity;
+        _saveVelocity = _rb.velocity;
+        _rb.Sleep();
+        _rb.simulated = false;
+        //_onDestroyAnimation.speed = 0;
+    }
+
+    public override void Resume()
+    {
+        _rb.simulated = true;
+        _rb.WakeUp();
+        _rb.gravityScale = _saveGravityScale;
+        _rb.angularVelocity = _saveAngularVelocity;
+        _rb.velocity = _saveVelocity;
+        //_onDestroyAnimation.speed = 1;
     }
 }
