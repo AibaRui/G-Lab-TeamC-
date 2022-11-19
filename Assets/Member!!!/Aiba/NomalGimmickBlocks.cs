@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NomalGimmickBlocks : MonoBehaviour
+public class NomalGimmickBlocks : GimickBase
 {
     [Header("オーラによって変化するまでの時間")]
     [SerializeField] float _timeLimit = 5f;
@@ -31,58 +31,63 @@ public class NomalGimmickBlocks : MonoBehaviour
 
     [SerializeField] BrockState _brockState = BrockState.Ice;
 
+    bool _isPause = false;
     void Start()
     {
         ChangeBlock();
     }
 
     void Update()
-    {        //冷気のオーラだけが当たっているとき
-        if (!hot && cool)
+    {
+        if (!_isPause)
         {
-            //状態が熱だったら
-            if (_brockState == BrockState.Hot)
+            //冷気のオーラだけが当たっているとき
+            if (!hot && cool)
             {
-                _timeCount += Time.deltaTime;
-
-                //一定時間当たっていたら状態を変化させる
-                if (_timeCount >= _timeLimit)
+                //状態が熱だったら
+                if (_brockState == BrockState.Hot)
                 {
-                    _brockState = BrockState.Ice;
-                    _timeCount = 0;
-                    ChangeBlock();
+                    _timeCount += Time.deltaTime;
+
+                    //一定時間当たっていたら状態を変化させる
+                    if (_timeCount >= _timeLimit)
+                    {
+                        _brockState = BrockState.Ice;
+                        _timeCount = 0;
+                        ChangeBlock();
+                    }
                 }
             }
-        }
-        //熱のオーラだけが当たっているとき
-        if (hot && !cool)
-        {
-            //状態が氷だったら
-            if (_brockState == BrockState.Ice)
+            //熱のオーラだけが当たっているとき
+            if (hot && !cool)
             {
-                _timeCount += Time.deltaTime;
-
-                //一定時間当たっていたら状態を変化させる
-                if (_timeCount >= _timeLimit)
+                //状態が氷だったら
+                if (_brockState == BrockState.Ice)
                 {
-                    _brockState = BrockState.Hot;
-                    _timeCount = 0;
-                    ChangeBlock();
+                    _timeCount += Time.deltaTime;
+
+                    //一定時間当たっていたら状態を変化させる
+                    if (_timeCount >= _timeLimit)
+                    {
+                        _brockState = BrockState.Hot;
+                        _timeCount = 0;
+                        ChangeBlock();
+                    }
                 }
             }
-        }
 
-        //どっちも当たっていなかったら
-        if (!hot && !cool)
-        {
-            Debug.Log("no");
-            //時間が以上だったら、元に戻す
-            if (_timeCount > 0)
+            //どっちも当たっていなかったら
+            if (!hot && !cool)
             {
-                _timeCount -= Time.deltaTime;
-                if (_timeCount < 0)
+                //Debug.Log("no");
+                //時間が以上だったら、元に戻す
+                if (_timeCount > 0)
                 {
-                    _timeCount = 0;
+                    _timeCount -= Time.deltaTime;
+                    if (_timeCount < 0)
+                    {
+                        _timeCount = 0;
+                    }
                 }
             }
         }
@@ -137,6 +142,25 @@ public class NomalGimmickBlocks : MonoBehaviour
     {
         Ice,
         Hot,
+    }
+
+
+
+    /// <summary>ゲームオーバー時に呼ぶ。アニメーションの停止、Rigidbodyの停止、判定消し</summary>
+    public override void GameOverPause()
+    {
+        _isPause = true;
+    }
+
+    /// <summary>一時停止時に呼ぶ。アニメーションの停止、Rigidbodyの停止、判定消しの処理を書く</summary>
+    public override void Pause()
+    {
+        _isPause = true;
+    }
+    /// <summary>ゲーム再開時に呼ぶ。アニメーションの再開、Rigidbodyの再開、判定再開を書く</summary>
+    public override void Resume()
+    {
+        _isPause = false;
     }
 
 
