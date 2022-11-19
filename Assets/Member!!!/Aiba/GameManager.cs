@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject _gameOverPanel;
+
+
+
     void Start()
     {
         
