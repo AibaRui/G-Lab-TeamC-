@@ -1,0 +1,7 @@
+# G-Lab-TeamC-
+＝＝＝Force AreaについてののHelp＝＝＝
+・「Force Angle」力を加える方向。０(360)のとき、右。180のとき、左。
+・「Force Magnitude」加える力の強さ。
+・「Force Variation」加える力の範囲(ブレ)。
+
+#上記のパラメーターをいい感じにいじれば、ふわふわ感を表せると思う。
