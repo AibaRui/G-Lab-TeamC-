@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class DieCuttingGimBox : MonoBehaviour
+public class DieCuttingGimBox : GimickBase
 {
     // ----- ギミックブロックの状態等を管理する ----- //
+    [SerializeField]
+    private bool is_Pause_ = false;
     private bool is_state_changed_ = false;
     public bool Is_state_changed { get { return is_state_changed_; } }
     private int state_;
@@ -30,6 +32,8 @@ public class DieCuttingGimBox : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ---- ポーズ中は動作無し ---- //
+        if (is_Pause_) { return; }
         // ---- オーラの検知 ---- //
         if (!is_other_enterd_)
         {
@@ -46,6 +50,8 @@ public class DieCuttingGimBox : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         // ---- ボックスの状態(氷/水)を変更 ---- //
+        // ---- ポーズ中は動作無し ---- //
+        if (is_Pause_) { return; }
         // ---- 状態変更 ---- //
         is_other_enterd_ = true;
         if (other.transform.CompareTag(fire_tag_name_) && state_ == 0)
@@ -73,8 +79,24 @@ public class DieCuttingGimBox : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         // ---- ボックス判定内にオブジェクトの有無を確認 ---- //   
+        // ---- ポーズ中は動作無し ---- //
+        if (is_Pause_) { return; }
         is_other_enterd_ = false;
     }
 
+    public override void GameOverPause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Pause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Resume()
+    {
+        is_Pause_ = false;
+    }
 
 }

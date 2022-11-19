@@ -1,10 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 
-public class DieCuttingManager : MonoBehaviour
+public class DieCuttingManager : GimickBase
 {
     [SerializeField, Header("ポーズ中は本ギミック無効")]
-    public bool is_Pause = false;
+    public bool is_Pause_ = false;
     [SerializeField, Header("完了フラグ：ギミック解いたらTrueとなる")]
     public bool is_complete_ = false;
     [SerializeField, Header("お手本の雪画像を登録")]
@@ -73,7 +73,7 @@ public class DieCuttingManager : MonoBehaviour
     private void FixedUpdate()
     {
         // ----- ギミックブロックと参照ブロックの状態比較: 合致すればis_complete = true ----- //
-        if (is_Pause) { return; }           // ポーズ中は動作無し
+        if (is_Pause_) { return; }           // ポーズ中は動作無し
         if (is_complete_) { return; }       // 一度でもギミック成功：ギミック動作不要
         // ---- 状態比較 ---- //
         bool stateChanged = false;
@@ -178,6 +178,21 @@ public class DieCuttingManager : MonoBehaviour
             child.parent = null;
             GameObject.Destroy(child.gameObject);
         }
+    }
+
+    public override void GameOverPause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Pause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Resume()
+    {
+        is_Pause_ = false;
     }
 
 }
