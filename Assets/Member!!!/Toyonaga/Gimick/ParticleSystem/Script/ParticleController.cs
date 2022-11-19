@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ParticleController : MonoBehaviour
+public class ParticleController : GimickBase
 {
+    [Header("ポーズ中True"), SerializeField]
+    public bool is_Pause_ = false;
     [Header("★円オーラ"), SerializeField]
     private List<CircleCollider2D> p_cir_areas_;
     [Header("★四角オーラ")]
@@ -188,6 +190,21 @@ public class ParticleController : MonoBehaviour
         }
         if (mode_num < cir_num) { m = mode_.circle; }
         if (mode_num >= cir_num) { m = mode_.box; }
+    }
+
+    public override void GameOverPause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Pause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Resume()
+    {
+        is_Pause_ = false;
     }
 
 }

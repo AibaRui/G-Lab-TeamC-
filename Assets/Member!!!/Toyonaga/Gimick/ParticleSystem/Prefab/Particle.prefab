@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff4e08bf9bc18d49aaa697bc0bef4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_Pause_: 0
   rb2D_: {fileID: 197753587802798782}
   vel_max_: 10
   vel_rand_max_: 3.5
@@ -123,6 +124,6 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0

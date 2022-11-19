@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class ParticleMove : MonoBehaviour
+public class ParticleMove : GimickBase
 {
+    [SerializeField]
+    private bool is_Pause_ = false;
     [SerializeField]
     private Rigidbody2D rb2D_;      // リジッドボディ取得
     // ---- 制御パラメータ ---- //
@@ -31,6 +33,19 @@ public class ParticleMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ----- ポーズ中は動きを停止 ----- //
+        if (is_Pause_)
+        {
+            rb2D_.constraints = RigidbodyConstraints2D.FreezeAll;
+
+            return;
+        }
+        else
+        {
+            // 解除
+            rb2D_.constraints = RigidbodyConstraints2D.None;
+        }
+
         // ---- パーティクルを目標位置(target_pos_)へ制御 ---- //
         rb2D_.AddForce(MoveCont(ref target_pos_, Time.deltaTime));
         if (rb2D_.velocity.sqrMagnitude > vel_max_ * vel_max_)   // ルート計算は重いので、判定式では避ける
@@ -54,4 +69,18 @@ public class ParticleMove : MonoBehaviour
         return pow;
     }
 
+    public override void GameOverPause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Pause()
+    {
+        is_Pause_ = true;
+    }
+
+    public override void Resume()
+    {
+        is_Pause_ = false;
+    }
 }
