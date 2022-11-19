@@ -168,37 +168,37 @@ public class PlayerChangeAura : MonoBehaviour
 
 
 
-        if (!_isCircleAura)
-        {
-            if (v < 0 || v1>0)
-            {
-                _particleController.SetAuraChange(ParticleController.mode_.up_box);
-                _auraPos = AuraPos.Up;
-                _ischanging = true;
+    //    if (!_isCircleAura)
+    //    {
+    //        if (v < 0 || v1>0)
+    //        {
+    //            _particleController.SetAuraChange(ParticleController.mode_.up_box);
+    //            _auraPos = AuraPos.Up;
+    //            _ischanging = true;
 
-            }
-            if (v > 0 || v1<0)
-            {
-                _particleController.SetAuraChange(ParticleController.mode_.down_box);
-                _auraPos = AuraPos.Down;
-                _ischanging = true;
+    //        }
+    //        if (v > 0 || v1<0)
+    //        {
+    //            _particleController.SetAuraChange(ParticleController.mode_.down_box);
+    //            _auraPos = AuraPos.Down;
+    //            _ischanging = true;
 
-            }
-            if (h < 0 || h1<0)
-            {
-                _particleController.SetAuraChange(ParticleController.mode_.back_box);
-                _auraPos = AuraPos.Left;
-                _ischanging = true;
+    //        }
+    //        if (h < 0 || h1<0)
+    //        {
+    //            _particleController.SetAuraChange(ParticleController.mode_.back_box);
+    //            _auraPos = AuraPos.Left;
+    //            _ischanging = true;
 
-            }
-            if (h > 0 || h1>0)
-            {
-                _particleController.SetAuraChange(ParticleController.mode_.front_box);
-                _auraPos = AuraPos.Right;
-                _ischanging = true;
+    //        }
+    //        if (h > 0 || h1>0)
+    //        {
+    //            _particleController.SetAuraChange(ParticleController.mode_.front_box);
+    //            _auraPos = AuraPos.Right;
+    //            _ischanging = true;
 
-            }
-        }
+    //        }
+    //    }
     }
 
     /// <summary>É{É^ÉìÇ≈ÇÃêÿÇËë÷Ç¶</summary>
