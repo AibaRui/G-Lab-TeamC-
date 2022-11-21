@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class IcicleController : GimickBase
+class IcicleController : GimickBase
 {
     [Header("落下速度")]
     [SerializeField] float _fallSpeed = 1.0f;
@@ -13,8 +13,6 @@ public class IcicleController : GimickBase
     [SerializeField,Tooltip("ゲームオブジェクトの scale の最小")] float _minSize = 2.0f;
     [Header("このゲームオブジェクトの最大の大きさ")]
     [SerializeField, Tooltip("ゲームオブジェクトの scale の最大")] float _maxSize = 6.0f;
-    [Header("GameObject消失時に再生するAnimetion")]
-    [SerializeField] Animator _onDestroyAnimation = default;
     [Header("Playerを検知する光線を 表示 or 非表示")]
     [SerializeField,Tooltip("Rayの表示・非表示の切り替え")] bool _isGizmo = false;
     [Header("Playerを検知する光線を飛ばす方向")]
@@ -25,6 +23,8 @@ public class IcicleController : GimickBase
     Vector2 _dir = Vector2.zero;
     /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
     RaycastHit2D _hit;
+    /// <summary>一定の大きさになったかを判定するフラグ</summary>
+    bool _isScale =false;
     Rigidbody2D _rb;
     float _saveGravityScale;
     float _saveAngularVelocity;
@@ -35,7 +35,6 @@ public class IcicleController : GimickBase
         _magnification /= 100f;  //整数だと倍率が高すぎるので、あらかじめ低くしておく
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
-        Debug.LogWarning("AnimatorのTransitionにAnimationSpeedのパラメータを設定しましたか？");
     }
 
     void Update()
@@ -80,6 +79,29 @@ public class IcicleController : GimickBase
             localScale.x += _magnification;
             localScale.y += _magnification;
             transform.localScale = localScale;
+
+            if(transform.localScale.x >= _maxSize && transform.localScale.y >= _maxSize)
+            {
+                _isScale = true;
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            if(_isScale)
+            {
+                _rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
+                    RigidbodyConstraints2D.FreezeRotation;
+                //_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                Debug.Log("Alien");
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -90,7 +112,6 @@ public class IcicleController : GimickBase
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
         _rb.simulated = false;
-        //_onDestroyAnimation.speed = 0;
     }
 
     public override void Pause()
@@ -100,7 +121,6 @@ public class IcicleController : GimickBase
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
         _rb.simulated = false;
-        //_onDestroyAnimation.speed = 0;
     }
 
     public override void Resume()
@@ -110,6 +130,5 @@ public class IcicleController : GimickBase
         _rb.gravityScale = _saveGravityScale;
         _rb.angularVelocity = _saveAngularVelocity;
         _rb.velocity = _saveVelocity;
-        //_onDestroyAnimation.speed = 1;
     }
 }

@@ -5,7 +5,7 @@ using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
 
-public class ScaffoldController : GimickBase
+class ScaffoldController : GimickBase
 {
     [Header("Œ³‚Ìó‘Ô‚É‰ñ•œ‚·‚é‚Ü‚Å‚ÌŠÔ")]
     [SerializeField, Range(1f, 7f), Tooltip("Œ³‚Ìó‘Ô‚É‰ñ•œ‚·‚é‚Ü‚Å‚ÌŠÔ")] float _interval = 1.0f;

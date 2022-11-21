@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceAreaController : GimickBase
+class ForceAreaController : GimickBase
 {
     BoxCollider2D _boxCol;
     AreaEffector2D _effecter;

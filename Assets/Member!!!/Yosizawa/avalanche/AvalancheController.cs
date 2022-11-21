@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AvalancheController : GimickBase
+class AvalancheController : GimickBase
 {
     [Header("ê·ïˆÇÃêiçsë¨ìx")]
     [SerializeField] float _speed = 1.0f;
