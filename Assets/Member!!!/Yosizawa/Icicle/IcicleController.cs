@@ -25,7 +25,7 @@ class IcicleController : GimickBase
     RaycastHit2D _hit;
     /// <summary>àÍíËÇÃëÂÇ´Ç≥Ç…Ç»Ç¡ÇΩÇ©ÇîªíËÇ∑ÇÈÉtÉâÉO</summary>
     bool _isScale =false;
-    Rigidbody2D _rb1;
+    Rigidbody2D _rb;
     float _saveGravityScale;
     float _saveAngularVelocity;
     Vector2 _saveVelocity;
@@ -33,8 +33,8 @@ class IcicleController : GimickBase
     void Start()
     {
         _magnification /= 100f;  //êÆêîÇæÇ∆î{ó¶Ç™çÇÇ∑Ç¨ÇÈÇÃÇ≈ÅAÇ†ÇÁÇ©Ç∂Çﬂí·Ç≠ÇµÇƒÇ®Ç≠
-        _rb1 = GetComponent<Rigidbody2D>();
-        _rb1.gravityScale = 0;
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.gravityScale = 0;
     }
 
     void Update()
@@ -44,7 +44,7 @@ class IcicleController : GimickBase
 
         if(_hit.collider)  //RayÇ™PlayerÇ…ìñÇΩÇ¡ÇΩéûÇÃèàóù
         {
-            _rb1.gravityScale = _fallSpeed;
+            _rb.gravityScale = _fallSpeed;
         }
     }
 
@@ -93,7 +93,8 @@ class IcicleController : GimickBase
         {
             if(_isScale)
             {
-                _rb1.constraints = RigidbodyConstraints2D.FreezeAll;
+                _rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
+                    RigidbodyConstraints2D.FreezeRotation;
                 //_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 Debug.Log("Alien");
             }
@@ -106,28 +107,28 @@ class IcicleController : GimickBase
 
     public override void GameOverPause()
     {
-        _saveGravityScale = _rb1.gravityScale;
-        _saveAngularVelocity = _rb1.angularVelocity;
-        _saveVelocity = _rb1.velocity;
-        _rb1.Sleep();
-        _rb1.simulated = false;
+        _saveGravityScale = _rb.gravityScale;
+        _saveAngularVelocity = _rb.angularVelocity;
+        _saveVelocity = _rb.velocity;
+        _rb.Sleep();
+        _rb.simulated = false;
     }
 
     public override void Pause()
     {
-        _saveGravityScale = _rb1.gravityScale;
-        _saveAngularVelocity = _rb1.angularVelocity;
-        _saveVelocity = _rb1.velocity;
-        _rb1.Sleep();
-        _rb1.simulated = false;
+        _saveGravityScale = _rb.gravityScale;
+        _saveAngularVelocity = _rb.angularVelocity;
+        _saveVelocity = _rb.velocity;
+        _rb.Sleep();
+        _rb.simulated = false;
     }
 
     public override void Resume()
     {
-        _rb1.simulated = true;
-        _rb1.WakeUp();
-        _rb1.gravityScale = _saveGravityScale;
-        _rb1.angularVelocity = _saveAngularVelocity;
-        _rb1.velocity = _saveVelocity;
+        _rb.simulated = true;
+        _rb.WakeUp();
+        _rb.gravityScale = _saveGravityScale;
+        _rb.angularVelocity = _saveAngularVelocity;
+        _rb.velocity = _saveVelocity;
     }
 }
