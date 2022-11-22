@@ -25,7 +25,9 @@ class IcicleController : GimickBase
     private RaycastHit2D _hit;
     /// <summary>一定の大きさになったかを判定するフラグ</summary>
     private bool _isScale =false;
+    /// <summary>Rigidbody2D型の変数</summary>
     private Rigidbody2D _rb;
+    //パラメーターの情報を保存する用の変数
     private float _saveGravityScale;
     private float _saveAngularVelocity;
     private Vector2 _saveVelocity;
@@ -51,8 +53,10 @@ class IcicleController : GimickBase
     /// <summary>Rayを可視化するための関数</summary>
     private void OnDrawGizmos()
     {
+        //isGizmo が treu になっていたら Gizmo を非表示にする
         if (_isGizmo == false) return;
 
+        //Rayを飛ばす方向を下方向に限定する
         _dir = new Vector2(_direction, -1).normalized;
         Gizmos.DrawRay(transform.position, _dir * _length);
     }
@@ -80,6 +84,7 @@ class IcicleController : GimickBase
             localScale.y += _magnification;
             transform.localScale = localScale;
 
+            //ゲームオブジェクトが最大サイズだったら、
             if(transform.localScale.x >= _maxSize && transform.localScale.y >= _maxSize)
             {
                 _isScale = true;
@@ -91,12 +96,15 @@ class IcicleController : GimickBase
     {
         if(collision.gameObject.tag == "Ground")
         {
+            //ゲームオブジェクトの scale が最大サイズだったら、消えずに残る
             if(_isScale)
             {
                 _rb.constraints = 
                     RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 Debug.Log("Alien");
             }
+
+            //ゲームオブジェクトの scale が最大サイズでなかったら、消える
             else
             {
                 Destroy(gameObject);

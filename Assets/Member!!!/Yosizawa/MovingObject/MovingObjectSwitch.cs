@@ -20,9 +20,11 @@ class MovingObjectSwitch : GimickBase
     {
         //_movingFloarの初期地点を_startPointに設定
         _movingObject.position = _startPoint.position;
+
         //_movingFloarを_startPointと_endPointとの間で往復させる
         _movingObject.DOMove(_endPoint.position, _moveTime)
                     .SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
+
         //_movingFloarを一時停止させておく
         _movingObject.DOPause();
         _isPause = true;
@@ -32,14 +34,15 @@ class MovingObjectSwitch : GimickBase
     {
         if(!_isPause)
         {
+            //Hotのオーラが当たったら、再開する
             if (collision.gameObject.tag == "Hot")
             {
-                //Hotのオーラが当たったら、再開する
                 _movingObject.DOPlay();
             }
+
+            //Coolのオーラが当たったら、一時停止する
             else if (collision.gameObject.tag == "Cool")
             {
-                //Coolのオーラが当たったら、一時停止する
                 _movingObject.DOPause();
             }
         }

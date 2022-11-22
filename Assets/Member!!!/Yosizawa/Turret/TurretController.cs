@@ -23,6 +23,7 @@ class TurretController : GimickBase
     {
         if(_isPause)
         {
+            //ˆê’èŠÔŠu‚²‚Æ‚É’e‚ğËo‚·‚é
             _timer += Time.deltaTime;
             if (_timer >= _interval)
             {

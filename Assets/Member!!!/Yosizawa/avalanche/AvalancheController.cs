@@ -7,7 +7,10 @@ class AvalancheController : GimickBase
 {
     [SerializeField, Tooltip("雪崩の進行速度")]
     private float _speed = 1.0f;
+    /// <summary>ゲームオブジェクトにアタッチされているRigidbody2D</summary>
     private Rigidbody2D _rb;
+
+    //パラメーターを保存する用の変数
     private Vector2 _saveVelocity;
 
     private void Start()
