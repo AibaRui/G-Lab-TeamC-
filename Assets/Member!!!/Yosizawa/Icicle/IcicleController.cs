@@ -5,39 +5,39 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 class IcicleController : GimickBase
 {
-    [Header("落下速度")]
-    [SerializeField] float _fallSpeed = 1.0f;
-    [Header("オーラ接触時の拡大・縮小倍率")]
-    [SerializeField,Range(1f, 10f),Tooltip("ゲームオブジェクト の scale 変化倍率")] float _magnification = 1.0f;
-    [Header("このゲームオブジェクトの最小の大きさ")]
-    [SerializeField,Tooltip("ゲームオブジェクトの scale の最小")] float _minSize = 2.0f;
-    [Header("このゲームオブジェクトの最大の大きさ")]
-    [SerializeField, Tooltip("ゲームオブジェクトの scale の最大")] float _maxSize = 6.0f;
-    [Header("Playerを検知する光線を 表示 or 非表示")]
-    [SerializeField,Tooltip("Rayの表示・非表示の切り替え")] bool _isGizmo = false;
-    [Header("Playerを検知する光線を飛ばす方向")]
-    [SerializeField,Range(-5f, 5f),Tooltip("Rayを飛ばす方向")] float _direction = 1f;
+    [SerializeField, Tooltip("落下速度")]
+    private float _fallSpeed = 1.0f;
+    [SerializeField, Range(1f, 10f), Tooltip("オーラ接触時の拡大・縮小倍率")]
+    private float _magnification = 1.0f;
+    [SerializeField, Tooltip("ゲームオブジェクトの大きさの最小")]
+    private float _minSize = 2.0f;
+    [SerializeField, Tooltip("ゲームオブジェクトの大きさの最大")]
+    private float _maxSize = 6.0f;
+    [SerializeField, Tooltip("Rayの表示・非表示の切り替え")]
+    private bool _isGizmo = false;
+    [SerializeField, Range(-5f, 5f), Tooltip("Rayを飛ばす方向")]
+    private float _direction = 1f;
     /// <summary>Rayの距離</summary>
-    float _length = 50f;
+    private float _length = 50f;
     /// <summary>Rayを飛ばす向き</summary>
-    Vector2 _dir = Vector2.zero;
+    private Vector2 _dir = Vector2.zero;
     /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
-    RaycastHit2D _hit;
+    private RaycastHit2D _hit;
     /// <summary>一定の大きさになったかを判定するフラグ</summary>
-    bool _isScale =false;
-    Rigidbody2D _rb;
-    float _saveGravityScale;
-    float _saveAngularVelocity;
-    Vector2 _saveVelocity;
+    private bool _isScale =false;
+    private Rigidbody2D _rb;
+    private float _saveGravityScale;
+    private float _saveAngularVelocity;
+    private Vector2 _saveVelocity;
 
-    void Start()
+    private void Start()
     {
         _magnification /= 100f;  //整数だと倍率が高すぎるので、あらかじめ低くしておく
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
     }
 
-    void Update()
+    private void Update()
     {
         //Rayに当たったcolliderがPlayerかどうか判定する
         _hit = Physics2D.Raycast(transform.position, _dir, _length, LayerMask.GetMask("Player"));
@@ -49,7 +49,7 @@ class IcicleController : GimickBase
     }
 
     /// <summary>Rayを可視化するための関数</summary>
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (_isGizmo == false) return;
 
@@ -57,7 +57,7 @@ class IcicleController : GimickBase
         Gizmos.DrawRay(transform.position, _dir * _length);
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //ゲームオブジェクトの大きさの情報が入った変数
         var localScale = transform.localScale;
@@ -87,15 +87,14 @@ class IcicleController : GimickBase
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Ground")
         {
             if(_isScale)
             {
-                _rb.constraints = RigidbodyConstraints2D.FreezePositionX | 
-                    RigidbodyConstraints2D.FreezeRotation;
-                //_rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                _rb.constraints = 
+                    RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 Debug.Log("Alien");
             }
             else

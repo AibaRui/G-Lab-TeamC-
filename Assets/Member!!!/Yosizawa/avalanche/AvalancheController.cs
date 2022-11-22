@@ -5,23 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 class AvalancheController : GimickBase
 {
-    [Header("雪崩の進行速度")]
-    [SerializeField] float _speed = 1.0f;
-    Rigidbody2D _rb;
-    Vector2 _saveVelocity;
+    [SerializeField, Tooltip("雪崩の進行速度")]
+    private float _speed = 1.0f;
+    private Rigidbody2D _rb;
+    private Vector2 _saveVelocity;
 
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
     }
 
-    void Update()
+    private void Update()
     {
         _rb.velocity = Vector2.right * _speed;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag is "Player1" or "Player2")
         {

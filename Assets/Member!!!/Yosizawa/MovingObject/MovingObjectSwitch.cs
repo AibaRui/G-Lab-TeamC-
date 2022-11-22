@@ -5,17 +5,18 @@ using DG.Tweening;
 
 class MovingObjectSwitch : GimickBase
 {
-    [Header("動かしたいゲームオブジェクトを入れるところ")]
-    [SerializeField, Tooltip("動かしたいGameObject")] Transform _movingObject = default;
-    [Header("ゲームオブジェクトの始点")]
-    [SerializeField] Transform _startPoint = default;
-    [Header("ゲームオブジェクトの終点")]
-    [SerializeField] Transform _endPoint = default;
-    [Header("どのくらいの時間をかけて移動させたいか")]
-    [SerializeField] float _moveTime = 1.0f;
-    bool _isPause = false;
+    [SerializeField, Tooltip("動かしたいGameObject")]
+    private Transform _movingObject = default;
+    [SerializeField, Tooltip("移動の始点")]
+    private Transform _startPoint = default;
+    [SerializeField, Tooltip("移動の終点")]
+    private Transform _endPoint = default;
+    [SerializeField, Tooltip("どのくらいの時間をかけて移動させるか")]
+    private float _moveTime = 1.0f;
+    /// <summary>現在、Pause状態か判定するフラグ</summary>
+    private bool _isPause = false;
 
-    void Start()
+    private void Start()
     {
         //_movingFloarの初期地点を_startPointに設定
         _movingObject.position = _startPoint.position;
@@ -27,9 +28,9 @@ class MovingObjectSwitch : GimickBase
         _isPause = true;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(_isPause)
+        if(!_isPause)
         {
             if (collision.gameObject.tag == "Hot")
             {
@@ -47,18 +48,18 @@ class MovingObjectSwitch : GimickBase
     public override void GameOverPause()
     {
         _movingObject.DOPause();
-        _isPause = false;
+        _isPause = true;
     }
 
     public override void Pause()
     {
         _movingObject.DOPause();
-        _isPause = false;
+        _isPause = true;
     }
 
     public override void Resume()
     {
         _movingObject.DOPlay();
-        _isPause = true;
+        _isPause = false;
     }
 }

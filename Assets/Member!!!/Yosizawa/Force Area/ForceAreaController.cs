@@ -4,10 +4,10 @@ using UnityEngine;
 
 class ForceAreaController : GimickBase
 {
-    BoxCollider2D _boxCol;
-    AreaEffector2D _effecter;
+    private BoxCollider2D _boxCol;
+    private AreaEffector2D _effecter;
 
-    void Start()
+    private void Start()
     {
         _boxCol = GetComponent<BoxCollider2D>();
         _effecter = GetComponent<AreaEffector2D>();

@@ -7,23 +7,20 @@ using DG.Tweening;
 
 class ScaffoldController : GimickBase
 {
-    [Header("元の状態に回復するまでの時間")]
-    [SerializeField, Range(1f, 7f), Tooltip("元の状態に回復するまでの時間")] float _interval = 1.0f;
-    //[Header("デフォルトのイラスト")]
-    //[SerializeField] SpriteRenderer _firstSprite = default;
-    //[Header("1度踏まれた状態の画像")]
-    //[SerializeField] SpriteRenderer _secondSprite = default;
-    float _time = 0.0f;
+    [SerializeField, Range(1f, 7f), Tooltip("元の状態に回復するまでの時間")]
+    private float _interval = 1.0f;
+    /// <summary>オーラの接触時間を計測するタイマー</summary>
+    private float _timer = 0.0f;
     /// <summary>このゲームオブジェクトが踏まれた回数</summary>
-    int _stateCount = 0;
+    private int _stateCount = 0;
     /// <summary>描画するSprite</summary>
-    SpriteRenderer _mainSprite;
+    private SpriteRenderer _mainSprite;
     /// <summary>当たり判定をフィルタリングする</summary>
-    ContactFilter2D _filter;
-    BoxCollider2D _boxCol2D;
-    Rigidbody2D _rb;
+    private ContactFilter2D _filter;
+    private BoxCollider2D _boxCol2D;
+    private Rigidbody2D _rb;
 
-    void Start()
+    private void Start()
     {
         _mainSprite = GetComponent<SpriteRenderer>();
         _boxCol2D = GetComponent<BoxCollider2D>();
@@ -34,7 +31,7 @@ class ScaffoldController : GimickBase
         _filter.SetNormalAngle(240f, 300f);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         switch (_stateCount)  //状態に応じて処理を切り替える
         {
@@ -57,8 +54,8 @@ class ScaffoldController : GimickBase
         }
     }
 
-    //Playerが床に乗ったら、_stateCountを増加させる
-    void OnCollisionEnter2D(Collision2D collision)
+    //Playerが床に乗ったら、踏まれた回数を増加させる
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
@@ -67,16 +64,17 @@ class ScaffoldController : GimickBase
         Debug.Log(_stateCount);
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    //一定時間「固める」オーラが当たったら、踏まれた回数を減少させる
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //「固める」オーラが当たったら、_stateCountを減少させる
         if (collision.gameObject.tag == "Cool" && _stateCount >= 1)
         {
-            _time += Time.deltaTime;
-            if (_time >= _interval)
+            _timer += Time.deltaTime;
+            if (_timer >= _interval)
             {
                 _stateCount--;
-                _time = 0;
+                _timer = 0;
                 Debug.Log(_stateCount);
             }
         }
