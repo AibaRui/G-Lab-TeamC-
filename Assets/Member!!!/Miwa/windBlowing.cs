@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class windBlowing : MonoBehaviour
+public class windBlowing : GimickBase
 {
-    [SerializeField] private float wPower = 1f;         //風の力  
-    [SerializeField] private string player1 = null;
-    [SerializeField] private string player2 = null;
-    [SerializeField] private float blowTime = 0;  //風が吹く時間
-    [SerializeField] private float playerRayLength = 5;
+    [Header("風が吹く強さ(＝プレイヤーの速さ、orプレイヤーより少し弱い)"),SerializeField] private float wPower = 1f;         //風の力  
+    [Header("プレイヤー1の設定"), SerializeField] private string player1 = null;
+    [Header("プレイヤー2の設定"), SerializeField] private string player2 = null;
+    [Header("風が吹く時間"),SerializeField] private float blowTime = 0;  //風が吹く時間
+    [Header("プレイヤーが壁を判定する長さ"),SerializeField] private float playerRayLength = 5;
     float blowingTimer;
     bool isBlow;
     bool p1Hide;
     bool p2Hide;
+    bool isPause;
     GameObject p1;
     GameObject p2;
     Rigidbody2D p1rb;
@@ -33,7 +34,7 @@ public class windBlowing : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         p1Pos = p1.transform.position ;
         p2Pos = p2.transform.position;
@@ -51,19 +52,24 @@ public class windBlowing : MonoBehaviour
             p2Hide = true;
         }
         else { p2Hide= false; }
-        if (isBlow)
-        {
-            blowingTimer += Time.deltaTime;
-            if (blowingTimer < blowTime)
+
+
+        if (isPause == false) { 
+            if (isBlow)
             {
-                if (p1Hide == false) { p1rb.AddForce(new Vector2(-wPower, 0)); }
-                if (p2Hide == false) { p2rb.AddForce(new Vector2(-wPower, 0)); }
+                blowingTimer += Time.deltaTime;
+                if (blowingTimer < blowTime)
+                {
+                    if (p1Hide == false) { p1rb.AddForce(new Vector2(-wPower, 0)); }
+                    if (p2Hide == false) { p2rb.AddForce(new Vector2(-wPower, 0)); }
+                }
+                else
+                {
+                    isBlow = false;
+                }
+
+
             }
-            else
-            {
-                isBlow = false;
-            }
-            
         }
         //デバッグ用
         if (Input.GetKeyDown(KeyCode.Space))        
@@ -84,4 +90,17 @@ public class windBlowing : MonoBehaviour
         
     }
 
+    public override void GameOverPause() { 
+        isPause= true;
+    }
+
+    public override void Pause()
+    {
+        isPause = true;
+    }
+
+    public override void Resume()
+    {
+        isPause = false;
+    }
 }

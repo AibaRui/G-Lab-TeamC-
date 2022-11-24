@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PauseManager;
 
-public class snowBall : MonoBehaviour
+public class snowBall : GimickBase
 {
     GameObject p1;
     GameObject p2;
@@ -11,7 +12,7 @@ public class snowBall : MonoBehaviour
     [SerializeField] private float firePower = 0.05f;
     [SerializeField]private float _erased = 5;  //è¡Ç¶ÇÈÇ‹Ç≈ÇÃéûä‘
     private float _exsited = 0;         //è¡Ç¶ÇÈÇ‹Ç≈ÇÃÉJÉEÉìÉg
-
+    bool isPause;
     
     // Start is called before the first frame update
    
@@ -40,5 +41,20 @@ public class snowBall : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public override void GameOverPause()
+    {
+        isPause = true;
+    }
+
+    public override void Pause()
+    {
+        isPause = true;
+    }
+
+    public override void Resume()
+    {
+        isPause = false;
     }
 }
