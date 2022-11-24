@@ -5,30 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Member!!!/Aiba/Test.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
-    guid: 1b75763dcc30c0e4a96d8d1edf149df4
   - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/TitleScene.unity
     guid: 4904733a607ba00459730be33de793fb
+  - enabled: 0
+    path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
+    guid: 1b75763dcc30c0e4a96d8d1edf149df4
   - enabled: 1
     path: Assets/Test/TestTitle.unity
     guid: 066c885efad7c4a4db035613fbfbbad8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Test/TestMarge.unity
     guid: c91f72cee5e14f74e81364664932abde
   - enabled: 1
+    path: Assets/MargeScene/Marge.unity
+    guid: 4c7195040b9ff9c4cb96ff6d806bd7ce
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
     guid: 1bf9031f3ad044544a2f7002d47f82e3
-  - enabled: 1
-    path: Assets/Member!!!/Morisima/Scenes/CreditScene.unity
-    guid: 4b3b82c149cbbb8409984453e0c2a459
-  - enabled: 1
-    path: Assets/Member!!!/Morisima/Scenes/HowtoplayScene.unity
-    guid: 34ed211dd04a2a242bcb4781e137cbe1
+  - enabled: 0
+    path: Assets/Member!!!/Aiba/Test.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/PlayScene.unity
     guid: 38de9959e427cbb4f9c18a50cf072938
