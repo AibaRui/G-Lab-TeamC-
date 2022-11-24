@@ -155,50 +155,54 @@ public class PlayerChangeAura : MonoBehaviour
         var h = Input.GetAxisRaw($"AuraChangeHorizontal{_playerNumber}");
         var v = Input.GetAxisRaw($"AuraChangeVertical{_playerNumber}");
 
-      var  h1 = Input.GetAxisRaw("Horizontal1");
-      var  v1 = Input.GetAxisRaw("Vertical1");
+        var h1 = Input.GetAxisRaw("Horizontal1");
+        var v1 = Input.GetAxisRaw("Vertical1");
 
         if (Input.GetButtonDown($"AuraChangeClick{_playerNumber}") || Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log("a");
+
             _isCircleAura = !_isCircleAura;
             _imageCircle.SetActive(_isCircleAura);
             _imageStick.SetActive(!_isCircleAura);
         }
+      //  Debug.Log("ècì¸óÕÇÕ" + v);
+      //  Debug.Log("â°ì¸óÕÇÕ" + h);
 
+        if (!_isCircleAura)
+        {
+            if (v < 0 || v1 > 0)
+            {
 
+                 _particleController.mode_num_ = 1;
+                _auraPos = AuraPos.Up;
+                _ischanging = true;
 
-    //    if (!_isCircleAura)
-    //    {
-    //        if (v < 0 || v1>0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.up_box);
-    //            _auraPos = AuraPos.Up;
-    //            _ischanging = true;
+            }
+            if (v > 0 || v1 < 0)
+            {
+                // Debug.Log("down");
+                _particleController.mode_num_ = 2;
+                _auraPos = AuraPos.Down;
+                _ischanging = true;
 
-    //        }
-    //        if (v > 0 || v1<0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.down_box);
-    //            _auraPos = AuraPos.Down;
-    //            _ischanging = true;
+            }
+            if (h < 0 || h1 < 0)
+            {
+                // Debug.Log("left");
+                 _particleController.mode_num_ = 3;
+                _auraPos = AuraPos.Left;
+                _ischanging = true;
 
-    //        }
-    //        if (h < 0 || h1<0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.back_box);
-    //            _auraPos = AuraPos.Left;
-    //            _ischanging = true;
+            }
+            if (h > 0 || h1 > 0)
+            {
+                //Debug.Log("right");
+                  _particleController.mode_num_ = 4;
+                _auraPos = AuraPos.Right;
+                _ischanging = true;
 
-    //        }
-    //        if (h > 0 || h1>0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.front_box);
-    //            _auraPos = AuraPos.Right;
-    //            _ischanging = true;
-
-    //        }
-    //    }
+            }
+        }
     }
 
     /// <summary>É{É^ÉìÇ≈ÇÃêÿÇËë÷Ç¶</summary>
