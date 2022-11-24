@@ -33,13 +33,16 @@ public class snowBall : GimickBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        _exsited += Time.deltaTime;
-        transform.Translate(new Vector2(-firePower, 0));
-        if(_exsited > _erased)
+        if (isPause == false)
         {
-            Destroy(this.gameObject);
+            _exsited += Time.deltaTime;
+            transform.Translate(new Vector2(-firePower, 0));
+            if (_exsited > _erased)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
