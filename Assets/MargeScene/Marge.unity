@@ -2190,9 +2190,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3578534725262543731, guid: 4b7a91a4cd3a0e7448bd6d78862ebdec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704256742317638262, guid: 4b7a91a4cd3a0e7448bd6d78862ebdec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5734178678195802930, guid: 4b7a91a4cd3a0e7448bd6d78862ebdec, type: 3}
       propertyPath: m_Name
       value: GeyserPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118464285511700559, guid: 4b7a91a4cd3a0e7448bd6d78862ebdec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7498942757585470567, guid: 4b7a91a4cd3a0e7448bd6d78862ebdec, type: 3}
       propertyPath: m_RootOrder
@@ -5732,7 +5744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
