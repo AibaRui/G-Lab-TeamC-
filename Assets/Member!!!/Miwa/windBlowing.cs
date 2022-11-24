@@ -5,8 +5,8 @@ using UnityEngine;
 public class windBlowing : GimickBase
 {
     [Header("風が吹く強さ(＝プレイヤーの速さ、orプレイヤーより少し弱い)"),SerializeField] private float wPower = 1f;         //風の力  
-    [Header("プレイヤー1の設定"), SerializeField] private string player1 = null;
-    [Header("プレイヤー2の設定"), SerializeField] private string player2 = null;
+    [Header("プレイヤー1を設定"), SerializeField] private string player1 = null;
+    [Header("プレイヤー2を設定"), SerializeField] private string player2 = null;
     [Header("風が吹く時間"),SerializeField] private float blowTime = 0;  //風が吹く時間
     [Header("プレイヤーが壁を判定する長さ"),SerializeField] private float playerRayLength = 5;
     float blowingTimer;
@@ -36,7 +36,7 @@ public class windBlowing : GimickBase
     // Update is called once per frame
     void FixedUpdate()
     {
-        p1Pos = p1.transform.position ;
+        p1Pos = p1.transform.position;
         p2Pos = p2.transform.position;
         p1Ray = new Ray2D(p1Pos, playerDir);
         p2Ray = new Ray2D(p2Pos, playerDir);

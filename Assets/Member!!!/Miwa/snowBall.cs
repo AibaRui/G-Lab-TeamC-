@@ -7,10 +7,10 @@ public class snowBall : GimickBase
 {
     GameObject p1;
     GameObject p2;
-    [SerializeField] private string Player1;
-    [SerializeField] private string Player2;
-    [SerializeField] private float firePower = 0.05f;
-    [SerializeField]private float _erased = 5;  //消えるまでの時間
+    [Header("プレイヤー1を設定"),SerializeField] private string Player1;
+    [Header("プレイヤー2を設定"),SerializeField] private string Player2;
+    [Header("撃ち出す力の設定"),SerializeField] private float firePower = 0.05f;
+    [Header("撃ち出された後、消えるまでの時間"),SerializeField]private float _erased = 5;  //消えるまでの時間
     private float _exsited = 0;         //消えるまでのカウント
     bool isPause;
     
