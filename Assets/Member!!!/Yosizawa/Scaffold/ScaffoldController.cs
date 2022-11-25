@@ -57,7 +57,7 @@ class ScaffoldController : GimickBase
     //Playerが床に乗ったら、踏まれた回数を増加させる
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+        if (collision.gameObject.tag is "Player1" or "Player2")
         {
             if (_stateCount < 2 && _rb.IsTouching(_filter)) _stateCount++;
         }
@@ -68,7 +68,7 @@ class ScaffoldController : GimickBase
     private void OnTriggerStay2D(Collider2D collision)
     {
         //「固める」オーラが当たったら、_stateCountを減少させる
-        if (collision.gameObject.tag == "Cool" && _stateCount >= 1)
+        if (collision.gameObject.tag is "Cool" && _stateCount >= 1)
         {
             _timer += Time.deltaTime;
             if (_timer >= _interval)

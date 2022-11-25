@@ -54,7 +54,7 @@ class IcicleController : GimickBase
     private void OnDrawGizmos()
     {
         //isGizmo が treu になっていたら Gizmo を非表示にする
-        if (_isGizmo == false) return;
+        if (_isGizmo is false) return;
 
         //Rayを飛ばす方向を下方向に限定する
         _dir = new Vector2(_direction, -1).normalized;
@@ -94,7 +94,7 @@ class IcicleController : GimickBase
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag is "Ground")
         {
             //ゲームオブジェクトの scale が最大サイズだったら、消えずに残る
             if(_isScale)
