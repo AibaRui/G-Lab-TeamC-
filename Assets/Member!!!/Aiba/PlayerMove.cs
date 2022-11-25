@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("プレイヤーの番号")]
-    [Tooltip("プレイヤーの番号")] [SerializeField] int _playerNumber;
+    [Tooltip("プレイヤーの番号")] [SerializeField] int _playerNumber = 1;
 
     [Header("移動速度")]
     [Tooltip("移動速度")] [SerializeField] float _speed = 7;
@@ -24,10 +24,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Sousa _sousa = Sousa.Controller;
 
 
-    [SerializeField] Rigidbody2D _rb;
+    Rigidbody2D _rb;
     void Start()
     {
-        _rb = _rb.GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -52,42 +52,14 @@ public class PlayerMove : MonoBehaviour
 
     private void MoveController()
     {
-        Debug.Log(_playerNumber);
-            float h = Input.GetAxisRaw($"PlayerMove{_playerNumber}");
-            Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
-            _rb.velocity = velo;
+        float h = Input.GetAxisRaw($"PlayerMove{_playerNumber}");
+        Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
+        _rb.velocity = velo;
     }
 
     void MoveKeybord()
     {
-        float h = 0;
-        if(_playerNumber==1)
-        {
-            if(Input.GetKey(KeyCode.D))
-            {
-                h = 1;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                h = -1;
-            }
-
-        }
-
-        if (_playerNumber == 2)
-        {
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                h = 1;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                h = -1;
-            }
-
-        }
-
-        //float h = Input.GetAxisRaw("Horizontal");
+        float h = Input.GetAxisRaw("Horizontal");
         Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
         _rb.velocity = velo;
     }

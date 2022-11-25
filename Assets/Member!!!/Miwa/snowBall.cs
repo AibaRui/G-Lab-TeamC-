@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PauseManager;
 
-public class snowBall : MonoBehaviour
+public class snowBall : GimickBase
 {
     GameObject p1;
     GameObject p2;
-    [SerializeField] private string Player1;
-    [SerializeField] private string Player2;
-    [SerializeField] private float firePower = 0.05f;
-    [SerializeField]private float _erased = 5;  //消えるまでの時間
+    [Header("プレイヤー1を設定"),SerializeField] private string Player1;
+    [Header("プレイヤー2を設定"),SerializeField] private string Player2;
+    [Header("撃ち出す力の設定"),SerializeField] private float firePower = 0.05f;
+    [Header("撃ち出された後、消えるまでの時間"),SerializeField]private float _erased = 5;  //消えるまでの時間
     private float _exsited = 0;         //消えるまでのカウント
-
+    bool isPause;
     
     // Start is called before the first frame update
    
@@ -32,13 +33,31 @@ public class snowBall : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        _exsited += Time.deltaTime;
-        transform.Translate(new Vector2(-firePower, 0));
-        if(_exsited > _erased)
+        if (isPause == false)
         {
-            Destroy(this.gameObject);
+            _exsited += Time.deltaTime;
+            transform.Translate(new Vector2(-firePower, 0));
+            if (_exsited > _erased)
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    public override void GameOverPause()
+    {
+        isPause = true;
+    }
+
+    public override void Pause()
+    {
+        isPause = true;
+    }
+
+    public override void Resume()
+    {
+        isPause = false;
     }
 }

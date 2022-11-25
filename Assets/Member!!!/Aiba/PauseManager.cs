@@ -64,7 +64,7 @@ public class PauseManager : MonoBehaviour
 
     }
 
-   public void PauseResumeGameOver()
+   public void PauseResumeLevelUp()
     {
         _gameOverFlg = !_gameOverFlg;
         _isGameOver = !_isGameOver;

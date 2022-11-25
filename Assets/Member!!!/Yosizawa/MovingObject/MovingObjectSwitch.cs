@@ -27,6 +27,7 @@ class MovingObjectSwitch : GimickBase
 
         //_movingFloar‚ðˆêŽž’âŽ~‚³‚¹‚Ä‚¨‚­
         _movingObject.DOPause();
+        _isPause = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

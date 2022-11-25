@@ -10,10 +10,6 @@ TagManager:
   - Hot
   - Cool
   - player
-  - P1
-  - P2
-  - Avalanche
-  - Goal
   layers:
   - Default
   - TransparentFX
@@ -27,7 +23,7 @@ TagManager:
   - GimickBlock
   - Aura
   - Ground
-  - Avalanche
+  - 
   - 
   - 
   - 
