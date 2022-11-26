@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4132729011368069447}
   - component: {fileID: 5345413804254962277}
   m_Layer: 8
-  m_Name: ParticleVer2
+  m_Name: ParticleVer2Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
