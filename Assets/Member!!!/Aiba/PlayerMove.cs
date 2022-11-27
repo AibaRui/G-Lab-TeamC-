@@ -59,9 +59,42 @@ public class PlayerMove : MonoBehaviour
 
     void MoveKeybord()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
-        _rb.velocity = velo;
+        if (_playerNumber == 1)
+        {
+            float h = 0;
+            if (Input.GetKey(KeyCode.D))
+            {
+                h = 1;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                h = -1;
+            }
+
+            Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
+            _rb.velocity = velo;
+        }
+
+        if (_playerNumber == 2)
+        {
+            float h = 0;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                h = 1;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                h = -1;
+            }
+
+            Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
+            _rb.velocity = velo;
+        }
+
+        //  float h = Input.GetAxisRaw("Horizontal");
+
     }
 
     void JumpKeybord()

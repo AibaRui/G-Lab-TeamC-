@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Member!!!/Aiba/Test.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/MargeScene/TitleMarge.unity
+    guid: 8f9cc95f72100f044b569b5f3488e74b
+  - enabled: 1
+    path: Assets/MargeScene/Marge.unity
+    guid: 4c7195040b9ff9c4cb96ff6d806bd7ce
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
     guid: 1b75763dcc30c0e4a96d8d1edf149df4
   - enabled: 1
