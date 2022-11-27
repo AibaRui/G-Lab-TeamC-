@@ -7,15 +7,16 @@ using DG.Tweening;
 [RequireComponent(typeof(AudioSource))]
 public class blizzardController : MonoBehaviour
 {
-    [Header("blizzardを起こすために使うpanel")]
-    [SerializeField,Tooltip("blizzardを起こすために使うpanel")] Image _blizzardPanel = default;
-    [Header("どのくらいの時間吹雪を起こすか")]
-    [SerializeField,Range(1f, 10f),Tooltip("吹雪かせる時間")] float _stormTime;
-    [Header("blizzardの透明度")]
-    [SerializeField, Range(0f, 1f), Tooltip("panelのalpha値")] float _alpha;
-    AudioSource _audio = default;
+    [SerializeField, Tooltip("blizzardを起こすために使うpanel")]
+    private Image _blizzardPanel = default;
+    [SerializeField, Range(1f, 10f), Tooltip("どのくらいの時間吹雪を起こすか")]
+    private float _stormTime;
+    [SerializeField, Range(0f, 1f), Tooltip("blizzardを起こすときに使うpanelのalpha値")]
+    private float _alpha;
+    /// <summary>AudioSource型の変数</summary>
+    private AudioSource _audio = default;
 
-    void Start()
+    private void Start()
     {
         _blizzardPanel.enabled = false;
         _blizzardPanel.DOFade(0f, 0f);  //念のためここでGameObjectを透明にしておく
@@ -25,7 +26,7 @@ public class blizzardController : MonoBehaviour
         _audio = GetComponent<AudioSource>();
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         float random = Random.Range(1f, 3f);
 
