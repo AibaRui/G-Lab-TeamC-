@@ -20,7 +20,7 @@ public class blizzardController : MonoBehaviour
         _blizzardPanel.enabled = false;
         _blizzardPanel.DOFade(0f, 0f);  //念のためここでGameObjectを透明にしておく
         _audio.DOFade(0f, 0f);
-        if (_blizzardPanel == null)
+        if (_blizzardPanel is null)
             Debug.LogWarning("吹雪を起こしたいのですが、GameObjectがセットされていません。");
         _audio = GetComponent<AudioSource>();
     }
