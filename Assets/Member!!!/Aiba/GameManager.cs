@@ -6,16 +6,26 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject _gameOverPanel;
 
+    [SerializeField] GameObject _gameClearPanel;
 
+    PauseManager _pause;
 
-    void Start()
+    private void Awake()
     {
-        
+        _pause = FindObjectOfType<PauseManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void GameClear()
     {
-        
+        _gameClearPanel.SetActive(true);
+        _pause.PauseResumeGameEnd();
     }
+
+    public void GameOver()
+    {
+        _gameOverPanel.SetActive(true);
+        _pause.PauseResumeGameEnd();
+    }
+
 }
