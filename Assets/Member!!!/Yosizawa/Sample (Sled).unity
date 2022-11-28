@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 1
-  _judgeCol: {fileID: 0}
+  _judgeCol: {fileID: 1803261411}
 --- !u!50 &42575190
 Rigidbody2D:
   serializedVersion: 4

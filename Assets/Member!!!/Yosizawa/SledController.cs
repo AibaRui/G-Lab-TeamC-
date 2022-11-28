@@ -1,38 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
-
-[RequireComponent(typeof(Rigidbody2D))]
 
 public class SledController : MonoBehaviour
 {
-    [SerializeField, Tooltip("最大速度")]
-    private float _maxSpeed = 1f;
-    [SerializeField, Tooltip("オーラ判定用のCollider")]
-    private Collider2D _judgeCol;
+    [SerializeField, Tooltip("")]
+    public float _speed = 1f;
+    [SerializeField, Tooltip("実際に動かすオブジェクト")]
+    private GameObject _movingObj;
     /// <summary>Rigidbody2D</summary>
-    private Rigidbody2D _rb;
+    private Rigidbody2D _objRb;
 
     private void Start()
     {
-        if (_judgeCol is null)
+        _movingObj.transform.SetParent(transform);
+        if (!_movingObj.GetComponent<SledBodyController>())
         {
-            Debug.LogWarning("判定用のコライダーがassignされていません");
+            _movingObj.AddComponent<SledBodyController>();
         }
-        _judgeCol.isTrigger = true;
-        _rb = GetComponent<Rigidbody2D>();
+        _objRb = _movingObj.GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag is "Player1" or "Player2")
+        if (collision.gameObject.tag is "Hot")
         {
-            collision.transform.SetParent(transform);
+            _objRb.AddForce(new Vector2(_speed, 0), ForceMode2D.Force);
         }
-
-        if(collision.gameObject.tag is "")
+        if (collision.gameObject.tag is "Cool")
         {
-            
+            _objRb.AddForce(new Vector2(-_speed, 0), ForceMode2D.Force);
         }
     }
 }
