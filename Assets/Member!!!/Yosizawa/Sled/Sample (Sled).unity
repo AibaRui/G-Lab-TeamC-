@@ -196,9 +196,8 @@ GameObject:
   - component: {fileID: 42575187}
   - component: {fileID: 42575186}
   - component: {fileID: 42575190}
-  - component: {fileID: 42575189}
-  m_Layer: 0
-  m_Name: Sled
+  m_Layer: 11
+  m_Name: Sled Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,20 +296,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &42575189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42575184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6818a4ced9f12b24b8f82dc490265efe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 1
-  _judgeCol: {fileID: 1803261411}
 --- !u!50 &42575190
 Rigidbody2D:
   serializedVersion: 4
@@ -628,7 +613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326853224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117.84, y: 3.7300003, z: -12.38}
+  m_LocalPosition: {x: -117.884995, y: 3.7150002, z: -12.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -816,7 +801,7 @@ Transform:
   - {fileID: 1588071516}
   - {fileID: 1136937305}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497070706
 GameObject:
@@ -881,7 +866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497070706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117.84, y: 3.7300003, z: -12.38}
+  m_LocalPosition: {x: -117.884995, y: 3.7150002, z: -12.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1250,7 +1235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215349985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -116.409996, y: 0.74, z: 0}
+  m_LocalPosition: {x: -116.5, y: 0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1258,7 +1243,7 @@ Transform:
   - {fileID: 934180373}
   - {fileID: 1601486270}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1221780718
 GameObject:
@@ -1786,8 +1771,9 @@ GameObject:
   - component: {fileID: 1803261409}
   - component: {fileID: 1803261410}
   - component: {fileID: 1803261411}
+  - component: {fileID: 1803261414}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Sled Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1876,6 +1862,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1803261414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803261408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818a4ced9f12b24b8f82dc490265efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _acceleration: 1
+  _maxVelocity: 50
+  _movingObj: {fileID: 42575184}
+  _velocity: {x: 0, y: 0}
 --- !u!1 &1847676371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +2057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073212497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -117.84, y: 0.7300002, z: 0}
+  m_LocalPosition: {x: -117.884995, y: 0.71500015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
