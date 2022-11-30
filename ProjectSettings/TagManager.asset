@@ -10,6 +10,8 @@ TagManager:
   - Hot
   - Cool
   - player
+  - InputField
+  - Text
   layers:
   - Default
   - TransparentFX
