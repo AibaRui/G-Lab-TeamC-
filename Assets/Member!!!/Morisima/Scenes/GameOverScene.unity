@@ -152,17 +152,17 @@ RectTransform:
   m_GameObject: {fileID: 201327646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.921, y: 1.45, z: 0.5}
+  m_LocalScale: {x: 0.92, y: 1.45, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 504748131}
   m_Father: {fileID: 1541662378}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -290.2, y: 540.8}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -290, y: 20}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201327648
 MonoBehaviour:
@@ -297,7 +297,7 @@ RectTransform:
   m_GameObject: {fileID: 333261933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.9, y: 7.5, z: 1}
+  m_LocalScale: {x: 15, y: 8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541662378}
@@ -305,7 +305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -234.2, y: -170.43}
+  m_AnchoredPosition: {x: -240, y: -138.79999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333261935
@@ -591,12 +591,12 @@ RectTransform:
   m_Children:
   - {fileID: 1335837484}
   m_Father: {fileID: 1541662378}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -288.68, y: -862}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -290, y: 240}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830765910
 MonoBehaviour:
@@ -999,8 +999,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 534705075}
-  - {fileID: 830765909}
   - {fileID: 201327647}
+  - {fileID: 830765909}
   - {fileID: 333261934}
   m_Father: {fileID: 0}
   m_RootOrder: 1
