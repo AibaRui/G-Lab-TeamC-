@@ -151,4 +151,4 @@ MonoBehaviour:
   _minSize: 2
   _maxSize: 6
   _isGizmo: 1
-  _direction: -0.5
+  _direction: -0.15
