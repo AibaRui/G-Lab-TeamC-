@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7439040944230886053}
   - component: {fileID: 7439040944230886052}
   - component: {fileID: -8692655685548266054}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Moving Floar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
