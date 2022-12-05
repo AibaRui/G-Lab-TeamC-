@@ -1,32 +1,41 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Drawing;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Ranking : MonoBehaviour
 {
+    public static Ranking instance;
     [SerializeField]
     public Button btn;
 
-  
+    
 
     int point = 5;
 
     string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
-    int[] rankingValue = new int[5];
+    public int[] rankingValue = new int[5];
 
     [SerializeField, Header("表示させるテキスト")]
-     TextMeshProUGUI[] rankingText = new TextMeshProUGUI[5];
+    public TextMeshProUGUI[] rankingText = new TextMeshProUGUI[5];
+    public TextMeshProUGUI ranking_Now = null;
 
     // Use this for initialization
     void Start()
     {
+        ranking_Now.text = point.ToString();
         btn = GetComponent<Button>();
         GetRanking();
-        if (point <= rankingValue[4]) {
+        if (point <= rankingValue[4])
+        {
             btn.interactable = false;
-           
+
         }
-        else { btn.interactable = true;}
+        else
+        {
+            btn.interactable = true;
+        }
 
         for (int i = 0; i < rankingText.Length; i++)
         {
@@ -34,20 +43,23 @@ public class Ranking : MonoBehaviour
         }
 
         // PlayerPrefs.DeleteAll();
+       
     }
+    
     public void OnClick()
     {
         GameObject objCanvas = GameObject.Find("Canvas");
         GameObject objInputField = objCanvas.transform.Find("InputField").gameObject;
         GameObject objInputFieldText = objInputField.transform.Find("Text").gameObject;
         TextMeshProUGUI inputFieldText = objInputFieldText.GetComponent<TextMeshProUGUI>();
-        if (objCanvas.transform.Find("InputField").gameObject == null)
+        if (string.IsNullOrWhiteSpace(inputFieldText.text))
         {
-            Debug.Log("NULL");
-
+            Debug.Log("Null");
         }
-        else { Debug.Log(inputFieldText.text); }
-
+        else
+        {
+           Debug.Log(inputFieldText.text);
+        }
 
         SetRanking(point);
         for (int i = 0; i < rankingText.Length; i++)
@@ -58,13 +70,19 @@ public class Ranking : MonoBehaviour
         btn.interactable = false;
     }
 
-
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
 
     /// <summary>
     /// ランキング呼び出し
     /// </summary>
-    void GetRanking()
+    public void GetRanking()
     {
         //ランキング呼び出し
         for (int i = 0; i < ranking.Length; i++)
@@ -75,7 +93,7 @@ public class Ranking : MonoBehaviour
     /// <summary>
     /// ランキング書き込み
     /// </summary>
-    void SetRanking(int _value)
+    public void SetRanking(int _value)
     {
         //書き込み用
         for (int i = 0; i < ranking.Length; i++)
@@ -95,4 +113,5 @@ public class Ranking : MonoBehaviour
             PlayerPrefs.SetInt(ranking[i], rankingValue[i]);
         }
     }
+ 
 }
