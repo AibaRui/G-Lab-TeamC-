@@ -6,10 +6,10 @@ using TMPro;
 
 public class Ranking_Read : MonoBehaviour
 {
-    private int[] Value = new int[5];
+  
 
     [SerializeField]
-    public TextMeshProUGUI[] rankingText1 = new TextMeshProUGUI[5];
+     TextMeshProUGUI[] rankingText1 = new TextMeshProUGUI[5];
    
     // Start is called before the first frame update
     void Start()
