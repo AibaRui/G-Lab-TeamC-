@@ -8,17 +8,21 @@ using DG.Tweening;
 public class blizzardController : MonoBehaviour
 {
     [SerializeField, Tooltip("blizzardを起こすために使うpanel")]
-    private Image _blizzardPanel = default;
+    private Image _blizzardPanel = null;
     [SerializeField, Range(1f, 10f), Tooltip("どのくらいの時間吹雪を起こすか")]
     private float _stormTime;
     [SerializeField, Range(0f, 1f), Tooltip("blizzardを起こすときに使うpanelのalpha値")]
     private float _alpha;
     /// <summary>AudioSource型の変数</summary>
-    private AudioSource _audio = default;
+    private AudioSource _audio = null;
 
     private void Start()
     {
-        _blizzardPanel.enabled = false;
+        GameObject canvas = GameObject.Find("Canvas");
+        GameObject blizzardPanel = Instantiate(_blizzardPanel.gameObject, canvas.transform);
+        //blizzardPanel.transform.SetParent(canvas.transform);
+        //blizzardPanel.GetComponent<RectTransform>().localPosition = Vector2.zero;
+        //_blizzardPanel.enabled = false;
         _blizzardPanel.DOFade(0f, 0f);  //念のためここでGameObjectを透明にしておく
         _audio.DOFade(0f, 0f);
         if (_blizzardPanel is null)
@@ -32,7 +36,7 @@ public class blizzardController : MonoBehaviour
 
         if (collision.gameObject.tag is "Player1" or "Player2")
         {
-            _blizzardPanel.enabled = true;
+            //_blizzardPanel.enabled = true;
             _blizzardPanel.DOFade(_alpha, random);
             _audio.Play();
             _audio.DOFade(1f, random);
