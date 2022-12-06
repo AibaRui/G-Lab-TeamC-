@@ -8,26 +8,37 @@ public class Ranking : MonoBehaviour
 {
     public static Ranking instance;
     [SerializeField]
-    public Button btn;
+     Button btn;
 
-    
 
-    int point = 5;
+    private int a = 1;
+    private int point = 10;
+    public int Point { get => point;}
+    string ranking_gg = "kengai";
 
     string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
     public int[] rankingValue = new int[5];
 
-    [SerializeField, Header("表示させるテキスト")]
-    public TextMeshProUGUI[] rankingText = new TextMeshProUGUI[5];
-    public TextMeshProUGUI ranking_Now = null;
+    [SerializeField, 
+     Header("表示させるテキスト")]
+    private TextMeshProUGUI[] rankingText = new TextMeshProUGUI[5];
+    [SerializeField] 
+    TextMeshProUGUI ranking_Now1 = null;
+    [SerializeField]
+    TextMeshProUGUI ranking_Now2 = null;
 
     // Use this for initialization
     void Start()
     {
-        ranking_Now.text = point.ToString();
+        ranking_Now1.text = Point.ToString();
+   
+          
+        
+       
         btn = GetComponent<Button>();
         GetRanking();
-        if (point <= rankingValue[4])
+        
+        if (Point <= rankingValue[4])
         {
             btn.interactable = false;
 
@@ -40,9 +51,30 @@ public class Ranking : MonoBehaviour
         for (int i = 0; i < rankingText.Length; i++)
         {
             rankingText[i].text = rankingValue[i].ToString();
+            if (rankingValue[0] < Point)
+            {
+                ranking_Now2.text = ranking[0];
+            }
+            else if(rankingValue[1] < Point)
+            {
+                ranking_Now2.text = ranking[1];
+            }
+            else if (rankingValue[2] < Point)
+            {
+                ranking_Now2.text = ranking[2];
+            }
+            else if(rankingValue[3] < Point)
+            {
+                ranking_Now2.text = ranking[3];
+            }
+            else if (rankingValue[4] < Point)
+            {
+                ranking_Now2.text = ranking[4];
+            }
+            else { ranking_Now2.text = ranking_gg; }
         }
 
-        // PlayerPrefs.DeleteAll();
+       // PlayerPrefs.DeleteAll();
        
     }
     
@@ -88,6 +120,7 @@ public class Ranking : MonoBehaviour
         for (int i = 0; i < ranking.Length; i++)
         {
             rankingValue[i] = PlayerPrefs.GetInt(ranking[i]);
+           
         }
     }
     /// <summary>
