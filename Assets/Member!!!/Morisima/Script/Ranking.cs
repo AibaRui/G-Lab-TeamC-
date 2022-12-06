@@ -12,11 +12,11 @@ public class Ranking : MonoBehaviour
 
 
     private int a = 1;
-    private int point = 10;
+    private int point = 15;
     public int Point { get => point;}
-    string ranking_gg = "kengai";
+    string ranking_gg = "けんがい";
 
-    string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
+    string[] ranking = { "ランキング1", "ランキング2", "ランキング3", "ランキング4", "ランキング5" };
     public int[] rankingValue = new int[5];
 
     [SerializeField, 
