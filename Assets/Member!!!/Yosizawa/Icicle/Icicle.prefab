@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 524028856986636257}
   - component: {fileID: 524028856986636286}
   - component: {fileID: 524028856986636287}
-  - component: {fileID: 524028856986636284}
+  - component: {fileID: 466000811791963174}
   - component: {fileID: 524028856986636285}
   m_Layer: 11
   m_Name: Icicle
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 524028856986636283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.69, y: 7.6, z: 0}
-  m_LocalScale: {x: 3.1655, y: 3.1655, z: 3.1655}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,8 +108,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!61 &524028856986636284
-BoxCollider2D:
+--- !u!60 &466000811791963174
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,11 +117,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 524028856986636283}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 393220317838b724ab944a8442c44168, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004494861, y: -0.05283159}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,9 +131,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.65253603, y: 1.3030361}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2756617, y: -0.018563986}
+      - {x: 0.076437116, y: -0.7001376}
+      - {x: -0.026358515, y: -0.68290794}
+      - {x: -0.22409213, y: -0.13663626}
+      - {x: -0.3364601, y: 0.5863163}
+      - {x: 0.35639122, y: 0.5961083}
 --- !u!114 &524028856986636285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fallSpeed: 6
+  _stunTime: 1
   _magnification: 1
   _minSize: 2
   _maxSize: 6

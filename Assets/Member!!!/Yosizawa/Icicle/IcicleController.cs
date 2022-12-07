@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D))]
 class IcicleController : GimickBase
 {
     [SerializeField, Tooltip("落下速度")]
     private float _fallSpeed = 1.0f;
+    [SerializeField, Tooltip("氷柱がPlayerに衝突した時のPlayerの硬直時間")]
+    private float _stunTime = 1f;
     [SerializeField, Range(1f, 10f), Tooltip("オーラ接触時の拡大・縮小倍率")]
     private float _magnification = 1.0f;
     [SerializeField, Tooltip("ゲームオブジェクトの大きさの最小")]
@@ -14,7 +17,7 @@ class IcicleController : GimickBase
     [SerializeField, Tooltip("ゲームオブジェクトの大きさの最大")]
     private float _maxSize = 6.0f;
     [SerializeField, Tooltip("Rayの表示・非表示の切り替え")]
-    private bool _isGizmo = false;
+    private bool _isGizmo = true;
     [SerializeField, Range(-5f, 5f), Tooltip("Rayを飛ばす方向")]
     private float _direction = 1f;
     /// <summary>Rayの距離</summary>
@@ -26,7 +29,9 @@ class IcicleController : GimickBase
     /// <summary>一定の大きさになったかを判定するフラグ</summary>
     private bool _isScale =false;
     /// <summary>Rigidbody2D型の変数</summary>
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rb = null;
+    /// <summary></summary>
+    private Collider2D _col = null;
     //パラメーターの情報を保存する用の変数
     private float _saveGravityScale;
     private float _saveAngularVelocity;
@@ -37,6 +42,8 @@ class IcicleController : GimickBase
         _magnification /= 100f;  //整数だと倍率が高すぎるので、あらかじめ低くしておく
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
+        _col = GetComponent<Collider2D>();
+        _col.isTrigger = true;
     }
 
     private void Update()
@@ -50,15 +57,37 @@ class IcicleController : GimickBase
         }
     }
 
-    /// <summary>Rayを可視化するための関数</summary>
-    private void OnDrawGizmos()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //isGizmo が treu になっていたら Gizmo を非表示にする
-        if (_isGizmo is false) return;
-
-        //Rayを飛ばす方向を下方向に限定する
-        _dir = new Vector2(_direction, -1).normalized;
-        Gizmos.DrawRay(transform.position, _dir * _length);
+        if (collision.gameObject.tag is "Hot" && !_isScale)
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag is "Player1" or "Player2")
+        {
+            Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            playerRb.simulated = false;
+            DOVirtual.DelayedCall(_stunTime, () =>
+            {
+                playerRb.simulated = true;
+                //Destroy(gameObject);
+            }, false);
+        }
+        if (collision.gameObject.tag is "Ground")
+        {
+            //ゲームオブジェクトの scale が最大サイズだったら、消えずに残る
+            if (_isScale)
+            {
+                _col.isTrigger = false;
+                _rb.constraints =
+                    RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            }
+            //ゲームオブジェクトの scale が最大サイズでなかったら、消える
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -92,24 +121,15 @@ class IcicleController : GimickBase
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>Rayを可視化するための関数</summary>
+    private void OnDrawGizmos()
     {
-        if(collision.gameObject.tag is "Ground")
-        {
-            //ゲームオブジェクトの scale が最大サイズだったら、消えずに残る
-            if(_isScale)
-            {
-                _rb.constraints = 
-                    RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                Debug.Log("Alien");
-            }
+        //isGizmo が false になっていたら Gizmo を非表示にする
+        if (_isGizmo is false) return;
 
-            //ゲームオブジェクトの scale が最大サイズでなかったら、消える
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
+        //Rayを飛ばす方向を下方向に限定する
+        _dir = new Vector2(_direction, -1).normalized;
+        Gizmos.DrawRay(transform.position, _dir * _length);
     }
 
     public override void GameOverPause()
