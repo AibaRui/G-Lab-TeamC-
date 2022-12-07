@@ -18,7 +18,7 @@ public class blizzardController : MonoBehaviour
     private ParticleSystem _particlePrefab;
     [SerializeField, Range(1f, 10f), Tooltip("どのくらいの時間吹雪を起こすか")]
     private float _stormTime;
-    [SerializeField, Range(0f, 1f), Tooltip("blizzardを起こすときに使うpanelのalpha値")]
+    [SerializeField, Range(0f, 1f), Tooltip("blizzardを起こすときに使うpanelの透明度")]
     private float _alpha;
     /// <summary>AudioSource型の変数</summary>
     private AudioSource _audio = null;
@@ -53,16 +53,13 @@ public class blizzardController : MonoBehaviour
             _particlePrefab.Play();
             _audio.Play();
             _audio.DOFade(1f, random);
-            Debug.Log("Clear!");
             DOVirtual.DelayedCall(_stormTime, () =>
             {
-                Debug.Log("Great!");
                 _panelPrefab.DOFade(0f, random);
                 _audio.DOFade(0f, random).OnComplete(() =>
                 {
                     _audio.Stop();
                     _particlePrefab.Stop();
-                    Debug.Log("Perfect!");
                 });
             }, false);
         }
