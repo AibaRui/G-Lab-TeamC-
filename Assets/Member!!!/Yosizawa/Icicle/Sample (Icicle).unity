@@ -2570,5 +2570,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 8737710923263868541, guid: f2796abb3c0dd14428282a118c3aa05e, type: 3}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737710923263868541, guid: f2796abb3c0dd14428282a118c3aa05e, type: 3}
+      propertyPath: _maxExist
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2796abb3c0dd14428282a118c3aa05e, type: 3}

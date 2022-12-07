@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blizzardPanel: {fileID: 4511024771173425882, guid: b7563695cffc82241afbb3b79cc9d296, type: 3}
+  _blizzard: {fileID: 2364554368691156750, guid: 11be2b7f411ff894194916de66079df6, type: 3}
   _stormTime: 5
   _alpha: 0.8
 --- !u!82 &1002824246537106608
