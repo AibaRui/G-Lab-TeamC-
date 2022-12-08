@@ -2492,6 +2492,12 @@ MonoBehaviour:
   - {fileID: 1738790712}
   ranking_Now1: {fileID: 0}
   ranking_Now2: {fileID: 0}
+  ranking_name:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2146338719
 GameObject:
   m_ObjectHideFlags: 0

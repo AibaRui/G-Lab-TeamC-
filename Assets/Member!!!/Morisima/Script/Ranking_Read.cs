@@ -18,7 +18,7 @@ public class Ranking_Read : MonoBehaviour
        
         for (int i = 0; i < rankingText1.Length; i++)
         {
-           
+
             rankingText1[i].text = Ranking.instance.rankingValue[i].ToString();
         }
 
