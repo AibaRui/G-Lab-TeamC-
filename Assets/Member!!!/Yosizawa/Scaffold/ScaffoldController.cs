@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(AudioSource))]
 
 class ScaffoldController : GimickBase
 {
@@ -13,16 +13,41 @@ class ScaffoldController : GimickBase
     private float _timer = 0.0f;
     /// <summary>このゲームオブジェクトが踏まれた回数</summary>
     private int _stateCount = 0;
-    /// <summary>描画するSprite</summary>
-    private SpriteRenderer _mainSprite;
+    /// <summary>描画する画像</summary>
+    private SpriteRenderer _mainSprite = null;
+    [SerializeField, Tooltip("デフォルトの画像")]
+    private SpriteRenderer _defaultSprite = null;
+    [SerializeField, Tooltip("切り替える画像")]
+    private SpriteRenderer _changeSprite = null;
+    ///// <summary></summary>
+    //private AudioSource _mainAudio = null;
+    //[SerializeField, Tooltip("")]
+    //private AudioClip _firstCrack = null;
+    //[SerializeField, Tooltip("")]
+    //private AudioClip _secondCrack = null;
+    //[SerializeField, Tooltip("")]
+    //private AudioClip _break = null;
     /// <summary>当たり判定をフィルタリングする</summary>
     private ContactFilter2D _filter;
+    /// <summary>ゲームオブジェクトにアタッチされているBoxCollider2D</summary>
     private BoxCollider2D _boxCol2D;
+    /// <summary>ゲームオブジェクトにアタッチされているRigidbody2D</summary>
     private Rigidbody2D _rb;
 
     private void Start()
     {
         _mainSprite = GetComponent<SpriteRenderer>();
+        if (!_defaultSprite || !_changeSprite)
+        {
+            Debug.LogWarning("設定されていない画像があります。");
+        }
+
+        //_mainAudio = GetComponent<AudioSource>();
+        //if (!_firstCrack || !_secondCrack || !_break)
+        //{
+        //    Debug.LogWarning("設定されていない効果音があります。");
+        //}
+
         _boxCol2D = GetComponent<BoxCollider2D>();
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
@@ -33,22 +58,26 @@ class ScaffoldController : GimickBase
 
     private void FixedUpdate()
     {
-        switch (_stateCount)  //状態に応じて処理を切り替える
+        switch (_stateCount)  //何回踏まれたかに応じて処理を切り替える
         {
-            case 0:
-                _mainSprite.color = Color.red;
+            case 0:  // 初期状態
+                _mainSprite.sprite = _defaultSprite.sprite;
                 break;
-            case 1:
+            case 1:  // 1回目に踏まれたとき
                 _boxCol2D.isTrigger = false;
-                _mainSprite.color = Color.blue;
+                _mainSprite.sprite = _changeSprite.sprite;
+                _mainSprite.DOFade(1f, 1f);
+                //_mainAudio.clip = _firstCrack;
                 gameObject.layer = 11;
                 break;
-            case 2:
-                _mainSprite.color = Color.green;
+            case 2:  // 2回目に踏まれたとき
+                _mainSprite.DOFade(0.5f, 1f);
+                //_mainAudio.clip = _secondCrack;
                 DOVirtual.DelayedCall(1.0f, () =>
                 {
                     _boxCol2D.isTrigger = true;
                     gameObject.layer = default;
+                    //_mainAudio.clip = _break;
                 }, false);
                 break;
         }

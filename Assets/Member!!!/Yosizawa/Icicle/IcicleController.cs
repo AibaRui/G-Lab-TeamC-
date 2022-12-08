@@ -10,7 +10,7 @@ class IcicleController : GimickBase
     private float _fallSpeed = 1.0f;
     [SerializeField, Tooltip("氷柱がPlayerに衝突した時のPlayerの硬直時間")]
     private float _stunTime = 1f;
-    [SerializeField, Range(1f, 10f), Tooltip("オーラ接触時の拡大・縮小倍率")]
+    /// <summary>オーラ接触時の拡大・縮小倍率</summary>
     private float _magnification = 1.0f;
     [SerializeField, Tooltip("ゲームオブジェクトの大きさの最小")]
     private float _minSize = 2.0f;
