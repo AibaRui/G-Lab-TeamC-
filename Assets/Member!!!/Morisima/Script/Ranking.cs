@@ -16,7 +16,7 @@ public class Ranking : MonoBehaviour
     public int Point { get => point;}
     string ranking_gg = "  けんがい";
 
-    string[] ranking = { "ランキング1", "ランキング2", "ランキング3", "ランキング4", "ランキング5" };
+     string[] ranking = { "ランキング1", "ランキング2", "ランキング3", "ランキング4", "ランキング5" };
      
     public int[] rankingValue = new int[5];
      string[] playerValue = new string[5];
@@ -215,7 +215,7 @@ public class Ranking : MonoBehaviour
             
 
         }
-
+        PlayerPrefs.Save();
 
 
     }
