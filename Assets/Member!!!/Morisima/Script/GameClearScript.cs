@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameClearScript : MonoBehaviour
 {
+    // Ornament æ“¾”Ši”[•Ï”
+    private int Score1, Score2, Score3;
 
-    int Score1, Score2, Score3;
-    bool Image1, Image2, Image3;
+    // Ornament ImageŠi”[•Ï”
+    [SerializeField]
+    private Image[] Ornament1Image;
+
+    private bool GamePoint = false;
+
+    //private Sprite[] Image1;
 
     public void Start()
     {
@@ -17,6 +25,15 @@ public class GameClearScript : MonoBehaviour
 
     private void Update()
     {
-       
+        
     }
+
+    void Judge()
+    {
+        if(Score1 == 1)
+        {
+
+        }
+    }
+
 }
