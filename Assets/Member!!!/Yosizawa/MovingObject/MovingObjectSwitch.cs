@@ -15,9 +15,16 @@ class MovingObjectSwitch : GimickBase
     private float _moveTime = 1.0f;
     /// <summary>現在、Pause状態か判定するフラグ</summary>
     private bool _isPause = false;
+    private Rigidbody2D _objectRb = null;
 
     private void Start()
     {
+        //assignされたゲームオブジェクトにRigidbody2Dがアタッチされていることを確約する
+        if (_movingObject.TryGetComponent(out Rigidbody2D rb)) _objectRb = rb;
+        else _movingObject.gameObject.AddComponent<Rigidbody2D>();
+        _objectRb.gravityScale = 0;
+        _objectRb.constraints = RigidbodyConstraints2D.FreezeAll;
+
         //_movingFloarの初期地点を_startPointに設定
         _movingObject.position = _startPoint.position;
 
@@ -27,7 +34,6 @@ class MovingObjectSwitch : GimickBase
 
         //_movingFloarを一時停止させておく
         _movingObject.DOPause();
-        _isPause = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,7 +68,7 @@ class MovingObjectSwitch : GimickBase
 
     public override void Resume()
     {
-        _movingObject.DOPlay();
         _isPause = false;
+        _movingObject.DOPlay();
     }
 }
