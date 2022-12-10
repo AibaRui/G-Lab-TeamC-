@@ -50,7 +50,12 @@ public class Ranking : MonoBehaviour
         time_Now.text = Time.ToString();
 
 
-
+        GameOver.image_Score1[0] = 4;
+        GameOver.image_Score1[1] = 4;
+        GameOver.image_Score1[2] = 4;
+        GameOver.image_Score1[3] = 0;
+        GameOver.image_Score1[4] = 0;
+        GameOver.image_Score1[5] = 0;
         btn = GetComponent<Button>();
         GetRanking();
 
