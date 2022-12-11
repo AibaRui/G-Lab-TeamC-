@@ -14,10 +14,17 @@ class TurretController : GimickBase
     private float _interval = 1f;
     /// <summary>投擲する間隔をカウントする</summary>
     private float _timer = 0f;
-    [SerializeField, Tooltip("攻撃対象")]
+    /// <summary>標的</summary>
     private Transform[] _terget;
     /// <summary>現在、Pause中かどうかを判定するフラグ</summary>
     private bool _isPause = true;
+
+    private void Start()
+    {
+        Transform player1 = GameObject.FindGameObjectWithTag("Player1").transform;
+        Transform player2 = GameObject.FindGameObjectWithTag("Player2").transform;
+        _terget = new Transform[] { player1, player2 };
+    }
 
     private void Update()
     {
@@ -49,8 +56,10 @@ class TurretController : GimickBase
 
             if(velocity != Vector2.zero)
             {
+                float muzzlePos = 0.5f;
+                Vector2 vec = new Vector2(transform.position.x, transform.position.y + muzzlePos);
                 //弾を生成する
-                GameObject shell = Instantiate(_shell[random], transform.position, Quaternion.identity);
+                GameObject shell = Instantiate(_shell[random], vec, Quaternion.identity);
 
                 //弾にRigidbody2Dがアタッチされていることを確約する
                 Rigidbody2D shellRb;
@@ -63,7 +72,7 @@ class TurretController : GimickBase
         }
         else
         {
-            Debug.LogWarning("投擲するオブジェクト or 攻撃対象 がassignされていません。");
+            Debug.LogWarning("投擲するオブジェクトがassignされていません。");
         }
     }
 
