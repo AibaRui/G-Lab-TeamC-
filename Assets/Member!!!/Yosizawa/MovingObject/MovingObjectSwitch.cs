@@ -27,7 +27,6 @@ class MovingObjectSwitch : GimickBase
 
         //_movingFloar‚ðˆêŽž’âŽ~‚³‚¹‚Ä‚¨‚­
         _movingObject.DOPause();
-        _isPause = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,7 +61,7 @@ class MovingObjectSwitch : GimickBase
 
     public override void Resume()
     {
-        _movingObject.DOPlay();
         _isPause = false;
+        _movingObject.DOPlay();
     }
 }
