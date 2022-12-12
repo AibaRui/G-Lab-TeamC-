@@ -6,10 +6,14 @@ public class NomalGimmickBlocks : GimickBase
 {
     [Header("オーラによって変化するまでの時間")]
     [SerializeField] float _timeLimit = 5f;
+
     [SerializeField] float _timeCount = 0;
 
-    [SerializeField] Color _colorHot;
-    [SerializeField] Color _colorCool;
+    [Header("溶けてる時のイラスト")]
+    [SerializeField] SpriteRenderer _spriteWater;
+
+    [Header("固まってる時のイラスト")]
+    [SerializeField] SpriteRenderer _spriteSnow;
 
     [Header("氷の状態の時のレイヤー(Playerレイヤーと当たる)")]
     [Tooltip("氷の状態の時のレイヤー(Playerレイヤーと当たる)")] [SerializeField] int _coolLayer;
@@ -29,11 +33,15 @@ public class NomalGimmickBlocks : GimickBase
     //現在、冷気のオーラにあたっているかどうかを
     bool cool;
 
+    [Header("初期の状態を決める")]
     [SerializeField] BrockState _brockState = BrockState.Ice;
 
     bool _isPause = false;
+
+    SpriteRenderer _sprite;
     void Start()
     {
+        _sprite = GetComponent<SpriteRenderer>();
         ChangeBlock();
     }
 
@@ -98,13 +106,13 @@ public class NomalGimmickBlocks : GimickBase
     {
         if (_brockState == BrockState.Hot)
         {
-            this.GetComponent<SpriteRenderer>().color = _colorHot;
+            _sprite.sprite = _spriteWater.sprite;
             gameObject.layer = _hotLayer;
-            
+
         }
         else
         {
-            this.GetComponent<SpriteRenderer>().color = _colorCool;
+            _sprite.sprite = _spriteSnow.sprite;
             gameObject.layer = _coolLayer;
         }
     }
