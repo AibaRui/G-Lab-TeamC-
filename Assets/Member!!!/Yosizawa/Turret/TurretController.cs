@@ -56,9 +56,9 @@ class TurretController : GimickBase
 
             if(velocity != Vector2.zero)
             {
+                //弾を生成する
                 float muzzlePos = 0.5f;
                 Vector2 vec = new Vector2(transform.position.x, transform.position.y + muzzlePos);
-                //弾を生成する
                 GameObject shell = Instantiate(_shell[random], vec, Quaternion.identity);
 
                 //弾にRigidbody2Dがアタッチされていることを確約する
