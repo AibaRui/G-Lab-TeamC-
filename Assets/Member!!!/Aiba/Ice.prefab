@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c0a08b49d19df438231dbdd8623e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimit: 2
+  _timeLimit: 1.5
   _timeCount: 0
   _colorHot: {r: 0, g: 0.2379129, b: 1, a: 0.654902}
   _colorCool: {r: 0, g: 0.86769533, b: 1, a: 1}
