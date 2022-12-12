@@ -16,5 +16,12 @@ public class Clear : MonoBehaviour
             // Enter でクリア画面へ移行
             SceneManager.LoadScene("ClearScene");
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Enter でクリア画面へ移行
+            SceneManager.LoadScene("GameOverScene");
+        }
+
     }
 }
