@@ -70,14 +70,15 @@ public class PlayerChangeAura : MonoBehaviour
         }
         else if (_sousa == Sousa.Joistick)
         {
-            ChangeAuraControllerJoistick();
+            CheckChenge();
+            //ChangeAuraControllerJoistick();
         }
         else if (_sousa == Sousa.KeyBord)
         {
             ChangeAuraKeyBord();
         }
 
-        CheckChenge();
+
     }
 
     /// <summary>ジョイスティックでの切り替え</summary>
@@ -155,8 +156,8 @@ public class PlayerChangeAura : MonoBehaviour
         var h = Input.GetAxisRaw($"AuraChangeHorizontal{_playerNumber}");
         var v = Input.GetAxisRaw($"AuraChangeVertical{_playerNumber}");
 
-      var  h1 = Input.GetAxisRaw("Horizontal1");
-      var  v1 = Input.GetAxisRaw("Vertical1");
+        var h1 = Input.GetAxisRaw("Horizontal1");
+        var v1 = Input.GetAxisRaw("Vertical1");
 
         if (Input.GetButtonDown($"AuraChangeClick{_playerNumber}") || Input.GetKeyDown(KeyCode.O))
         {
@@ -168,37 +169,37 @@ public class PlayerChangeAura : MonoBehaviour
 
 
 
-    //    if (!_isCircleAura)
-    //    {
-    //        if (v < 0 || v1>0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.up_box);
-    //            _auraPos = AuraPos.Up;
-    //            _ischanging = true;
+        //    if (!_isCircleAura)
+        //    {
+        //        if (v < 0 || v1>0)
+        //        {
+        //            _particleController.SetAuraChange(ParticleController.mode_.up_box);
+        //            _auraPos = AuraPos.Up;
+        //            _ischanging = true;
 
-    //        }
-    //        if (v > 0 || v1<0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.down_box);
-    //            _auraPos = AuraPos.Down;
-    //            _ischanging = true;
+        //        }
+        //        if (v > 0 || v1<0)
+        //        {
+        //            _particleController.SetAuraChange(ParticleController.mode_.down_box);
+        //            _auraPos = AuraPos.Down;
+        //            _ischanging = true;
 
-    //        }
-    //        if (h < 0 || h1<0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.back_box);
-    //            _auraPos = AuraPos.Left;
-    //            _ischanging = true;
+        //        }
+        //        if (h < 0 || h1<0)
+        //        {
+        //            _particleController.SetAuraChange(ParticleController.mode_.back_box);
+        //            _auraPos = AuraPos.Left;
+        //            _ischanging = true;
 
-    //        }
-    //        if (h > 0 || h1>0)
-    //        {
-    //            _particleController.SetAuraChange(ParticleController.mode_.front_box);
-    //            _auraPos = AuraPos.Right;
-    //            _ischanging = true;
+        //        }
+        //        if (h > 0 || h1>0)
+        //        {
+        //            _particleController.SetAuraChange(ParticleController.mode_.front_box);
+        //            _auraPos = AuraPos.Right;
+        //            _ischanging = true;
 
-    //        }
-    //    }
+        //        }
+        //    }
     }
 
     /// <summary>ボタンでの切り替え</summary>
@@ -240,6 +241,30 @@ public class PlayerChangeAura : MonoBehaviour
             }
             _eria[count].SetActive(true);
         }
+
+        if (_ischanging)
+        {
+            Vector3 pos = new Vector3(0, 0, 0);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                pos = _upPos.position;
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                pos = _downPos.position;
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                pos = _rightPos.position;
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                pos = _leftPos.position;
+            }
+            Change(pos);
+        }
+
     }
 
 
