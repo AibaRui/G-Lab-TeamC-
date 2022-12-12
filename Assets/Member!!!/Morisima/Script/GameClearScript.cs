@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +10,21 @@ public class GameClearScript : MonoBehaviour
     [SerializeField]
     private Image[] OrnamentImage;
 
+    // 回収アイテムの数をテキストに反映
+    [SerializeField]
+    TextMeshProUGUI ScoreText = null;
+
     // Ornament 取得数の合計値格納変数
     private int ScorePoint = 0;
 
+    private void Start()
+    {
+        ScorePoint= 0;
+    }
+
     private void Update()
     {
+        ScoreText.text = ScorePoint.ToString();
         Judge();
     }
 
