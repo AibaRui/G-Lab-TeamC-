@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interval: 1
+  _defaultSprite: {fileID: 0}
+  _changeSprite: {fileID: 0}
 --- !u!61 &3132375464816476518
 BoxCollider2D:
   m_ObjectHideFlags: 0
