@@ -19,14 +19,14 @@ class ScaffoldController : GimickBase
     private SpriteRenderer _defaultSprite = null;
     [SerializeField, Tooltip("切り替える画像")]
     private SpriteRenderer _changeSprite = null;
-    ///// <summary></summary>
-    //private AudioSource _mainAudio = null;
-    //[SerializeField, Tooltip("")]
-    //private AudioClip _firstCrack = null;
-    //[SerializeField, Tooltip("")]
-    //private AudioClip _secondCrack = null;
-    //[SerializeField, Tooltip("")]
-    //private AudioClip _break = null;
+    /// <summary>再生する音</summary>
+    private AudioSource _mainAudio = null;
+    [SerializeField, Tooltip("1回踏んだ時のSE")]
+    private AudioClip _firstCrack = null;
+    [SerializeField, Tooltip("2回踏んだ時のSE")]
+    private AudioClip _secondCrack = null;
+    [SerializeField, Tooltip("割れるときのSE")]
+    private AudioClip _break = null;
     /// <summary>当たり判定をフィルタリングする</summary>
     private ContactFilter2D _filter;
     /// <summary>ゲームオブジェクトにアタッチされているBoxCollider2D</summary>
@@ -42,11 +42,11 @@ class ScaffoldController : GimickBase
             Debug.LogWarning("設定されていない画像があります。");
         }
 
-        //_mainAudio = GetComponent<AudioSource>();
-        //if (!_firstCrack || !_secondCrack || !_break)
-        //{
-        //    Debug.LogWarning("設定されていない効果音があります。");
-        //}
+        _mainAudio = GetComponent<AudioSource>();
+        if (!_firstCrack || !_secondCrack || !_break)
+        {
+            Debug.LogWarning("設定されていない効果音があります。");
+        }
 
         _boxCol2D = GetComponent<BoxCollider2D>();
         _rb = GetComponent<Rigidbody2D>();
@@ -67,17 +67,17 @@ class ScaffoldController : GimickBase
                 _boxCol2D.isTrigger = false;
                 _mainSprite.sprite = _changeSprite.sprite;
                 _mainSprite.DOFade(1f, 1f);
-                //_mainAudio.clip = _firstCrack;
+                _mainAudio.clip = _firstCrack;
                 gameObject.layer = 11;
                 break;
             case 2:  // 2回目に踏まれたとき
                 _mainSprite.DOFade(0.5f, 1f);
-                //_mainAudio.clip = _secondCrack;
+                _mainAudio.clip = _secondCrack;
                 DOVirtual.DelayedCall(1.0f, () =>
                 {
                     _boxCol2D.isTrigger = true;
                     gameObject.layer = default;
-                    //_mainAudio.clip = _break;
+                    _mainAudio.clip = _break;
                 }, false);
                 break;
         }
