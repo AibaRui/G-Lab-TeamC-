@@ -19,7 +19,7 @@ public class Clear : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Enter でクリア画面へ移行
+            // Space でゲームオーバー画面へ移行
             SceneManager.LoadScene("GameOverScene");
         }
 
