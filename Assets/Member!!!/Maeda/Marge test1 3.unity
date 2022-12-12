@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -26301,6 +26301,14 @@ PrefabInstance:
     - target: {fileID: 7083751362259605624, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0714285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.0714285
       objectReference: {fileID: 0}
     - target: {fileID: 7083751362259605629, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
       propertyPath: m_Name
@@ -57413,6 +57421,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0714285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.0714285
+      objectReference: {fileID: 0}
     - target: {fileID: 7083751362259605629, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
       propertyPath: m_Name
       value: Ice (6)
@@ -59216,6 +59232,14 @@ PrefabInstance:
     - target: {fileID: 7083751362259605624, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0714285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083751362259605625, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.0714285
       objectReference: {fileID: 0}
     - target: {fileID: 7083751362259605629, guid: 87178e1725e23c94eaf5a1d317f8a47f, type: 3}
       propertyPath: m_Name
