@@ -19,14 +19,14 @@ public abstract class GimickBase : MonoBehaviour
     {
         // 呼んで欲しいメソッドを登録する。
         _pauseManager.OnPauseResume += PauseResume;
-        _pauseManager.OnLevelUp += LevelUpPauseResume;
+        _pauseManager.GameEnd += GameEndPauseResume;
     }
 
     void OnDisable()
     {
         // OnDisable ではメソッドの登録を解除すること。さもないとオブジェクトが無効にされたり破棄されたりした後にエラーになってしまう。
         _pauseManager.OnPauseResume -= PauseResume;
-        _pauseManager.OnPauseResume -= LevelUpPauseResume;
+        _pauseManager.OnPauseResume -= GameEndPauseResume;
     }
 
     void PauseResume(bool isPause)
@@ -41,7 +41,7 @@ public abstract class GimickBase : MonoBehaviour
         }
     }
 
-    void LevelUpPauseResume(bool isPause)
+    void GameEndPauseResume(bool isPause)
     {
         if (isPause)
         {

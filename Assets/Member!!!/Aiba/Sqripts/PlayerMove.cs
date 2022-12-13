@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+    [RequireComponent(typeof(Animator))]
 public class PlayerMove : MonoBehaviour
 {
     [Header("プレイヤーの番号")]
@@ -26,6 +26,8 @@ public class PlayerMove : MonoBehaviour
 
     Animator _anim;
     Rigidbody2D _rb;
+
+
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -109,6 +111,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
+            _rb.velocity = velo; 
             //アニメーション
             if (h != 0)
             {
