@@ -13,8 +13,6 @@ public class GameOver : MonoBehaviour
     private Image[] Image3;
 
     public static int[] image_Score1 = new int[6];
-  
-
 
     private int[] imageScore1 = new int[6];
 
@@ -23,11 +21,9 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
-      
-            imageScore1[0] = image_Score1[0];
-            imageScore1[1] = image_Score1[1];
-            imageScore1[2] = image_Score1[2];
+         imageScore1[0] = image_Score1[0];
+         imageScore1[1] = image_Score1[1];
+         imageScore1[2] = image_Score1[2];
         
     }
 
