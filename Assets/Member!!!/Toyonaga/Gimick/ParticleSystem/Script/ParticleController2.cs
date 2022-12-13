@@ -44,6 +44,34 @@ public class ParticleController2 : GimickBase
     }
     private particle[,] p_st_;
 
+    /// <summary>
+    /// パーティクルの位置、形状を変更する関数。引数intの値に応じてパーティクル出現位置・形状が変化。
+    /// 引数 int ：    パーティクルシステムのPositionを「中央」とし、
+    ///                パーティクルシステムのright方向を「右側」とし、
+    ///                パーティクルシステムのup方向を「上側」としたとき、
+    ///                以下の値指定で位置・形状変化 (※デフォルトでの登録順。p_cir_areas_ or p_box_areasインスペクタを独自で変更後は当てはまらない。以下詳細参考の事。)
+    /// 値   位置  形状
+    /// 0:   中央  円形
+    /// 1:   上側  四角形   
+    /// 2:   右側  四角形
+    /// 3:   下側  四角形    
+    /// 4:   左側  四角形
+    ///                例外：4より大きい数入力時等、例外の引数の場合：0に登録されたコライダ位置・範囲内にパーティクル移動
+    /// [詳細]
+    /// p_cir_areas_(必須：円2Dコライダ)に登録したコライダ順に整数[0 ~] を指定する事でパーティクルを当該コライダ位置・範囲内に表示
+    /// p_box_areas_(必須：四角2Dコライダ)に登録したコライダ順に整数[p_cir_areasの登録数+1 ~] を指定する事でパーティクルを当該コライダ位置・範囲内に表示
+    /// </summary>
+    public void AuraChange(int mode_num)
+    {
+        int cir_num = p_cir_areas_.Count;
+        int box_num = p_box_areas_.Count;
+        if(cir_num + box_num <= mode_num || 0 > mode_num)
+        {
+            mode_num = 0;
+        }
+        this.mode_num_ = mode_num;
+    }
+
     private void Start()
     {
         // ---- 初期化処理 ---- //
@@ -72,13 +100,10 @@ public class ParticleController2 : GimickBase
             }
             p_st_ = GenerateParticles(ref aura_mode_);
         }
-        
-
     }
 
     private void FixedUpdate()
     {
-       
         // ---- ポーズ中は動作無し ---- //
         if (is_Pause_) { return; }
         // ---- 実行中の処理 ---- //
@@ -164,12 +189,6 @@ public class ParticleController2 : GimickBase
                     local_y0 - c * box_cell_height - box_cell_height / 2 ,
                     transform.position.z
                     );
-                // ボックスローカル座標：配置にランダム性を導入する
-                //local_pos += new Vector3(
-                //    Random.Range(-box_cell_width / 2 * rand_coff_, box_cell_width / 2 * rand_coff_),
-                //    Random.Range(-box_cell_height / 2 * rand_coff_, box_cell_height / 2 * rand_coff_),
-                //    0
-                //    ); 
                 local_pos += new Vector3(
                     -box_cell_width / 2 * rand_coff_ * (Mathf.PerlinNoise(Time.time * (r+1) * (c+1), 0) - 0.5f),
                     -box_cell_height / 2 * rand_coff_ * (Mathf.PerlinNoise(Time.time * (r+1) * (c+1), 0) - 0.5f),
@@ -180,7 +199,6 @@ public class ParticleController2 : GimickBase
                     0,
                     0
                     );
-
 
                 // 構造体に情報を格納していく：親からパーティクルの目標位置の偏差情報を取得しておけば、座標更新が出来る
                 float deg = box.transform.eulerAngles.z;    // ボックス回転量(deg)取得
