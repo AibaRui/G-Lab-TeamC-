@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
 
 class TestShellController : GimickBase
 {
-    [Tooltip("弾が消失するまでの時間")]
+    [SerializeField, Tooltip("弾が消失するまでの時間")]
     private float _lifeTime = 3f;
     /// <summary>経過時間を測定するタイマー</summary>
     private float _timer = 0;
+    [SerializeField, Tooltip("Playerに着弾した時に加える力")]
+    private float _forcePower = 1f;
+    [SerializeField, Tooltip("Playerに着弾した時のノックバックさせる時間")]
+    private float _knockBackTime = 0.3f;
     /// <summary>弾にアタッチされているコライダー</summary>
     private CircleCollider2D _col;
     /// <summary>現在、Pause中かどうかを判定するフラグ</summary>
@@ -44,7 +49,19 @@ class TestShellController : GimickBase
     {
         if(collision.gameObject.tag is "Player1" or "Player2")
         {
-            Debug.Log("HIT");
+            GameObject player = collision.gameObject;
+            //Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+            
+            if (player.transform.position.x <= transform.position.x)
+            {
+                player.transform.DOMoveX(-_forcePower, _knockBackTime).SetRelative();
+                Debug.Log("Go! Left!");
+            }
+            else
+            {
+                player.transform.DOMoveX(_forcePower, _knockBackTime).SetRelative();
+                Debug.Log("Go! Right!");
+            }
             Destroy(gameObject);
         }
     }
