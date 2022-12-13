@@ -12,7 +12,7 @@ public class Ranking : MonoBehaviour
      Button btn;
 
 
-    private float time = -5.55f;
+    private float time = -5.56f;
     private int point = 51;
     public int Point { get => point;}
     public float Time { get => time;}

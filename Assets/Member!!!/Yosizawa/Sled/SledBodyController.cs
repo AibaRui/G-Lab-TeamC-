@@ -7,7 +7,7 @@ using UnityEngine;
 public class SledBodyController : MonoBehaviour
 {
     /// <summary></summary>
-    private SledController _sled;
+    private SledController _sled = null;
     /// <summary>Rigidbody2DŒ^‚Ì•Ï”</summary>
     private Rigidbody2D _rb;
     /// <summary>“–‚½‚è”»’è‚ğ§ŒÀ‚·‚é</summary>
