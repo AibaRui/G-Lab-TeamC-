@@ -16,7 +16,7 @@ public class IceBase : MonoBehaviour
     private float small_vibration_time_ = 1f;
     private float small_vibration_mag_ = 5f;
     private float transform_rate_ = 0f;
-    private float init_size_ = 0.01f;
+    private float init_size_ = 0.0001f;
     private Vector3 max_size_ = new Vector3(0, 0, 0);
 
     private void Start()
