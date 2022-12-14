@@ -15,7 +15,7 @@ public class GameClearScript : MonoBehaviour
     TextMeshProUGUI ScoreText = null;
 
     // Ornament æ“¾”‚Ì‡Œv’lŠi”[•Ï”
-    private int ScorePoint = 0;
+    public static int ScorePoint = 0;
 
     private void Start()
     {
