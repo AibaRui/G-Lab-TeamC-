@@ -23,6 +23,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     PlayerMove _playerMove;
 
+    [SerializeField]
+    PlayerDamage _playerDamage;
 
     GameManager _gm;
 
@@ -49,20 +51,28 @@ public class PlayerControl : MonoBehaviour
         {
             if (_sousa == Sousa.Controller)
             {
-               _playerMove.MoveController(_playerNumber);
-                _playerMove.JumpController(_playerNumber);
+                if (!_playerDamage.IsKnockBack)
+                {
+                    _playerMove.MoveController(_playerNumber);
+                    _playerMove.JumpController(_playerNumber);
+                }
+
 
                 _playerChangeAura.CheckChenge();
                 _playerChangeAura.ChangeAuraControllerJoistick(_playerNumber);
             }
             else if (_sousa == Sousa.KeyBord)
             {
-                _playerMove.MoveKeybord(_playerNumber);
-                _playerMove.JumpKeybord();
+                if (!_playerDamage.IsKnockBack)
+                {
+                    _playerMove.MoveKeybord(_playerNumber);
+                    _playerMove.JumpKeybord();
+                }
 
                 _playerChangeAura.ChangeAuraKeyBord(_playerNumber);
                 _playerChangeAura.CheckChenge();
             }
+            _playerDamage.CountTime();
         }
 
         Vector2 start = transform.position;

@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 990835017774086836}
   - component: {fileID: 990835017774086839}
   - component: {fileID: 1563017723}
+  - component: {fileID: 3321662363026821097}
   m_Layer: 8
   m_Name: Player1(Cool)
   m_TagString: Player1
@@ -591,6 +592,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2176
   _groundCheckLine: 0.8
+  _audJump: {fileID: 0}
+  _moveAud: {fileID: 0}
 --- !u!95 &990835017774086836
 Animator:
   serializedVersion: 4
@@ -624,6 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleController: {fileID: 7965138139710718290}
+  _aud: {fileID: 0}
   _period: 0.5
   _imageStick: {fileID: 990835016755320838}
   _imageCircle: {fileID: 990835016533101171}
@@ -649,6 +653,20 @@ MonoBehaviour:
   _nadareTagName: 
   _playerChangeAura: {fileID: 990835017774086839}
   _playerMove: {fileID: 990835017774086842}
+  _playerDamage: {fileID: 0}
+--- !u!114 &3321662363026821097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990835017774086844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4389681fbbc8540aaa66f6a5bebef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackTime: 1
 --- !u!1 &990835017863137854
 GameObject:
   m_ObjectHideFlags: 0
