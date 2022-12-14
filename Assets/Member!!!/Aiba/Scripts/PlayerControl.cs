@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
     PlayerMove _playerMove;
 
     [SerializeField]
-    PlayerDamage _playerDamage;
+    DamagePlayer _playerDamage;
 
     GameManager _gm;
 
