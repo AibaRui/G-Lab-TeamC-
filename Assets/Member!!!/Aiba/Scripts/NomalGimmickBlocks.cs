@@ -7,13 +7,13 @@ public class NomalGimmickBlocks : GimickBase
     [Header("オーラによって変化するまでの時間")]
     [SerializeField] float _timeLimit = 5f;
 
-    [SerializeField] float _timeCount = 0;
+    private float _timeCount = 0;
 
     [Header("溶けてる時のイラスト")]
-    [SerializeField] SpriteRenderer _spriteWater;
+    [SerializeField] Sprite _spriteWater;
 
     [Header("固まってる時のイラスト")]
-    [SerializeField] SpriteRenderer _spriteSnow;
+    [SerializeField] Sprite _spriteSnow;
 
     [Header("氷の状態の時のレイヤー(Playerレイヤーと当たる)")]
     [Tooltip("氷の状態の時のレイヤー(Playerレイヤーと当たる)")] [SerializeField] int _coolLayer;
@@ -36,12 +36,18 @@ public class NomalGimmickBlocks : GimickBase
     [Header("初期の状態を決める")]
     [SerializeField] BrockState _brockState = BrockState.Ice;
 
+    [Header("溶けた時の音")]
+    [SerializeField] AudioClip _hotSound;
+    [Header("固まった時の音")]
+    [SerializeField] AudioClip _coolSound;
     bool _isPause = false;
 
+    AudioSource _aud;
     SpriteRenderer _sprite;
     void Start()
     {
         _sprite = GetComponent<SpriteRenderer>();
+        _aud = GetComponent<AudioSource>();
         ChangeBlock();
     }
 
@@ -63,6 +69,7 @@ public class NomalGimmickBlocks : GimickBase
                         _brockState = BrockState.Ice;
                         _timeCount = 0;
                         ChangeBlock();
+                        _aud.PlayOneShot(_coolSound);
                     }
                 }
             }
@@ -80,6 +87,7 @@ public class NomalGimmickBlocks : GimickBase
                         _brockState = BrockState.Hot;
                         _timeCount = 0;
                         ChangeBlock();
+                        _aud.PlayOneShot(_hotSound);
                     }
                 }
             }
@@ -99,6 +107,8 @@ public class NomalGimmickBlocks : GimickBase
                 }
             }
         }
+
+        Debug.Log(_timeCount);
     }
 
     //Stateの状態に応じて、形状を変える
@@ -106,13 +116,13 @@ public class NomalGimmickBlocks : GimickBase
     {
         if (_brockState == BrockState.Hot)
         {
-            _sprite.sprite = _spriteWater.sprite;
+            _sprite.sprite = _spriteWater;
             gameObject.layer = _hotLayer;
 
         }
         else
         {
-            _sprite.sprite = _spriteSnow.sprite;
+            _sprite.sprite = _spriteSnow;
             gameObject.layer = _coolLayer;
         }
     }
@@ -120,14 +130,17 @@ public class NomalGimmickBlocks : GimickBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _coolTagName)
+        if (!_isPause)
         {
-            cool = true;
-        }
+            if (collision.gameObject.tag == _coolTagName)
+            {
+                cool = true;
+            }
 
-        if (collision.gameObject.tag == _hotTagName)
-        {
-            hot = true;
+            if (collision.gameObject.tag == _hotTagName)
+            {
+                hot = true;
+            }
         }
     }
 

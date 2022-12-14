@@ -25,7 +25,7 @@ public class PauseManager : MonoBehaviour
 
 
     /// <summary>一時停止・再開を入れるデリゲートプロパティ</summary>
-    public GamerOver OnLevelUp
+    public GamerOver GameEnd
     {
         get { return _onGameOverUp; }
         set { _onGameOverUp = value; }

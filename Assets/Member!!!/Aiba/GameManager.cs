@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("ゲームオーバーのパネル")]
     [SerializeField] GameObject _gameOverPanel;
 
-    [SerializeField] GameObject _gameClearPanel;
+    [Header("クリアシーンの名前")]
+    [SerializeField] string _clearSceneName;
+
 
     PauseManager _pause;
 
@@ -18,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
-        _gameClearPanel.SetActive(true);
+        SceneManager.LoadScene(_clearSceneName);
         _pause.PauseResumeGameEnd();
     }
 
