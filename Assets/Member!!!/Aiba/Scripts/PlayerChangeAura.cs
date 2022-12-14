@@ -4,47 +4,28 @@ using UnityEngine;
 
 public class PlayerChangeAura : MonoBehaviour
 {
-    [Header("オーラの切り替えの操作を何でするか")]
-    [SerializeField] Sousa _sousa = Sousa.Joistick;
+    [Header("Playerの子オブジェクトのパーティクルシステムをつける")]
+    [SerializeField] ParticleController2 _particleController;
 
-    [Header("プレイヤーの番号")]
-    [Tooltip("プレイヤーの番号")] [SerializeField] int _playerNumber = 1;
-
-    [SerializeField] ParticleController _particleController;
-
-    //[Header("===ボタンでの切り替え===")]
-
-    //[Header("能力の形")]
-    //[Tooltip("能力の形")] [SerializeField] GameObject[] _eria = new GameObject[1];
-
-    //[Header("能力の形、上")]
-    //[Tooltip("能力の形、上")] [SerializeField] GameObject _eriaUp;
-
-    //[Header("能力の形、下")]
-    //[Tooltip("能力の形、下")] [SerializeField] GameObject _eriaDown;
-    
-    //[Header("能力の形、右")]
-    //[Tooltip("能力の形、右")] [SerializeField] GameObject _eriaRight;
-
-    //[Header("能力の形、左")]
-    //[Tooltip("能力の形、左")] [SerializeField] GameObject _eriaLeft;
+    [Header("オーラが変わる音")]
+    [SerializeField] AudioSource _aud;
 
     int count = 0;
 
     [Header("===Joistickでの切り替え===")]
 
     // 中心点
-    [SerializeField] private Vector3 _center;
+    private Vector3 _center;
 
     // 円運動周期
+    [Header("オーラの回転の速度。小さいほど早い")]
     [SerializeField] private float _period = 2;
 
+    [Header("オーラが棒状の時のイラスト")]
+    [Tooltip("オーラが棒状の時のイラスト")] [SerializeField] GameObject _imageStick;
 
-    [Header("棒状の形")]
-    [Tooltip("棒状の形")] [SerializeField] GameObject _imageStick;
-
-    [Header("円形")]
-    [Tooltip("円形")] [SerializeField] GameObject _imageCircle;
+    [Header("オーラが円の時のイラスト")]
+    [Tooltip("オーラが円の時のイラスト")] [SerializeField] GameObject _imageCircle;
 
 
     [Header("上のオーラの位置")]
@@ -57,41 +38,22 @@ public class PlayerChangeAura : MonoBehaviour
     [SerializeField] Transform _leftPos;
 
     AuraPos _auraPos = AuraPos.Up;
-    Vector3 _pos;
+
     bool _ischanging = false;
     bool _isCircleAura = true;
 
     void Start()
     {
-        _pos = _upPos.position;
-       // if (_sousa == Sousa.Bbuttun || _sousa == Sousa.KeyBord) ;
-            // _eriaUp.SetActive(true);
-           // _eria[count].SetActive(true);
+        _imageCircle.SetActive(true);
     }
 
     void Update()
-    {
-       // if (_sousa == Sousa.Bbuttun)
-       // {
-            //ChangeAuraControllerButtun();
-      //  }
-        if (_sousa == Sousa.Joistick)
-        {
-            CheckChenge();
-            ChangeAuraControllerJoistick();
-        }
-        else if (_sousa == Sousa.KeyBord)
-        {
-            ChangeAuraKeyBord();
-            CheckChenge();
-        }
-
-
+    {    
     }
 
     /// <summary>ジョイスティックでの切り替え</summary>
     /// ポジションを決める
-    void CheckChenge()
+   public void CheckChenge()
     {
         if (_ischanging)
         {
@@ -121,7 +83,7 @@ public class PlayerChangeAura : MonoBehaviour
 
     /// <summary>ジョイスティックでの切り替え</summary>
     /// 回転させる処理
-    void Change(Vector3 nextTransform)
+    public void Change(Vector3 nextTransform)
     {
         var tr = _imageStick.transform;
         float period = 0;
@@ -150,6 +112,7 @@ public class PlayerChangeAura : MonoBehaviour
         //回転終了の判定と、修正
         if (Vector2.Distance(nextTransform, tr.transform.position) < 0.3)
         {
+            _aud.Play();
             _ischanging = false;
             tr.position = nextTransform;
 
@@ -162,7 +125,7 @@ public class PlayerChangeAura : MonoBehaviour
     }
 
     /// <summary>ジョイスティックでの切り替え</summary>
-    void ChangeAuraControllerJoistick()
+    public void ChangeAuraControllerJoistick(int _playerNumber)
     {
         var h = Input.GetAxisRaw($"AuraChangeHorizontal{_playerNumber}");
         var v = Input.GetAxisRaw($"AuraChangeVertical{_playerNumber}");
@@ -171,12 +134,16 @@ public class PlayerChangeAura : MonoBehaviour
         var h1 = Input.GetAxisRaw("Horizontal1");
         var v1 = Input.GetAxisRaw("Vertical1");
         Debug.Log(h);
-        if (Input.GetButtonDown($"AuraChangeClick{_playerNumber}") || Input.GetKeyDown(KeyCode.O))
+        if (Input.GetButtonDown($"AuraChangeClick{_playerNumber}"))
         {
-
+            _particleController.AuraChange(0);
             _isCircleAura = !_isCircleAura;
             _imageCircle.SetActive(_isCircleAura);
             _imageStick.SetActive(!_isCircleAura);
+            _aud.Play();
+
+            if (_isCircleAura) _particleController.AuraChange(0);
+            else _particleController.AuraChange(1);
         }
 
 
@@ -185,52 +152,37 @@ public class PlayerChangeAura : MonoBehaviour
         {
             if (v < 0 || v1 > 0)
             {
-                //_particleController.SetAuraChange(ParticleController.mode_.up_box);
                 _auraPos = AuraPos.Up;
                 _ischanging = true;
-
+                _particleController.AuraChange(1);
             }
             if (v > 0 || v1 < 0)
             {
-                // _particleController.SetAuraChange(ParticleController.mode_.down_box);
                 _auraPos = AuraPos.Down;
                 _ischanging = true;
+                _particleController.AuraChange(3);
 
             }
             if (h < 0 || h1 < 0)
             {
-                // _particleController.SetAuraChange(ParticleController.mode_.back_box);
                 _auraPos = AuraPos.Left;
                 _ischanging = true;
-
+                _particleController.AuraChange(4);
             }
             if (h > 0 || h1 > 0)
             {
-                // _particleController.SetAuraChange(ParticleController.mode_.front_box);
                 _auraPos = AuraPos.Right;
                 _ischanging = true;
+                _particleController.AuraChange(2);
 
             }
         }
     }
 
-    /// <summary>ボタンでの切り替え</summary>
-    //void ChangeAuraControllerButtun()
-    //{
-    //    if (Input.GetButtonDown($"AuraChange{_playerNumber}"))
-    //    {
-    //        _eria[count].SetActive(false);
-    //        count++;
-    //        if (count == _eria.Length)
-    //        {
-    //            count = 0;
-    //        }
-    //        _eria[count].SetActive(true);
-    //    }
-    //}
+
 
     //キーボードでの切り替え
-    void ChangeAuraKeyBord()
+    public void ChangeAuraKeyBord(int _playerNumber)
     {
         var h = 0;
         var v = 0;
@@ -238,25 +190,31 @@ public class PlayerChangeAura : MonoBehaviour
         var h2 = 0;
         var v2 = 0;
 
-        if (Input.GetKeyDown(KeyCode.R) && _playerNumber==1)
+        if (Input.GetKeyDown(KeyCode.R) && _playerNumber == 1)
         {
             _isCircleAura = !_isCircleAura;
             _imageCircle.SetActive(_isCircleAura);
             _imageStick.SetActive(!_isCircleAura);
+            if (_isCircleAura) _particleController.AuraChange(0);
+            else _particleController.AuraChange(1);
+            _aud.Play();
         }
         if (Input.GetKeyDown(KeyCode.O) && _playerNumber == 2)
         {
             _isCircleAura = !_isCircleAura;
             _imageCircle.SetActive(_isCircleAura);
             _imageStick.SetActive(!_isCircleAura);
+            if (_isCircleAura) _particleController.AuraChange(0);
+            else _particleController.AuraChange(1);
+            _aud.Play();
         }
-        
+
         //Player1
-        if(Input.GetKey(KeyCode.H) && _playerNumber == 1)
+        if (Input.GetKey(KeyCode.H) && _playerNumber == 1)
         {
             h = 1;
         }
-        else if(Input.GetKey(KeyCode.F) && _playerNumber == 1)
+        else if (Input.GetKey(KeyCode.F) && _playerNumber == 1)
         {
             h = -1;
         }
@@ -294,34 +252,34 @@ public class PlayerChangeAura : MonoBehaviour
                 //_particleController.SetAuraChange(ParticleController.mode_.up_box);
                 _auraPos = AuraPos.Up;
                 _ischanging = true;
-
+                _particleController.AuraChange(1);
             }
             if (v > 0 || v2 < 0)
             {
                 // _particleController.SetAuraChange(ParticleController.mode_.down_box);
                 _auraPos = AuraPos.Down;
                 _ischanging = true;
-
+                _particleController.AuraChange(3);
             }
             if (h < 0 || h2 < 0)
             {
                 // _particleController.SetAuraChange(ParticleController.mode_.back_box);
                 _auraPos = AuraPos.Left;
                 _ischanging = true;
-
+                _particleController.AuraChange(4);
             }
             if (h > 0 || h2 > 0)
             {
                 // _particleController.SetAuraChange(ParticleController.mode_.front_box);
                 _auraPos = AuraPos.Right;
                 _ischanging = true;
-
+                _particleController.AuraChange(2);
             }
         }
     }
 
 
-    
+
 
 
 
@@ -332,14 +290,5 @@ public class PlayerChangeAura : MonoBehaviour
         Right,
         Left,
     }
-
-
-    enum Sousa
-    {
-        Joistick,
-        //Bbuttun,
-        KeyBord,
-    }
-
 }
 
