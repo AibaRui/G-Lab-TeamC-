@@ -8185,6 +8185,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &290728640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993994075652576316, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
+  m_PrefabInstance: {fileID: 1233128361}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dd11165785e7e4a9f32595d4b1a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &290728641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 993994075652576319, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
@@ -10956,6 +10967,17 @@ Transform:
   m_Father: {fileID: 2140291449}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372727323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993994075652576316, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
+  m_PrefabInstance: {fileID: 2070542528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52dd11165785e7e4a9f32595d4b1a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &372727324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 993994075652576319, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
@@ -13774,6 +13796,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4223f4eb07ff549b84ebda9f81a0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sousa: 2
+  _playerNumber: 1
+  _particleController: {fileID: 372727323}
+  _eria:
+  - {fileID: 1136937304}
+  - {fileID: 1298751022}
+  - {fileID: 1588071515}
+  _eriaUp: {fileID: 1588071515}
+  _eriaDown: {fileID: 1136937304}
+  _eriaRight: {fileID: 1373529779}
+  _eriaLeft: {fileID: 622206331}
+  _center: {x: 0, y: 0, z: 0}
+  _period: 0.5
+  _imageStick: {fileID: 1588071515}
+  _imageCircle: {fileID: 1298751022}
+  _upPos: {fileID: 483401316}
+  _downPos: {fileID: 1136937305}
+  _rightPos: {fileID: 1373529782}
+  _leftPos: {fileID: 622206334}
 --- !u!114 &459353833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13786,6 +13827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722292ca526c78e40bfe9332f8a99707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goalTagName: Goal
+  _nadareTagName: Avalanche
 --- !u!1 &478466505
 GameObject:
   m_ObjectHideFlags: 0
@@ -39194,6 +39237,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4223f4eb07ff549b84ebda9f81a0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sousa: 2
+  _playerNumber: 2
+  _particleController: {fileID: 290728640}
+  _eria:
+  - {fileID: 1917806207}
+  - {fileID: 934180372}
+  - {fileID: 1601486269}
+  _eriaUp: {fileID: 934180372}
+  _eriaDown: {fileID: 934180372}
+  _eriaRight: {fileID: 934180372}
+  _eriaLeft: {fileID: 1601486269}
+  _center: {x: 0, y: 0, z: 0}
+  _period: 0.5
+  _imageStick: {fileID: 934180372}
+  _imageCircle: {fileID: 1917806207}
+  _upPos: {fileID: 1525437953}
+  _downPos: {fileID: 1601486270}
+  _rightPos: {fileID: 1274195406}
+  _leftPos: {fileID: 704555413}
 --- !u!114 &1215349993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39206,6 +39268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722292ca526c78e40bfe9332f8a99707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goalTagName: Goal
+  _nadareTagName: Avalanche
 --- !u!1 &1215910917
 GameObject:
   m_ObjectHideFlags: 0
@@ -64267,10 +64331,6 @@ PrefabInstance:
     - target: {fileID: 993994075652576318, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
       propertyPath: m_Name
       value: ParticleSystem 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 993994075652576318, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 993994075652576319, guid: 6176483b39084fb40a8cf665da0f92e1, type: 3}
       propertyPath: m_RootOrder

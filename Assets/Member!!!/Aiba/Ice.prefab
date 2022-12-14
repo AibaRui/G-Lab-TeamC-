@@ -95,17 +95,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7083751362259605629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c0a08b49d19df438231dbdd8623e3b, type: 3}
+  m_Script: {fileID: 11500000, guid: af447b98156462640a584f39a9e41a96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimit: 2
+  _timeLimit: 5
   _timeCount: 0
-  _colorHot: {r: 0, g: 0.2379129, b: 1, a: 0.654902}
-  _colorCool: {r: 0, g: 0.86769533, b: 1, a: 1}
-  _coolLayer: 7
-  _hotLayer: 6
-  _hotTagName: Hot
-  _coolTagName: Cool
+  _spriteWater: {fileID: 4841106049806313290, guid: 5ec88a94c6fb98e49837e3f4e343f5eb, type: 3}
+  _spriteSnow: {fileID: 8194126120797650805, guid: 085128d818ce5e347b7ffd3016e9f58a, type: 3}
+  _coolLayer: 0
+  _hotLayer: 0
+  _hotTagName: 
+  _coolTagName: 
   _brockState: 0
 --- !u!61 &7083751362259605625
 BoxCollider2D:

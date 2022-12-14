@@ -4,5 +4,10 @@
 操作サンプル：同フォルダに存在のシーン[ParticleSystem]
 このうち、「InputHandler -> player_Fire」のスクリプトを見てもらえば、
 本システムの使い方を理解頂けると思います。
+[機能追加]
+2022/12/12 : ParticleSystemFire, ParticleSystemIceプレハブ作成。
+			 -> ParticleController2.csにオーラ位置・形状を指定する関数：AuraChange(int mode_num)追加。
+			 　 具体的な使い方サンプルはゲームオブジェクト：InputHandlerの「Test_ParticleChange.cs」参考願います。
+			    (詳細はsummaryを参照願います)
 
 何かあればDiscord等で連絡お願いします。
