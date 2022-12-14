@@ -12,6 +12,8 @@ TagManager:
   - player
   - InputField
   - Text
+  - Goal
+  - Death
   layers:
   - Default
   - TransparentFX

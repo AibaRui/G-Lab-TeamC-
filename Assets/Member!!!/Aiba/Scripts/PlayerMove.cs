@@ -1,67 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+    [RequireComponent(typeof(Animator))]
 public class PlayerMove : MonoBehaviour
 {
-    [Header("プレイヤーの番号")]
-    [Tooltip("プレイヤーの番号")] [SerializeField] int _playerNumber = 1;
 
     [Header("移動速度")]
     [Tooltip("移動速度")] [SerializeField] float _speed = 7;
 
-
     [Header("ジャンプパワー")]
     [Tooltip("ジャンプパワー")] [SerializeField] float _jumpPower = 5;
 
-
+    [Header("ジャンプ可能にする床のレイヤーを選ぶ。複数選択可能")]
     [SerializeField] LayerMask _layerGround;
 
     [Header("設置判定の長さ")]
-    [Tooltip("設置判定の長さ")] [SerializeField] float _groundCheckLine = 1.5f;
+    [Tooltip("設置判定の長さ")] [SerializeField] public float _groundCheckLine = 1.5f;
+
+    [Header("ジャンプの音")]
+    [SerializeField] AudioSource _audJump;
+
+    [Header("歩く音")]
+    [SerializeField] AudioClip _moveAud;
+ 
     bool _isGround = false;
-
-    [SerializeField] Sousa _sousa = Sousa.Controller;
-
 
     Animator _anim;
     Rigidbody2D _rb;
+    AudioSource _aud;
     void Start()
     {
         _anim = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _aud = GetComponent<AudioSource>();
     }
 
-
-    void Update()
+    public void MoveController(int playerNumber)
     {
-        if (_sousa == Sousa.Controller)
-        {
-            MoveController();
-            JumpController();
-        }
-        else
-        {
-            MoveKeybord();
-            JumpKeybord();
-        }
-
-
-        Vector2 start = transform.position;
-        Vector2 end = transform.position + (-transform.up) * _groundCheckLine;
-        Debug.DrawLine(start, end);
-    }
-
-    private void LateUpdate()
-    {
-        _anim.SetFloat("SpeedY", _rb.velocity.y);
-
-    }
-
-
-    private void MoveController()
-    {
-        float h = Input.GetAxisRaw($"PlayerMove{_playerNumber}");
+        float h = Input.GetAxisRaw($"PlayerMove{playerNumber}");
         Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
         _rb.velocity = velo;
 
@@ -70,9 +46,9 @@ public class PlayerMove : MonoBehaviour
         else _anim.SetBool("Run", false);
     }
 
-    void MoveKeybord()
+    public void MoveKeybord(int playernumber)
     {
-        if (_playerNumber == 1)
+        if (playernumber == 1)
         {
             float h = 0;
             if (Input.GetKey(KeyCode.D))
@@ -95,7 +71,7 @@ public class PlayerMove : MonoBehaviour
             }
             else _anim.SetBool("Run", false);
         }
-        if (_playerNumber == 2)
+        if (playernumber == 2)
         {
             float h = 0;
             if (Input.GetKey(KeyCode.RightArrow))
@@ -109,6 +85,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
+            _rb.velocity = velo; 
             //アニメーション
             if (h != 0)
             {
@@ -123,7 +100,7 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    void JumpKeybord()
+    public void JumpKeybord()
     {
         if (GroundCheck())
         {
@@ -133,6 +110,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
                     _anim.Play("Player1_Jump");
+                    _audJump.Play();
                 }
             }
             else if (gameObject.tag == "Player2")
@@ -140,7 +118,8 @@ public class PlayerMove : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
-                    _anim.Play("Player1_Jump");
+                    _anim.Play("Player2_Jump");
+                    _audJump.Play();
                 }
             }
 
@@ -149,14 +128,15 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    private void JumpController()
+    public void JumpController(int playerNumber)
     {
         if (GroundCheck())
         {
-            if (Input.GetButtonDown($"PlayerJump{_playerNumber}"))
+            if (Input.GetButtonDown($"PlayerJump{playerNumber}"))
             {
                 _rb.AddForce(transform.up * _jumpPower, ForceMode2D.Impulse);
-                _anim.Play($"Player{_playerNumber}_Jump");
+                _anim.Play($"Player{playerNumber}_Jump");
+                _audJump.Play();
             }
         }
 
@@ -173,9 +153,9 @@ public class PlayerMove : MonoBehaviour
         return _isGround;
     }
 
-    enum Sousa
+    void MoveAudio()
     {
-        Controller,
-        KeyBord,
+        _aud.PlayOneShot(_moveAud);
     }
+
 }
