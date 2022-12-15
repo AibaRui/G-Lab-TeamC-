@@ -7,7 +7,9 @@ public class NomalGimmickBlocks : GimickBase
     [Header("オーラによって変化するまでの時間")]
     [SerializeField] float _timeLimit = 5f;
 
-    private float _timeCount = 0;
+    private float _timeCountCool = 0;
+    private float _timeCountHot = 0;
+
 
     [Header("溶けてる時のイラスト")]
     [SerializeField] Sprite _spriteWater;
@@ -61,13 +63,13 @@ public class NomalGimmickBlocks : GimickBase
                 //状態が熱だったら
                 if (_brockState == BrockState.Hot)
                 {
-                    _timeCount += Time.deltaTime;
+                    _timeCountCool += Time.deltaTime;
 
                     //一定時間当たっていたら状態を変化させる
-                    if (_timeCount >= _timeLimit)
+                    if (_timeCountCool >= _timeLimit)
                     {
                         _brockState = BrockState.Ice;
-                        _timeCount = 0;
+                        _timeCountCool = 0;
                         ChangeBlock();
                         _aud.PlayOneShot(_coolSound);
                     }
@@ -79,13 +81,13 @@ public class NomalGimmickBlocks : GimickBase
                 //状態が氷だったら
                 if (_brockState == BrockState.Ice)
                 {
-                    _timeCount += Time.deltaTime;
+                    _timeCountHot += Time.deltaTime;
 
                     //一定時間当たっていたら状態を変化させる
-                    if (_timeCount >= _timeLimit)
+                    if (_timeCountHot >= _timeLimit)
                     {
                         _brockState = BrockState.Hot;
-                        _timeCount = 0;
+                        _timeCountHot = 0;
                         ChangeBlock();
                         _aud.PlayOneShot(_hotSound);
                     }
@@ -97,18 +99,26 @@ public class NomalGimmickBlocks : GimickBase
             {
                 //Debug.Log("no");
                 //時間が以上だったら、元に戻す
-                if (_timeCount > 0)
+                if (_timeCountCool > 0)
                 {
-                    _timeCount -= Time.deltaTime;
-                    if (_timeCount < 0)
+                    _timeCountCool -= Time.deltaTime;
+                    if (_timeCountCool < 0)
                     {
-                        _timeCount = 0;
+                        _timeCountCool = 0;
+                    }
+                }
+                if (_timeCountHot > 0)
+                {
+                    _timeCountHot -= Time.deltaTime;
+                    if (_timeCountHot < 0)
+                    {
+                        _timeCountHot = 0;
                     }
                 }
             }
         }
 
-        Debug.Log(_timeCount);
+        Debug.Log(_timeCountCool);
     }
 
     //Stateの状態に応じて、形状を変える
@@ -128,7 +138,7 @@ public class NomalGimmickBlocks : GimickBase
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!_isPause)
         {
