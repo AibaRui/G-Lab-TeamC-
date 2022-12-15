@@ -13,14 +13,14 @@ class TestShellController : GimickBase
     private float _timer = 0;
     [SerializeField, Tooltip("Playerに着弾した時に加える力")]
     private float _forcePower = 1f;
-    [SerializeField, Tooltip("Playerに着弾した時のノックバックさせる時間")]
-    private float _knockBackTime = 0.3f;
     /// <summary>弾にアタッチされているコライダー</summary>
     private CircleCollider2D _col;
     /// <summary>現在、Pause中かどうかを判定するフラグ</summary>
-    private bool _isPause = true;
+    private bool _isPause = false;
     /// <summary>ゲームオブジェクトにアタッチされているRigidbody2D</summary>
     private Rigidbody2D _rb;
+    /// <summary>砲台のゲームオブジェクト</summary>
+    GameObject _turret = null;
 
     //パラメーターを保存する用の変数
     private float _saveAngularVelocity;
@@ -31,11 +31,12 @@ class TestShellController : GimickBase
         _col = GetComponent<CircleCollider2D>();
         _col.isTrigger = true;
         _rb = GetComponent<Rigidbody2D>();
+        _turret = FindObjectOfType<TurretController>().gameObject;
     }
 
     private void Update()
     {
-        if(_isPause)
+        if(!_isPause)  //
         {
             _timer = Time.deltaTime;
             if(_timer >= _lifeTime)
@@ -50,16 +51,15 @@ class TestShellController : GimickBase
         if(collision.gameObject.tag is "Player1" or "Player2")
         {
             GameObject player = collision.gameObject;
-            //Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
-            
-            if (player.transform.position.x <= transform.position.x)
+
+            if (player.transform.position.x <= _turret.transform.position.x)
             {
-                player.transform.DOMoveX(-_forcePower, _knockBackTime).SetRelative();
+                player.GetComponent<IDamagable>().AddDamage(transform, _forcePower);
                 Debug.Log("Go! Left!");
             }
             else
             {
-                player.transform.DOMoveX(_forcePower, _knockBackTime).SetRelative();
+                player.GetComponent<IDamagable>().AddDamage(transform, -_forcePower);
                 Debug.Log("Go! Right!");
             }
             Destroy(gameObject);
@@ -68,6 +68,7 @@ class TestShellController : GimickBase
 
     public override void GameOverPause()
     {
+        _isPause = true;
         _saveAngularVelocity = _rb.angularVelocity;
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
@@ -76,6 +77,7 @@ class TestShellController : GimickBase
 
     public override void Pause()
     {
+        _isPause = true;
         _saveAngularVelocity = _rb.angularVelocity;
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
@@ -88,5 +90,6 @@ class TestShellController : GimickBase
         _rb.WakeUp();
         _rb.angularVelocity = _saveAngularVelocity;
         _rb.velocity = _saveVelocity;
+        _isPause = false;
     }
 }
