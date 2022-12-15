@@ -759,14 +759,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 7797759429509090434, guid: 825dfa5079af3bf4293013b30877ec33, type: 3}
-      propertyPath: m_Size.x
-      value: 17.539944
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797759429509090434, guid: 825dfa5079af3bf4293013b30877ec33, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.38768578
-      objectReference: {fileID: 0}
     - target: {fileID: 7797759429509090439, guid: 825dfa5079af3bf4293013b30877ec33, type: 3}
       propertyPath: m_Name
       value: avalanche
