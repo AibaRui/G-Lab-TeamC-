@@ -10,11 +10,11 @@ class IcicleController : GimickBase
     private float _fallSpeed = 1.0f;
     [SerializeField, Tooltip("氷柱がPlayerに衝突した時のPlayerの硬直時間")]
     private float _stunTime = 1f;
-    /// <summary>オーラ接触時の拡大・縮小倍率</summary>
+    [SerializeField, Tooltip("オーラ接触時の拡大・縮小倍率")]
     private float _magnification = 1.0f;
     /// <summary>ゲームオブジェクトの大きさの最小</summary>
     private float _minSize = 2.0f;
-    /// <summary>ゲームオブジェクトの大きさの最大</summary>
+    [SerializeField, Tooltip("ゲームオブジェクトの大きさの最大")]
     private float _maxSize = 6.0f;
     [SerializeField, Tooltip("Rayの表示・非表示の切り替え")]
     private bool _isGizmo = true;
@@ -115,7 +115,8 @@ class IcicleController : GimickBase
             localScale.x -= _magnification;
             localScale.y -= _magnification;
             transform.localScale = localScale;
-            if (localScale == new Vector3(_minSize, _minSize))
+            Debug.Log(localScale);
+            if (localScale.x <= _minSize && localScale.y <= _minSize)
             {
                 AudioSource.PlayClipAtPoint(_break, transform.position);
                 Destroy(gameObject);
