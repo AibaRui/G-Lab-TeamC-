@@ -2507,6 +2507,10 @@ PrefabInstance:
       propertyPath: _aud
       value: 
       objectReference: {fileID: 1815077736}
+    - target: {fileID: 990835017774086840, guid: d6ff3c49767b42a4fb6f8319e0e633e0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b10278290408d56428d97e9457c47c0c, type: 3}
     - target: {fileID: 990835017774086841, guid: d6ff3c49767b42a4fb6f8319e0e633e0, type: 3}
       propertyPath: m_Material
       value: 
@@ -2802,6 +2806,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4755563729208539030, guid: 1637c1d5453e05945ba9d1ac7f39894e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72853a23a2b832c47b8936032842b03c, type: 3}
     - target: {fileID: 4755563729208539031, guid: 1637c1d5453e05945ba9d1ac7f39894e, type: 3}
       propertyPath: m_Material
       value: 
