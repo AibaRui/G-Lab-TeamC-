@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Member!!!/Maeda/BetaStage.unity
+    path: Assets/BetaStage.unity
     guid: ac403a6dd58ba8f42b9b9fb2da33743c
   - enabled: 0
     path: 
