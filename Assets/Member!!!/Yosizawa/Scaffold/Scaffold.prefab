@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interval: 1
-  _defaultSprite: {fileID: 168977652808365130, guid: 1340877c1c924ca4198d725aad0f74e8, type: 3}
-  _changeSprite: {fileID: 3936974930348942261, guid: 79b0b4b8f87354b4cadcdc805212a8d8, type: 3}
-  _firstCrack: {fileID: 8300000, guid: 19fca17eb5d8c8e4fb787c6c6c437395, type: 3}
-  _secondCrack: {fileID: 8300000, guid: 19fca17eb5d8c8e4fb787c6c6c437395, type: 3}
-  _break: {fileID: 8300000, guid: 19fca17eb5d8c8e4fb787c6c6c437395, type: 3}
+  _defaultSprite: {fileID: 5066836984380117591, guid: c4d7142e4abce7c42a680be311f21606, type: 3}
+  _changeSprite: {fileID: 3588897595659753606, guid: 6d5c83edc03a1dd41b3d2e556e1518b1, type: 3}
+  _firstCrack: {fileID: 8300000, guid: 70467775164aa7843a78f6122e0271a6, type: 3}
+  _secondCrack: {fileID: 8300000, guid: 2b71c8c48294fcd408338f004282ae27, type: 3}
+  _break: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
 --- !u!61 &3132375464816476518
 BoxCollider2D:
   m_ObjectHideFlags: 0
