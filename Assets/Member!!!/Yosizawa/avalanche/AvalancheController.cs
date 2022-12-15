@@ -9,6 +9,8 @@ class AvalancheController : GimickBase
     private float _speed = 1.0f;
     /// <summary>ゲームオブジェクトにアタッチされているRigidbody2D</summary>
     private Rigidbody2D _rb;
+    /// <summary>子オブジェクトのAnimator</summary>
+    Animator _anim = null;
 
     //パラメーターを保存する用の変数
     private Vector2 _saveVelocity;
@@ -17,6 +19,7 @@ class AvalancheController : GimickBase
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0;
+        _anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -28,7 +31,7 @@ class AvalancheController : GimickBase
     {
         if(collision.gameObject.tag is "Player1" or "Player2")
         {
-            collision.gameObject.SetActive(false);
+            Debug.Log($"You Are Dead...  「{collision.gameObject.name}」");
         }
     }
 
@@ -37,6 +40,7 @@ class AvalancheController : GimickBase
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
         _rb.simulated = false;
+        _anim.speed = 0;
     }
 
     public override void Pause()
@@ -44,10 +48,12 @@ class AvalancheController : GimickBase
         _saveVelocity = _rb.velocity;
         _rb.Sleep();
         _rb.simulated = false;
+        _anim.speed = 0;
     }
 
     public override void Resume()
     {
+        _anim.speed = 1;
         _rb.simulated = true;
         _rb.WakeUp();
         _rb.velocity = _saveVelocity;
