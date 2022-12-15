@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D),typeof(AudioSource))]
 class IcicleController : GimickBase
 {
     [SerializeField, Tooltip("落下速度")]
@@ -12,9 +12,9 @@ class IcicleController : GimickBase
     private float _stunTime = 1f;
     /// <summary>オーラ接触時の拡大・縮小倍率</summary>
     private float _magnification = 1.0f;
-    [SerializeField, Tooltip("ゲームオブジェクトの大きさの最小")]
+    /// <summary>ゲームオブジェクトの大きさの最小</summary>
     private float _minSize = 2.0f;
-    [SerializeField, Tooltip("ゲームオブジェクトの大きさの最大")]
+    /// <summary>ゲームオブジェクトの大きさの最大</summary>
     private float _maxSize = 6.0f;
     [SerializeField, Tooltip("Rayの表示・非表示の切り替え")]
     private bool _isGizmo = true;
@@ -28,10 +28,15 @@ class IcicleController : GimickBase
     private RaycastHit2D _hit;
     /// <summary>一定の大きさになったかを判定するフラグ</summary>
     private bool _isScale =false;
-    /// <summary>Rigidbody2D型の変数</summary>
+    /// <summary>ゲームオブジェクトのRigidbody2D</summary>
     private Rigidbody2D _rb = null;
-    /// <summary></summary>
+    /// <summary>ゲームオブジェクトのcollider2D</summary>
     private Collider2D _col = null;
+    [SerializeField, Tooltip("氷柱が割れた時のSE")]
+    private AudioClip _break = null;
+    [SerializeField, Tooltip("氷柱が突き刺さった時のSE")]
+    private AudioClip _stabbed = null;
+
     //パラメーターの情報を保存する用の変数
     private float _saveGravityScale;
     private float _saveAngularVelocity;
@@ -79,12 +84,17 @@ class IcicleController : GimickBase
             if (_isScale)
             {
                 _col.isTrigger = false;
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.clip = _stabbed;
+                audio.Play();
+                //AudioSource.PlayClipAtPoint(_stabbed, transform.position);
                 _rb.constraints =
                     RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             }
             //ゲームオブジェクトの scale が最大サイズでなかったら、消える
             else
             {
+                AudioSource.PlayClipAtPoint(_break, transform.position);
                 Destroy(gameObject);
             }
         }
@@ -105,6 +115,11 @@ class IcicleController : GimickBase
             localScale.x -= _magnification;
             localScale.y -= _magnification;
             transform.localScale = localScale;
+            if (localScale == new Vector3(_minSize, _minSize))
+            {
+                AudioSource.PlayClipAtPoint(_break, transform.position);
+                Destroy(gameObject);
+            }
         }
         //当たったオーラが「固める」ならゲームオブジェクトの大きさを増加
         if (collision.gameObject.tag is "Cool")
