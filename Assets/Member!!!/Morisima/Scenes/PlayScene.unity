@@ -660,6 +660,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4395240716493027840, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
+    - target: {fileID: 4395240717090738457, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f020d4a7a79c2c444b3c4429347d619a, type: 3}
+    - target: {fileID: 4395240717781495061, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
+    - target: {fileID: 4395240717797926315, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
+    - target: {fileID: 4395240718052542270, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
+    - target: {fileID: 4395240718397356436, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f020d4a7a79c2c444b3c4429347d619a, type: 3}
     - target: {fileID: 9061894380057733642, guid: 9fef65d452463af409e47bb8fd521e59, type: 3}
       propertyPath: m_Name
       value: GameObject
@@ -730,6 +754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6597446119199261609, guid: 99b2a4532fc0c3742bf143627ad562d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
     - target: {fileID: 6597446119199261610, guid: 99b2a4532fc0c3742bf143627ad562d5, type: 3}
       propertyPath: m_Name
       value: Ornament7 (1)
@@ -1726,6 +1754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6597446119199261609, guid: 99b2a4532fc0c3742bf143627ad562d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
     - target: {fileID: 6597446119199261610, guid: 99b2a4532fc0c3742bf143627ad562d5, type: 3}
       propertyPath: m_Name
       value: Ornament7

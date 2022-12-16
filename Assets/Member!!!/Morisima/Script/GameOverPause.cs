@@ -31,7 +31,7 @@ public class GameOverPause : MonoBehaviour
             else
             {
                 Time.timeScale = 1f;
-                
+                pauseUI.SetActive(false);
             }
         }
     }
