@@ -19,7 +19,7 @@ public class GameOverPause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             if (Mathf.Approximately(Time.timeScale, 1f))
             {
@@ -31,7 +31,7 @@ public class GameOverPause : MonoBehaviour
             else
             {
                 Time.timeScale = 1f;
-                pauseUI.SetActive(false);
+                
             }
         }
     }
