@@ -16,9 +16,11 @@ class ScaffoldController : GimickBase
     /// <summary>描画する画像</summary>
     private SpriteRenderer _mainSprite = null;
     [SerializeField, Tooltip("デフォルトの画像")]
-    private SpriteRenderer _defaultSprite = null;
-    [SerializeField, Tooltip("切り替える画像")]
-    private SpriteRenderer _changeSprite = null;
+    private Sprite _defaultSprite = null;
+    [SerializeField, Tooltip("ひびが入った画像")]
+    private Sprite _changeSprite = null;
+    [SerializeField, Tooltip("割れた画像")]
+    private Sprite _breakSprite = null;
     /// <summary>再生する音</summary>
     private AudioSource _mainAudio = null;
     [SerializeField, Tooltip("1回踏んだ時のSE")]
@@ -37,7 +39,7 @@ class ScaffoldController : GimickBase
     private void Start()
     {
         _mainSprite = GetComponent<SpriteRenderer>();
-        if (!_defaultSprite || !_changeSprite)
+        if (!_defaultSprite || !_changeSprite || !_breakSprite)
         {
             Debug.LogWarning("設定されていない画像があります。");
         }
@@ -47,6 +49,7 @@ class ScaffoldController : GimickBase
         {
             Debug.LogWarning("設定されていない効果音があります。");
         }
+        
 
         _boxCol2D = GetComponent<BoxCollider2D>();
         _rb = GetComponent<Rigidbody2D>();
@@ -61,11 +64,11 @@ class ScaffoldController : GimickBase
         switch (_stateCount)  //何回踏まれたかに応じて処理を切り替える
         {
             case 0:  // 初期状態
-                _mainSprite.sprite = _defaultSprite.sprite;
+                _mainSprite.sprite = _defaultSprite;
                 break;
             case 1:  // 1回目に踏まれたとき
                 _boxCol2D.isTrigger = false;
-                _mainSprite.sprite = _changeSprite.sprite;
+                _mainSprite.sprite = _changeSprite;
                 _mainSprite.DOFade(1f, 1f);
                 _mainAudio.clip = _firstCrack;
                 gameObject.layer = 11;
@@ -77,6 +80,7 @@ class ScaffoldController : GimickBase
                 {
                     _boxCol2D.isTrigger = true;
                     gameObject.layer = default;
+                    _mainSprite.sprite = _breakSprite;
                     _mainAudio.clip = _break;
                 }, false);
                 break;

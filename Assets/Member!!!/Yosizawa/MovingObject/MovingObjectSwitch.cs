@@ -13,11 +13,21 @@ class MovingObjectSwitch : GimickBase
     private Transform _endPoint = default;
     [SerializeField, Tooltip("どのくらいの時間をかけて移動させるか")]
     private float _moveTime = 1.0f;
+    /// <summary>ゲームオブジェクトのSpriteRenderer</summary>
+    private SpriteRenderer _mainSprite = null;
+    [SerializeField, Tooltip("スイッチがOFFの画像")]
+    private Sprite _offSprite = null;
+    [SerializeField, Tooltip("スイッチがONの画像")]
+    private Sprite _onSprite = null;
     /// <summary>現在、Pause状態か判定するフラグ</summary>
     private bool _isPause = false;
 
     private void Start()
     {
+        //
+        _mainSprite = GetComponent<SpriteRenderer>();
+        _mainSprite.sprite = _offSprite;
+
         //_movingFloarの初期地点を_startPointに設定
         _movingObject.position = _startPoint.position;
 
@@ -36,12 +46,14 @@ class MovingObjectSwitch : GimickBase
             //Hotのオーラが当たったら、再開する
             if (collision.gameObject.tag == "Hot")
             {
+                _mainSprite.sprite = _onSprite;
                 _movingObject.DOPlay();
             }
 
             //Coolのオーラが当たったら、一時停止する
             else if (collision.gameObject.tag == "Cool")
             {
+                _mainSprite.sprite = _offSprite;
                 _movingObject.DOPause();
             }
         }
