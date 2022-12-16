@@ -65,6 +65,8 @@ public class IceRock : MonoBehaviour
                 Time.deltaTime * transform_rate_,
                 Time.deltaTime * transform_rate_,
                 0);
+            //  --- SE管理 --- //
+            manager_.SetIceSE(GeyserManager.se_ice.ice_melting);
 
         } else if (other.transform.CompareTag(manager_.Ice_aura))
         // ---- 氷 ---- //
@@ -78,6 +80,8 @@ public class IceRock : MonoBehaviour
                 Time.deltaTime * transform_rate_,
                 Time.deltaTime * transform_rate_,
                 0);
+            // --- SE管理 --- //
+            manager_.SetIceSE(GeyserManager.se_ice.ice_making);
         }
         // ----- 一定以上のサイズに小さくなった時：本ゲームオブジェクト無効化 ---- //
         // ---- マネージャーにIceRockが削除された事を伝える ---- //

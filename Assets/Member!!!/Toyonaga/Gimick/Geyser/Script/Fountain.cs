@@ -94,6 +94,9 @@ public class Fountain : MonoBehaviour
                 img.size -= new Vector2(0, height_delta);
                 fountainImg.transform.localPosition -= new Vector3(0, height_delta / 2, 0);
             }
+            // ---- SEä«óù ---- //
+            manager_.SetFountainSE(GeyserManager.se_fountain.normal);
+
         }
         if (up)
         {
@@ -116,6 +119,8 @@ public class Fountain : MonoBehaviour
                 fountainImg.transform.localPosition += new Vector3(0, height_delta / 2, 0);
             }
 
+            // ---- SEä«óù ---- //
+            manager_.SetFountainSE(GeyserManager.se_fountain.spewing);
         }
 
 
