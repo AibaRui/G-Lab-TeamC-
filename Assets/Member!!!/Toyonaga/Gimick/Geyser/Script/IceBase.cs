@@ -52,6 +52,8 @@ public class IceBase : MonoBehaviour
                 Time.deltaTime * transform_rate_,
                 0
             );
+            //  --- SEä«óù --- //
+            manager_.SetIceSE(GeyserManager.se_ice.ice_melting);
         }
         else if (other.transform.CompareTag(manager_.Ice_aura))
         // ---- ïX ---- //
@@ -62,6 +64,8 @@ public class IceBase : MonoBehaviour
                 Time.deltaTime * transform_rate_,
                 0
             );
+            // --- SEä«óù --- //
+            manager_.SetIceSE(GeyserManager.se_ice.ice_making);
         }
     }
 
