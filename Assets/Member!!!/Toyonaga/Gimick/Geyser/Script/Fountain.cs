@@ -47,7 +47,7 @@ public class Fountain : MonoBehaviour
     private float fountain_height_;         // •¬…‚Ì‚‚³‚ğŒˆ’è
     private float fountain_init_height = 1.0f;  // •¬…‚Ì‰Šú‚‚³‚ğæ“¾
 
-    private void Start()
+    private void Awake()
     {
         // ----- ‰Šú’læ“¾ ----- //
         height_max_ = fountain_heightObj_.transform.localPosition.y;    // •¬…‚‚³ŒÀŠE
