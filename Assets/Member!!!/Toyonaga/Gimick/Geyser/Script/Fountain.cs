@@ -34,6 +34,7 @@ public class Fountain : MonoBehaviour
     public float Init_size_ { get { return init_size_; } }
     public float InitSize_ { get { return init_size_; } }
     private Vector3 max_size_ = new Vector3(0, 0, 0);       // FountainIceBaseの初期サイズ
+    public Vector3 Max_size_ { get { return max_size_; } }
     [SerializeField, Header("GeyserManager登録")]
     private GeyserManager manager_;
     [SerializeField, Header("噴水画像ゲームオブジェクト登録")]
