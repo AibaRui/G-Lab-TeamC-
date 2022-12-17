@@ -60,18 +60,18 @@ EditorBuildSettings:
     path: Assets/Member!!!/Morisima/Scenes/PlayScene.unity
     guid: 38de9959e427cbb4f9c18a50cf072938
   - enabled: 1
-    path: Assets/Member!!!/hirata/TitleSceneB 1.unity
+    path: Assets/Member!!!/hirata/test game/TitleSceneB 1.unity
     guid: 6a30df1db773ba443a32708591ee8500
   - enabled: 1
-    path: Assets/Member!!!/hirata/BetaStage 3.unity
+    path: Assets/Member!!!/hirata/test game/BetaStage 3.unity
     guid: 3f845198c105d9749a88432095631487
   - enabled: 1
-    path: Assets/Member!!!/hirata/ClearSceneB 1.unity
+    path: Assets/Member!!!/hirata/test game/ClearSceneB 1.unity
     guid: 5a7378fdcbc920a4988f78bc6e6a8ddc
   - enabled: 1
-    path: Assets/Member!!!/hirata/Ranking_endSceneB 1.unity
+    path: Assets/Member!!!/hirata/test game/Ranking_endSceneB 1.unity
     guid: 510d9b8d44b006f40a1b9baf7afa30c0
   - enabled: 1
-    path: Assets/Member!!!/hirata/RankingSceneB 1.unity
+    path: Assets/Member!!!/hirata/test game/RankingSceneB 1.unity
     guid: e73747c477612bd4caa0d249038bdc08
   m_configObjects: {}
