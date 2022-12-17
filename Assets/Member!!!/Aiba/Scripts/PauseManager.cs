@@ -42,7 +42,7 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         // ESC キーが押されたら一時停止・再開を切り替える
-        if (Input.GetKeyDown(KeyCode.Escape) )
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("PauseButtun"))
         {
             PauseResume();
         }
