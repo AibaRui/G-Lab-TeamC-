@@ -8,57 +8,60 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Member!!!/Aiba/Test.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/MargeScene/TitleMarge.unity
     guid: 8f9cc95f72100f044b569b5f3488e74b
-  - enabled: 1
+  - enabled: 0
     path: Assets/MargeScene/Marge.unity
     guid: 4c7195040b9ff9c4cb96ff6d806bd7ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
     guid: 1b75763dcc30c0e4a96d8d1edf149df4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/TitleScene.unity
     guid: 4904733a607ba00459730be33de793fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Test/TestTitle.unity
     guid: 066c885efad7c4a4db035613fbfbbad8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Test/TestMarge.unity
     guid: c91f72cee5e14f74e81364664932abde
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
     guid: 1bf9031f3ad044544a2f7002d47f82e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/Ranking_endScene.unity
     guid: a21ae47203eca2b43a7944856f7e0e56
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/GameOverScene.unity
     guid: 7ea11e39eaf3c574081de9812613223d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Maeda/ClearSceneB.unity
     guid: 177c4a55645406f47b7d26da9915e84b
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/BetaStage.unity
     guid: ac403a6dd58ba8f42b9b9fb2da33743c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Maeda/TitleSceneB.unity
     guid: 8e52c6aac55546641823613b6c9879da
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Maeda/Ranking_endSceneB.unity
     guid: cc5b11ff7a2af0849bc5dce48026ada5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Maeda/RankingSceneB.unity
     guid: 1caa936d732e0b24eaa53a19920d7c8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/PlayScene.unity
     guid: 38de9959e427cbb4f9c18a50cf072938
+  - enabled: 1
+    path: Assets/Member!!!/hirata/TitleSceneB 1.unity
+    guid: 6a30df1db773ba443a32708591ee8500
   - enabled: 1
     path: Assets/Member!!!/hirata/BetaStage 3.unity
     guid: 3f845198c105d9749a88432095631487
@@ -69,6 +72,6 @@ EditorBuildSettings:
     path: Assets/Member!!!/hirata/Ranking_endSceneB 1.unity
     guid: 510d9b8d44b006f40a1b9baf7afa30c0
   - enabled: 1
-    path: Assets/Member!!!/hirata/TitleSceneB 1.unity
-    guid: 6a30df1db773ba443a32708591ee8500
+    path: Assets/Member!!!/hirata/RankingSceneB 1.unity
+    guid: e73747c477612bd4caa0d249038bdc08
   m_configObjects: {}
