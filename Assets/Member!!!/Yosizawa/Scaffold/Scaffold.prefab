@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3132375464816476516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.87, y: 4.61, z: -0.3160481}
-  m_LocalScale: {x: 3.275, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ae9256bf7a4e1c34698f7eeda1eb1394, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interval: 1
-  _defaultSprite: {fileID: 5066836984380117591, guid: c4d7142e4abce7c42a680be311f21606, type: 3}
-  _changeSprite: {fileID: 3588897595659753606, guid: 6d5c83edc03a1dd41b3d2e556e1518b1, type: 3}
+  _defaultSprite: {fileID: 21300000, guid: ae9256bf7a4e1c34698f7eeda1eb1394, type: 3}
+  _changeSprite: {fileID: 21300000, guid: 6002f267ff429dc468ea05a5b38750a8, type: 3}
+  _breakSprite: {fileID: 21300000, guid: b450cbe3dc69b6443841215e2ff4ac0d, type: 3}
   _firstCrack: {fileID: 8300000, guid: 70467775164aa7843a78f6122e0271a6, type: 3}
   _secondCrack: {fileID: 8300000, guid: 2b71c8c48294fcd408338f004282ae27, type: 3}
   _break: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
@@ -119,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00804615, y: -0.050369382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4, y: 1.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.4994335, y: 0.35478663}
   m_EdgeRadius: 0
 --- !u!50 &3132375464816476514
 Rigidbody2D:
