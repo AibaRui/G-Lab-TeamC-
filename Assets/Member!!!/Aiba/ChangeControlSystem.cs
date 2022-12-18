@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class ChangeControlSystem : MonoBehaviour
 {
 
-    [Header("Player1")]
+    [Header("Player1をアタッチする")]
     [Tooltip("Player1")] [SerializeField] PlayerControl playerControl1;
 
-    [Header("Player2")]
+    [Header("Player2をアタッチする")]
     [Tooltip("Player2")] [SerializeField] PlayerControl playerControl2;
 
     [SerializeField] Text _text;

@@ -118,7 +118,7 @@ public class NomalGimmickBlocks : GimickBase
             }
         }
 
-        Debug.Log(_timeCountCool);
+       // Debug.Log(_timeCountCool);
     }
 
     //State‚Ìó‘Ô‚É‰‚¶‚ÄAŒ`ó‚ğ•Ï‚¦‚é
