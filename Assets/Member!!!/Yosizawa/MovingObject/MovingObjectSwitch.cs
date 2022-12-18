@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
+
 class MovingObjectSwitch : GimickBase
 {
     [SerializeField, Tooltip("動かしたいGameObject")]
@@ -19,6 +21,10 @@ class MovingObjectSwitch : GimickBase
     private Sprite _offSprite = null;
     [SerializeField, Tooltip("スイッチがONの画像")]
     private Sprite _onSprite = null;
+    /// <summary>スイッチを切り替えた時のSE</summary>
+    private AudioSource _audio = null;
+    private int _hotCount = 0;
+    private int _coolCount = 0;
     /// <summary>現在、Pause状態か判定するフラグ</summary>
     private bool _isPause = false;
 
@@ -37,6 +43,8 @@ class MovingObjectSwitch : GimickBase
 
         //_movingFloarを一時停止させておく
         _movingObject.DOPause();
+
+        _audio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,17 +52,23 @@ class MovingObjectSwitch : GimickBase
         if(!_isPause)
         {
             //Hotのオーラが当たったら、再開する
-            if (collision.gameObject.tag == "Hot")
+            if (collision.gameObject.tag == "Hot" && _hotCount == 0)
             {
                 _mainSprite.sprite = _onSprite;
+                _audio.Play();
                 _movingObject.DOPlay();
+                _hotCount++;
+                _coolCount = 0;
             }
 
             //Coolのオーラが当たったら、一時停止する
-            else if (collision.gameObject.tag == "Cool")
+            else if (collision.gameObject.tag == "Cool" && _coolCount == 0)
             {
                 _mainSprite.sprite = _offSprite;
+                _audio.Play();
                 _movingObject.DOPause();
+                _coolCount++;
+                _hotCount = 0;
             }
         }
     }

@@ -14,7 +14,7 @@ public class PauseMunu : MonoBehaviour
     void Update()
     {
         // ESC キーが押されたら一時停止・再開を切り替える
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("PauseButtun"))
         {
             _isPause = !_isPause;
             _panel.SetActive(_isPause);
