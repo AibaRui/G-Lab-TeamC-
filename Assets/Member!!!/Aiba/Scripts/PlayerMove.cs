@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMove : MonoBehaviour
 {
 
@@ -22,17 +22,17 @@ public class PlayerMove : MonoBehaviour
 
     [Header("歩く音")]
     [SerializeField] AudioClip _moveAud;
- 
+
     bool _isGround = false;
 
-    Animator _anim;
+     Animator _anim;
     Rigidbody2D _rb;
     AudioSource _aud;
     void Start()
     {
-        _anim = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _aud = GetComponent<AudioSource>();
+        _anim = GetComponent<Animator>();
     }
 
     public void MoveController(int playerNumber)
@@ -42,7 +42,11 @@ public class PlayerMove : MonoBehaviour
         _rb.velocity = velo;
 
         //アニメーション
-        if (h != 0) _anim.SetBool("Run", true);
+        if (h != 0)
+        {
+            _anim.SetBool("Run", true);
+            transform.localScale = new Vector3(h, 1, 1);
+        }
         else _anim.SetBool("Run", false);
     }
 
@@ -85,12 +89,12 @@ public class PlayerMove : MonoBehaviour
             }
 
             Vector2 velo = new Vector2(h * _speed, _rb.velocity.y);
-            _rb.velocity = velo; 
+            _rb.velocity = velo;
             //アニメーション
             if (h != 0)
             {
                 _anim.SetBool("Run", true);
-                transform.localScale = new Vector3(h, 1, 1);
+               transform.localScale = new Vector3(h, 1, 1);
             }
             else _anim.SetBool("Run", false);
         }
