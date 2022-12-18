@@ -23,9 +23,13 @@ class IcicleController : GimickBase
     /// <summary>Rayの距離</summary>
     private float _length = 50f;
     /// <summary>Rayを飛ばす向き</summary>
-    private Vector2 _dir = Vector2.zero;
+    private Vector2 _dir1 = Vector2.zero;
+    /// <summary>Rayを飛ばす向き</summary>
+    private Vector2 _dir2 = Vector2.zero;
     /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
-    private RaycastHit2D _hit;
+    private RaycastHit2D _hit1;
+    /// <summary>Rayを飛ばして当たったcolliderの情報</summary>
+    private RaycastHit2D _hit2;
     /// <summary>一定の大きさになったかを判定するフラグ</summary>
     private bool _isScale =false;
     /// <summary>ゲームオブジェクトのRigidbody2D</summary>
@@ -53,10 +57,15 @@ class IcicleController : GimickBase
 
     private void Update()
     {
-        //Rayに当たったcolliderがPlayerかどうか判定する
-        _hit = Physics2D.Raycast(transform.position, _dir, _length, LayerMask.GetMask("Player"));
+        //Rayを飛ばす方向を下方向に限定する
+        _dir1 = new Vector2(_direction, -1).normalized;
+        _dir2 = new Vector2(-_direction, -1).normalized;
 
-        if(_hit.collider)  //RayがPlayerに当たった時の処理
+        //Rayに当たったcolliderがPlayerかどうか判定する
+        _hit1 = Physics2D.Raycast(transform.position, _dir1, _length, LayerMask.GetMask("Player"));
+        _hit2 = Physics2D.Raycast(transform.position, _dir2, _length, LayerMask.GetMask("Player"));
+
+        if (_hit1.collider || _hit2.collider)  //RayがPlayerに当たった時の処理
         {
             _rb.gravityScale = _fallSpeed;
         }
@@ -143,9 +152,10 @@ class IcicleController : GimickBase
         //isGizmo が false になっていたら Gizmo を非表示にする
         if (_isGizmo is false) return;
 
-        //Rayを飛ばす方向を下方向に限定する
-        _dir = new Vector2(_direction, -1).normalized;
-        Gizmos.DrawRay(transform.position, _dir * _length);
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, _dir1 * _length);
+        Gizmos.DrawRay(transform.position, _dir2 * _length);
+
     }
 
     public override void GameOverPause()
