@@ -22,17 +22,17 @@ public class Clear : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            // Enter でクリア画面へ移行
-            SceneManager.LoadScene("ClearScene");
-        }
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    // Enter でクリア画面へ移行
+        //    SceneManager.LoadScene("ClearScene");
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Space でゲームオーバー画面へ移行
-            SceneManager.LoadScene("GameOverScene");
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    // Space でゲームオーバー画面へ移行
+        //    SceneManager.LoadScene("GameOverScene");
+        //}
 
         // trueで効果音再生
         if(Itemflag != false) { ItemAudio.PlayOneShot(ItemGetSE); Itemflag = false; }
