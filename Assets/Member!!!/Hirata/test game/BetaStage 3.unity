@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15555,6 +15555,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
     - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
       propertyPath: _firstCrack
       value: 
       objectReference: {fileID: 8300000, guid: 70467775164aa7843a78f6122e0271a6, type: 3}
@@ -29341,6 +29345,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
     - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
       propertyPath: _firstCrack
       value: 
       objectReference: {fileID: 8300000, guid: 70467775164aa7843a78f6122e0271a6, type: 3}
@@ -30445,6 +30453,10 @@ PrefabInstance:
       propertyPath: _break
       value: 
       objectReference: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
+    - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
       propertyPath: _firstCrack
       value: 
@@ -55429,6 +55441,10 @@ PrefabInstance:
       propertyPath: _break
       value: 
       objectReference: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
+    - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
+      propertyPath: _interval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3132375464816476519, guid: dc9431963e855b54096242c98bfe9e9b, type: 3}
       propertyPath: _firstCrack
       value: 
