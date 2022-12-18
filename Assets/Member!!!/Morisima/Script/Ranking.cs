@@ -49,7 +49,7 @@ public class Ranking : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        point = GameClearScript.ScorePoint;
+        point += GameClearScript.ScorePoint;
         alltime = StopWatchScript.Second.ToString();
         time = StopWatchScript.second_;
         ranking_Now1.text = Point.ToString();
@@ -62,6 +62,7 @@ public class Ranking : MonoBehaviour
         GameOver.image_Score1[3] = 0;
         GameOver.image_Score1[4] = 0;
         GameOver.image_Score1[5] = 0;
+       
         btn = GetComponent<Button>();
         GetRanking();
 
@@ -71,14 +72,23 @@ public class Ranking : MonoBehaviour
             btn.interactable = true;
             
         }
-         else if(Point == rankingValue[4] && Time < timeValue[4])
-        {
-            btn.interactable = true;
-        }
-        else
+        else if (Point < rankingValue[4])
         {
             btn.interactable = false;
+             if (Time > timeValue[4])
+            {
+                btn.interactable = false;
+            }
         }
+        else if(Point == rankingValue[4]  )
+        {
+            if (Time < timeValue[4])
+            {
+                btn.interactable = true;
+            }
+            
+        }
+        
 
         for (int i = 0; i < rankingText.Length; i++)
         {
@@ -306,9 +316,7 @@ public class Ranking : MonoBehaviour
 
 
 
-        point = 0;
-        GameClearScript.ScorePoint = 0;
-        StopWatchScript.second_ = 0;
+  
         btn.interactable = false;
     }
 
