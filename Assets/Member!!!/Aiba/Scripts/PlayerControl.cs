@@ -179,6 +179,17 @@ public class PlayerControl : MonoBehaviour
 
 
     }
+    /// <summary>デバック用</summary>
+    public void ChangeControlOnController()
+    {
+        _sousa = Sousa.Controller;
+    }
 
+
+    /// <summary>デバック用</summary>
+    public void ChangeControlOnKeyBord()
+    {
+        _sousa = Sousa.KeyBord;
+    }
 
 }
