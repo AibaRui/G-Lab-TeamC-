@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6597446119199261654}
   - component: {fileID: 6597446119199261609}
   - component: {fileID: 6597446119199261608}
-  - component: {fileID: 6597446119199261611}
+  - component: {fileID: 7903697531510184028}
   m_Layer: 0
   m_Name: Ornament7
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dc25c7d99e24856448ed15b4cce47a56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebb720439024327489bf77911f3442d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &6597446119199261611
+--- !u!114 &7903697531510184028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
