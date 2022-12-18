@@ -447,12 +447,12 @@ Transform:
   - {fileID: 1383936817}
   - {fileID: 560125509}
   - {fileID: 961720828}
-  - {fileID: 1967325526}
-  - {fileID: 1407598136}
   - {fileID: 898428626}
   - {fileID: 1428425227}
   - {fileID: 619328462}
   - {fileID: 1573658500}
+  - {fileID: 1407598136}
+  - {fileID: 1967325526}
   m_Father: {fileID: 1172643678}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1061,7 +1061,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1432,12 +1432,12 @@ MonoBehaviour:
   - {fileID: 1383936819}
   - {fileID: 560125510}
   - {fileID: 961720830}
-  - {fileID: 1967325528}
-  - {fileID: 1407598138}
   - {fileID: 898428628}
   - {fileID: 1428425229}
   - {fileID: 619328464}
   - {fileID: 1573658502}
+  - {fileID: 1407598138}
+  - {fileID: 1967325528}
   ScoreText: {fileID: 142872548}
 --- !u!4 &849464069
 Transform:
@@ -1466,7 +1466,7 @@ GameObject:
   - component: {fileID: 898428627}
   - component: {fileID: 898428628}
   m_Layer: 5
-  m_Name: Ornament6-2
+  m_Name: Ornament6-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1485,7 +1485,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2333,7 +2333,7 @@ GameObject:
   - component: {fileID: 1407598137}
   - component: {fileID: 1407598138}
   m_Layer: 5
-  m_Name: Ornament6-1
+  m_Name: Ornament8-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,7 +2352,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2387,7 +2387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc75041125ebc594db44ac7c0684c4c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dffc5e0ed35415f409d08aa4b38b262e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2409,7 +2409,7 @@ GameObject:
   - component: {fileID: 1428425228}
   - component: {fileID: 1428425229}
   m_Layer: 5
-  m_Name: Ornament6-3
+  m_Name: Ornament6-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2428,7 +2428,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2639,7 +2639,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2866,7 +2866,7 @@ GameObject:
   - component: {fileID: 1967325527}
   - component: {fileID: 1967325528}
   m_Layer: 5
-  m_Name: Ornament5-3
+  m_Name: Ornament8-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2885,7 +2885,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 79225223}
-  m_RootOrder: 9
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5cf2574979742474e866355403003fde, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dffc5e0ed35415f409d08aa4b38b262e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

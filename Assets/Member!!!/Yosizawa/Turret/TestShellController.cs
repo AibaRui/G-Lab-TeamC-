@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D), typeof(Rigidbody2D),typeof(AudioSource))]
 
 class TestShellController : GimickBase
 {
@@ -21,6 +21,8 @@ class TestShellController : GimickBase
     private Rigidbody2D _rb;
     /// <summary>砲台のゲームオブジェクト</summary>
     GameObject _turret = null;
+    /// <summary>雪玉が着弾した時に再生するSE</summary>
+    private AudioSource _audio = null;
 
     //パラメーターを保存する用の変数
     private float _saveAngularVelocity;
@@ -32,6 +34,7 @@ class TestShellController : GimickBase
         _col.isTrigger = true;
         _rb = GetComponent<Rigidbody2D>();
         _turret = FindObjectOfType<TurretController>().gameObject;
+        _audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -51,6 +54,7 @@ class TestShellController : GimickBase
         if(collision.gameObject.tag is "Player1" or "Player2")
         {
             GameObject player = collision.gameObject;
+            AudioSource.PlayClipAtPoint(_audio.clip, transform.position);
 
             if (player.transform.position.x <= _turret.transform.position.x)
             {
@@ -63,6 +67,7 @@ class TestShellController : GimickBase
                 Debug.Log("Go! Right!");
             }
             Destroy(gameObject);
+            Debug.Log("HIT");
         }
     }
 

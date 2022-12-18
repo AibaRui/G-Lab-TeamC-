@@ -34,6 +34,7 @@ public class Fountain : MonoBehaviour
     public float Init_size_ { get { return init_size_; } }
     public float InitSize_ { get { return init_size_; } }
     private Vector3 max_size_ = new Vector3(0, 0, 0);       // FountainIceBaseの初期サイズ
+    public Vector3 Max_size_ { get { return max_size_; } }
     [SerializeField, Header("GeyserManager登録")]
     private GeyserManager manager_;
     [SerializeField, Header("噴水画像ゲームオブジェクト登録")]
@@ -46,7 +47,7 @@ public class Fountain : MonoBehaviour
     private float fountain_height_;         // 噴水の高さを決定
     private float fountain_init_height = 1.0f;  // 噴水の初期高さを取得
 
-    private void Start()
+    private void Awake()
     {
         // ----- 初期値取得 ----- //
         height_max_ = fountain_heightObj_.transform.localPosition.y;    // 噴水高さ限界

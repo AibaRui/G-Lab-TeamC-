@@ -49,22 +49,24 @@ public class GameClearScript : MonoBehaviour
         // Ornament5 取得数に応じたオーナメントの表示
         if (Ornament5.Ornament5Score >= 1) { OrnamentImage[7].gameObject.SetActive(true); }
         if (Ornament5.Ornament5Score >= 2) { OrnamentImage[8].gameObject.SetActive(true); }
-        if (Ornament5.Ornament5Score >= 3) { OrnamentImage[9].gameObject.SetActive(true); }
 
         // Ornament6 取得数に応じたオーナメントの表示
-        if (Ornament6.Ornament6Score >= 1) { OrnamentImage[10].gameObject.SetActive(true); }
-        if (Ornament6.Ornament6Score >= 2) { OrnamentImage[11].gameObject.SetActive(true); }
-        if (Ornament6.Ornament6Score >= 3) { OrnamentImage[12].gameObject.SetActive(true); }
+        if (Ornament6.Ornament6Score >= 1) { OrnamentImage[9].gameObject.SetActive(true); }
+        if (Ornament6.Ornament6Score >= 2) { OrnamentImage[10].gameObject.SetActive(true); }
 
         // Ornament7 取得数に応じたオーナメントの表示
-        if (Ornament7.Ornament7Score >= 1) { OrnamentImage[13].gameObject.SetActive(true); }
-        if (Ornament7.Ornament7Score >= 2) { OrnamentImage[14].gameObject.SetActive(true); }
+        if (Ornament7.Ornament7Score >= 1) { OrnamentImage[11].gameObject.SetActive(true); }
+        if (Ornament7.Ornament7Score >= 2) { OrnamentImage[12].gameObject.SetActive(true); }
+
+        // Ornament8 取得数に応じたオーナメントの表示
+        if (Ornament8.Ornament8Score >= 1) { OrnamentImage[13].gameObject.SetActive(true); }
+        if (Ornament8.Ornament8Score >= 2) { OrnamentImage[14].gameObject.SetActive(true); }
 
         // Ornament 取得数の合計値
         ScorePoint = Ornament1.Ornament1Score + Ornament2.Ornament2Score
                    + Ornament3.Ornament3Score + Ornament4.Ornament4Score
                    + Ornament5.Ornament5Score + Ornament6.Ornament6Score
-                   + Ornament7.Ornament7Score;
+                   + Ornament7.Ornament7Score + Ornament8.Ornament8Score;
     }
 
 }

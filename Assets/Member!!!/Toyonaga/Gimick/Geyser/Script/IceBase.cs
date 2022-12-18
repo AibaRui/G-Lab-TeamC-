@@ -16,7 +16,7 @@ public class IceBase : MonoBehaviour
     private float small_vibration_time_ = 1f;
     private float small_vibration_mag_ = 5f;
     private float transform_rate_ = 0f;
-    private float init_size_ = 0.0001f;
+    private float init_size_ = 1.0f;
     private Vector3 max_size_ = new Vector3(0, 0, 0);
 
     private void Start()
@@ -26,7 +26,8 @@ public class IceBase : MonoBehaviour
         small_vibration_mag_ = fountain_.Small_vibration_mag_;
         transform_rate_ = fountain_.TransformRate_;
         init_size_ = fountain_.Init_size_;
-        max_size_ = transform.localScale;
+        //max_size_ = transform.localScale;
+        max_size_ = fountain_.Max_size_;
         // ---- èâä˙ê›íË ---- //
         transform.localScale = new Vector3(1*init_size_, 1*init_size_, transform.localScale.z);       // î˜è¨ÉTÉCÉYÇ…ÇµÇƒÇ®Ç≠
     }
