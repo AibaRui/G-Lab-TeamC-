@@ -104,9 +104,9 @@ MonoBehaviour:
   _defaultSprite: {fileID: 21300000, guid: ae9256bf7a4e1c34698f7eeda1eb1394, type: 3}
   _changeSprite: {fileID: 21300000, guid: 6002f267ff429dc468ea05a5b38750a8, type: 3}
   _breakSprite: {fileID: 21300000, guid: b450cbe3dc69b6443841215e2ff4ac0d, type: 3}
-  _firstCrack: {fileID: 8300000, guid: 70467775164aa7843a78f6122e0271a6, type: 3}
-  _secondCrack: {fileID: 8300000, guid: 2b71c8c48294fcd408338f004282ae27, type: 3}
-  _break: {fileID: 8300000, guid: 2584519c3d243f141803950be2b7bddc, type: 3}
+  _firstCrack: {fileID: 8300000, guid: 6c102710b8b5b144caf189d69b71db02, type: 3}
+  _secondCrack: {fileID: 8300000, guid: f7b8077c368ff4b4db27236a1d0d86f5, type: 3}
+  _break: {fileID: 8300000, guid: 7613d1509aadd2d419c9de8c7f8274c9, type: 3}
 --- !u!61 &3132375464816476518
 BoxCollider2D:
   m_ObjectHideFlags: 0
