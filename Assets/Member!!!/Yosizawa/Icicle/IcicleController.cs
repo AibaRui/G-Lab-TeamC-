@@ -84,6 +84,7 @@ class IcicleController : GimickBase
             DOVirtual.DelayedCall(_stunTime, () =>
             {
                 playerRb.simulated = true;
+                playerRb.velocity = Vector2.zero;
                 //Destroy(gameObject);
             }, false);
         }
