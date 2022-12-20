@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MargeScene/Marge.unity
     guid: 4c7195040b9ff9c4cb96ff6d806bd7ce
-  - enabled: 0
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
     guid: 1b75763dcc30c0e4a96d8d1edf149df4
   - enabled: 0
@@ -26,13 +26,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Test/TestMarge.unity
     guid: c91f72cee5e14f74e81364664932abde
-  - enabled: 0
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
     guid: 1bf9031f3ad044544a2f7002d47f82e3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/Ranking_endScene.unity
     guid: a21ae47203eca2b43a7944856f7e0e56
-  - enabled: 0
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/GameOverScene.unity
     guid: 7ea11e39eaf3c574081de9812613223d
   - enabled: 0
@@ -56,7 +56,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Member!!!/Maeda/RankingSceneB.unity
     guid: 1caa936d732e0b24eaa53a19920d7c8b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Member!!!/Morisima/Scenes/PlayScene.unity
     guid: 38de9959e427cbb4f9c18a50cf072938
   - enabled: 1

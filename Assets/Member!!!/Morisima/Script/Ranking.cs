@@ -75,19 +75,12 @@ public class Ranking : MonoBehaviour
         else if (Point < rankingValue[4])
         {
             btn.interactable = false;
-             if (Time > timeValue[4])
-            {
-                btn.interactable = false;
-            }
-        }
-        else if(Point == rankingValue[4]  )
+          
+        }else if(Point == 0)
         {
-            if (Time < timeValue[4])
-            {
-                btn.interactable = true;
-            }
-            
+            btn.interactable = false;
         }
+       
         
 
         for (int i = 0; i < rankingText.Length; i++)
@@ -130,11 +123,15 @@ public class Ranking : MonoBehaviour
             {
                 ranking_Now2.text = ranking[4];
             }
+            else if(Point == 0)
+            {
+                ranking_Now2.text = ranking_gg;
+            }
             else if (rankingValue[4] == Point && timeValue[4] > Time)
             {
                 ranking_Now2.text = ranking[4];
             }
-            else if (rankingValue[4] == Point && timeValue[4] == Time)
+            else if (rankingValue[4] == Point && timeValue[4] >= Time)
             {
 
                 ranking_Now2.text = ranking_gg;
@@ -176,7 +173,9 @@ public class Ranking : MonoBehaviour
 
 
 
-            //PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("プレイヤー1");
+            PlayerPrefs.DeleteKey(ranking[1]);
+            PlayerPrefs.DeleteKey("プレイヤー6");
 
         }
     }
