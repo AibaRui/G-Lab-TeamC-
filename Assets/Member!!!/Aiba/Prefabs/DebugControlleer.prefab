@@ -159,7 +159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u73FE\u5728\u306E\u64CD\u4F5C\u306F"
+  m_Text: KeyBord
 --- !u!1 &7524068920452576543
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +172,6 @@ GameObject:
   - component: {fileID: 7524068920452576538}
   - component: {fileID: 7524068920452576539}
   - component: {fileID: 7524068920452576540}
-  - component: {fileID: 7524068920452576541}
   m_Layer: 5
   m_Name: ChangeCTRBorbBottun (1)
   m_TagString: Untagged
@@ -283,7 +282,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7524068920452576541}
+      - m_Target: {fileID: 2324574740659723376}
         m_TargetAssemblyTypeName: ChangeControlSystem, Assembly-CSharp
         m_MethodName: ChacgeController
         m_Mode: 1
@@ -295,21 +294,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7524068920452576541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7524068920452576543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ada2b1ed4335544b25246a18ad8fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl1: {fileID: 0}
-  playerControl2: {fileID: 0}
-  _text: {fileID: 7524068920254282862}
 --- !u!1 &7524068920752484404
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +306,6 @@ GameObject:
   - component: {fileID: 7524068920752484399}
   - component: {fileID: 7524068920752484400}
   - component: {fileID: 7524068920752484401}
-  - component: {fileID: 7524068920752484402}
   m_Layer: 5
   m_Name: ChangeKeyBorbBottun
   m_TagString: Untagged
@@ -433,7 +416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7524068920752484402}
+      - m_Target: {fileID: 2324574740659723376}
         m_TargetAssemblyTypeName: ChangeControlSystem, Assembly-CSharp
         m_MethodName: ChacgeKeyBord
         m_Mode: 1
@@ -445,21 +428,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7524068920752484402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7524068920752484404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ada2b1ed4335544b25246a18ad8fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControl1: {fileID: 0}
-  playerControl2: {fileID: 0}
-  _text: {fileID: 7524068920254282862}
 --- !u!1 &7524068920890835645
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +600,7 @@ GameObject:
   - component: {fileID: 7524068921859304116}
   - component: {fileID: 7524068921859304117}
   - component: {fileID: 7524068921859304118}
+  - component: {fileID: 2324574740659723376}
   m_Layer: 5
   m_Name: DebugControlleer
   m_TagString: Untagged
@@ -724,3 +693,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2324574740659723376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7524068921859304120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ada2b1ed4335544b25246a18ad8fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControl1: {fileID: 0}
+  playerControl2: {fileID: 0}
+  _text: {fileID: 7524068920254282862}

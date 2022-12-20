@@ -154,10 +154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallSpeed: 6
   _stunTime: 1
+  _magnification: 1
+  _maxSize: 6
   _isGizmo: 1
   _direction: -0.15
-  _break: {fileID: 8300000, guid: 138ce06a2423cef469aef15130d0d567, type: 3}
-  _stabbed: {fileID: 8300000, guid: 87f098ab34a2a914f80130da2f0f6b9d, type: 3}
+  _break: {fileID: 8300000, guid: 9a388a16d767b7e4f9d339b139bf91b6, type: 3}
+  _stabbed: {fileID: 8300000, guid: f37a509cac471fc4eb7645b877e10e2e, type: 3}
 --- !u!82 &4390609252895641797
 AudioSource:
   m_ObjectHideFlags: 0
@@ -169,7 +171,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

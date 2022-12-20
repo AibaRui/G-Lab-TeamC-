@@ -48,12 +48,12 @@ public class PlayerChangeAura : MonoBehaviour
     }
 
     void Update()
-    {    
+    {
     }
 
     /// <summary>ジョイスティックでの切り替え</summary>
     /// ポジションを決める
-   public void CheckChenge()
+    public void CheckChenge()
     {
         if (_ischanging)
         {
@@ -69,11 +69,13 @@ public class PlayerChangeAura : MonoBehaviour
                     break;
 
                 case AuraPos.Right:
-                    pos = _rightPos.position;
+                    if (transform.localScale.x == -1) pos = _leftPos.position;
+                    else pos = _rightPos.position;
                     break;
 
                 case AuraPos.Left:
-                    pos = _leftPos.position;
+                    if (transform.localScale.x == -1) pos = _rightPos.position;
+                    else pos = _leftPos.position;
                     break;
             }
             Change(pos);
@@ -86,6 +88,7 @@ public class PlayerChangeAura : MonoBehaviour
     public void Change(Vector3 nextTransform)
     {
         var tr = _imageStick.transform;
+
         float period = 0;
 
         //最短で回転する方向を決める    
@@ -121,7 +124,6 @@ public class PlayerChangeAura : MonoBehaviour
             else if (_auraPos == AuraPos.Right) tr.eulerAngles = new Vector3(0, 0, -90);
             else if (_auraPos == AuraPos.Left) tr.eulerAngles = new Vector3(0, 0, 90);
         }
-
     }
 
     /// <summary>ジョイスティックでの切り替え</summary>
@@ -133,7 +135,7 @@ public class PlayerChangeAura : MonoBehaviour
         //キーボードの仮受付用
         var h1 = Input.GetAxisRaw("Horizontal1");
         var v1 = Input.GetAxisRaw("Vertical1");
-        Debug.Log(h);
+        // Debug.Log(h);
         if (Input.GetButtonDown($"AuraChangeClick{_playerNumber}"))
         {
             _particleController.AuraChange(0);
@@ -150,31 +152,38 @@ public class PlayerChangeAura : MonoBehaviour
 
         if (!_isCircleAura)
         {
-            if (v < 0 || v1 > 0)
+            if ((v ==-1 || v1 > 0 )&& _auraPos != AuraPos.Up)
             {
                 _auraPos = AuraPos.Up;
                 _ischanging = true;
                 _particleController.AuraChange(1);
             }
-            if (v > 0 || v1 < 0)
+            if ((v ==1 || v1 < 0) && _auraPos != AuraPos.Down)
             {
                 _auraPos = AuraPos.Down;
                 _ischanging = true;
                 _particleController.AuraChange(3);
 
             }
-            if (h < 0 || h1 < 0)
+            if ((h ==-1 || h1 < 0) && _auraPos != AuraPos.Left)
             {
                 _auraPos = AuraPos.Left;
                 _ischanging = true;
-                _particleController.AuraChange(4);
+                if (transform.localScale.x == -1)
+                {
+                    _particleController.AuraChange(2);
+                }
+                else _particleController.AuraChange(4);
             }
-            if (h > 0 || h1 > 0)
+            if ((h ==1 || h1 > 0) && _auraPos != AuraPos.Right)
             {
                 _auraPos = AuraPos.Right;
                 _ischanging = true;
-                _particleController.AuraChange(2);
-
+                if (transform.localScale.x == -1)
+                {
+                    _particleController.AuraChange(4);
+                }
+                else _particleController.AuraChange(2);
             }
         }
     }

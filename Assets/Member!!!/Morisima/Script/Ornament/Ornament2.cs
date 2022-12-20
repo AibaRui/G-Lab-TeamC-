@@ -17,6 +17,7 @@ public class Ornament2 : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Ornament2Score += 1;
+        Clear.Itemflag = true;
         Destroy(this.gameObject);
     }
 }

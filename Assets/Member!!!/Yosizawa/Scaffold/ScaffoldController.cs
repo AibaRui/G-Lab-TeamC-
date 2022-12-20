@@ -59,7 +59,7 @@ class ScaffoldController : GimickBase
         _filter.SetNormalAngle(240f, 300f);
     }
 
-    private void FixedUpdate()
+    private void ScaffoldState()
     {
         switch (_stateCount)  //何回踏まれたかに応じて処理を切り替える
         {
@@ -70,29 +70,29 @@ class ScaffoldController : GimickBase
                 _boxCol2D.isTrigger = false;
                 _mainSprite.sprite = _changeSprite;
                 _mainSprite.DOFade(1f, 1f);
-                _mainAudio.clip = _firstCrack;
+                _mainAudio.PlayOneShot(_firstCrack);
                 gameObject.layer = 11;
                 break;
             case 2:  // 2回目に踏まれたとき
                 _mainSprite.DOFade(0.5f, 1f);
-                _mainAudio.clip = _secondCrack;
+                _mainAudio.PlayOneShot(_secondCrack);
                 DOVirtual.DelayedCall(1.0f, () =>
                 {
                     _boxCol2D.isTrigger = true;
                     gameObject.layer = default;
                     _mainSprite.sprite = _breakSprite;
-                    _mainAudio.clip = _break;
+                    _mainAudio.PlayOneShot(_break);
                 }, false);
                 break;
         }
     }
-
     //Playerが床に乗ったら、踏まれた回数を増加させる
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag is "Player1" or "Player2")
         {
             if (_stateCount < 2 && _rb.IsTouching(_filter)) _stateCount++;
+            ScaffoldState();
         }
         Debug.Log(_stateCount);
     }
@@ -101,13 +101,14 @@ class ScaffoldController : GimickBase
     private void OnTriggerStay2D(Collider2D collision)
     {
         //「固める」オーラが当たったら、_stateCountを減少させる
-        if (collision.gameObject.tag is "Cool" && _stateCount >= 1)
+        if (collision.gameObject.tag is "Cool" && _stateCount > 0)
         {
             _timer += Time.deltaTime;
             if (_timer >= _interval)
             {
                 _stateCount--;
                 _timer = 0;
+                ScaffoldState();
                 Debug.Log(_stateCount);
             }
         }
