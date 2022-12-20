@@ -27,14 +27,14 @@ EditorBuildSettings:
     path: Assets/Test/TestMarge.unity
     guid: c91f72cee5e14f74e81364664932abde
   - enabled: 0
-    path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
-    guid: 1bf9031f3ad044544a2f7002d47f82e3
-  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/Ranking_endScene.unity
     guid: a21ae47203eca2b43a7944856f7e0e56
   - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/GameOverScene.unity
     guid: 7ea11e39eaf3c574081de9812613223d
+  - enabled: 0
+    path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
+    guid: 1bf9031f3ad044544a2f7002d47f82e3
   - enabled: 0
     path: Assets/Member!!!/Maeda/ClearSceneB.unity
     guid: 177c4a55645406f47b7d26da9915e84b
