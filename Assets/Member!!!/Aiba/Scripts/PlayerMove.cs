@@ -106,7 +106,7 @@ public class PlayerMove : MonoBehaviour
 
     public void JumpKeybord()
     {
-        if (GroundCheck())
+        if (GroundCheck() && _rb.simulated)
         {
             if (gameObject.tag == "Player1")
             {
