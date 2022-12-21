@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("クリアシーンの名前")]
     [SerializeField] string _clearSceneName;
 
+    [SerializeField] List<AudioSource> _stopMusicOnGameEnd = new List<AudioSource>();
+
 
     PauseManager _pause;
 
@@ -25,12 +27,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(_clearSceneName);
         _pause.PauseResumeGameEnd();
+
+        _stopMusicOnGameEnd.ForEach(i => i.Stop());
     }
 
     public void GameOver()
     {
         _gameOverPanel.SetActive(true);
         _pause.PauseResumeGameEnd();
+        _stopMusicOnGameEnd.ForEach(i => i.Stop());
     }
 
 }
