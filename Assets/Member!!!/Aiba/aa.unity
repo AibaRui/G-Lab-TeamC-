@@ -878,6 +878,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 263039978}
   _clearSceneName: Test
+  _stopMusicOnGameEnd:
+  - {fileID: 0}
 --- !u!4 &409191270
 Transform:
   m_ObjectHideFlags: 0
