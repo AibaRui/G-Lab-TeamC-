@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8850435a700ce5142a9c3aea573c37d3, type: 3}
+    - target: {fileID: 1465630679555674987, guid: 2d224f3ae75c94d4eb969142628ece70, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1465630679555674989, guid: 2d224f3ae75c94d4eb969142628ece70, type: 3}
       propertyPath: m_Name
       value: IceBlock Variant

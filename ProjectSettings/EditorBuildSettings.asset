@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MargeScene/Marge.unity
     guid: 4c7195040b9ff9c4cb96ff6d806bd7ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/RankingScene.unity
     guid: 1b75763dcc30c0e4a96d8d1edf149df4
   - enabled: 0
@@ -26,13 +26,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Test/TestMarge.unity
     guid: c91f72cee5e14f74e81364664932abde
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/ClearScene.unity
     guid: 1bf9031f3ad044544a2f7002d47f82e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/Ranking_endScene.unity
     guid: a21ae47203eca2b43a7944856f7e0e56
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/GameOverScene.unity
     guid: 7ea11e39eaf3c574081de9812613223d
   - enabled: 0
@@ -56,22 +56,34 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Member!!!/Maeda/RankingSceneB.unity
     guid: 1caa936d732e0b24eaa53a19920d7c8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Member!!!/Morisima/Scenes/PlayScene.unity
     guid: 38de9959e427cbb4f9c18a50cf072938
-  - enabled: 1
-    path: Assets/Member!!!/hirata/test game/TitleSceneB 1.unity
+  - enabled: 0
+    path: Assets/Member!!!/hirata/test game/olude/TitleSceneB 1.unity
     guid: 6a30df1db773ba443a32708591ee8500
+  - enabled: 0
+    path: Assets/Member!!!/hirata/test game/olude/ClearSceneB 1.unity
+    guid: 5a7378fdcbc920a4988f78bc6e6a8ddc
+  - enabled: 0
+    path: Assets/Member!!!/hirata/test game/olude/Ranking_endSceneB 1.unity
+    guid: 510d9b8d44b006f40a1b9baf7afa30c0
+  - enabled: 0
+    path: Assets/Member!!!/hirata/test game/olude/RankingSceneB 1.unity
+    guid: e73747c477612bd4caa0d249038bdc08
+  - enabled: 1
+    path: Assets/Member!!!/hirata/test game/TitleScene 5.unity
+    guid: ffc72f7da4bd13b488a357f456848572
   - enabled: 1
     path: Assets/Member!!!/hirata/test game/BetaStage 3.unity
     guid: 3f845198c105d9749a88432095631487
   - enabled: 1
-    path: Assets/Member!!!/hirata/test game/ClearSceneB 1.unity
-    guid: 5a7378fdcbc920a4988f78bc6e6a8ddc
+    path: Assets/Member!!!/hirata/test game/ClearScene 5.unity
+    guid: f4ca7b79ad4256e449b42b74479aadfd
   - enabled: 1
-    path: Assets/Member!!!/hirata/test game/Ranking_endSceneB 1.unity
-    guid: 510d9b8d44b006f40a1b9baf7afa30c0
+    path: Assets/Member!!!/hirata/test game/Ranking_endScene 5.unity
+    guid: 5561888a79ac3e941a6770c923d8a35c
   - enabled: 1
-    path: Assets/Member!!!/hirata/test game/RankingSceneB 1.unity
-    guid: e73747c477612bd4caa0d249038bdc08
+    path: Assets/Member!!!/hirata/test game/RankingScene 5.unity
+    guid: 330a58b3b76ed1145af74e2940113ba5
   m_configObjects: {}
