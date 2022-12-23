@@ -65,6 +65,7 @@ class ScaffoldController : GimickBase
         {
             case 0:  // ‰Šúó‘Ô
                 _mainSprite.sprite = _defaultSprite;
+                _boxCol2D.isTrigger = false;
                 break;
             case 1:  // 1‰ñ–Ú‚É“¥‚Ü‚ê‚½‚Æ‚«
                 _boxCol2D.isTrigger = false;
