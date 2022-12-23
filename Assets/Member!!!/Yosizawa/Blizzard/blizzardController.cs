@@ -35,6 +35,7 @@ public class blizzardController : MonoBehaviour
         //吹雪のパネルをキャンバスの子オブジェクトにする
         GameObject canvas = GameObject.Find("Canvas");
         panel = Instantiate(_blizzardPanel.gameObject, canvas.transform);
+        panel.transform.SetSiblingIndex(0);
         _panelPrefab = panel.GetComponent<Image>();
         _blizzardPanel.DOFade(0f, 0f);  //ここでGameObjectを透明にしておく
         if (_blizzardPanel is null)
