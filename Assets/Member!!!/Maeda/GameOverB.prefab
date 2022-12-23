@@ -81,6 +81,18 @@ PrefabInstance:
       value: 980
       objectReference: {fileID: 0}
     - target: {fileID: 4253354320632325749, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253354320632325749, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253354320632325749, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253354320632325749, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -132,6 +144,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 7329664501583625471, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 366fbb105e8155b4d97e095acd14d2ed, type: 3}
+    - target: {fileID: 7329664501670569128, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 366fbb105e8155b4d97e095acd14d2ed, type: 3}
     - target: {fileID: 7329664502222811832, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -142,8 +162,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7329664502222811832, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: BetaStage
+      value: BetaStage 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7329664502391212759, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 366fbb105e8155b4d97e095acd14d2ed, type: 3}
+    - target: {fileID: 7329664502547330882, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 366fbb105e8155b4d97e095acd14d2ed, type: 3}
+    - target: {fileID: 7329664502667120077, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c2cc30d665ab374ca4c5a92f563d583, type: 3}
     - target: {fileID: 7329664502667120078, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -154,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7329664502667120078, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: TitleSceneB
+      value: TitleSceneB 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb3b7460891cfa4cbc091ac5cd1e624, type: 3}
